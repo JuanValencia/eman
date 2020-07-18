@@ -105,7 +105,7 @@ Drawing a chunk after the VBO has been created is as simple as binding the buffe
 
 I also use what's called Vertex Array Objects (VAOs) to re-use shared vertices. Since the GPU expects triangles, and I want to draw squares, I need to draw 2 triangles (6 vertices) per square.
 That means 2 of them are being re-used. The VAO lets me tell the GPU to use the cached vertex data instead of looking for a new one, which offers a small inprovement to GPU performance.
-This isn't entirely necessary, but it's considered best practice. Some OpenGL ES implementations require it, but WebGL 1 does not. I think WebGL 2 does, but that's not as well supported.
+This isn't entirely necessary, but it's considered best practice. Some OpenGL ES implementations require it, but WebGL 1 does not. I think WebGL 2 does, but that's not as well supported.;
 -->
 
 <html>
