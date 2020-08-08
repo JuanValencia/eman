@@ -1,0 +1,21 @@
+<!DOCTYPE html><html>
+    <body style="background:-webkit-linear-gradient(blue,green);">
+        <img id="dog" style="position:absolute;width:50px;top:185px;left:278px;" src="https://www.kasandbox.org/programming-images/avatars/orange-juice-squid.png">
+        <img id="bone" style="position:absolute;width:50px;top:0px;left:0px;" src="https://www.kasandbox.org/programming-images/cute/ChestClosed.png">
+        <p id= "score" style="position:absolute;left:50px;color:yellow;font-size:28px;">score: 0</p>
+        <p id="lives" style="position:absolute;left:173px;color:yellow;font-size:28px;">lives: 3</p>
+    </body>
+    <script>
+    var score=0, lives=3,dogX=6,dogY=10,boneX=8,boneY=0;
+    function setleft(id,x){document.getElementById(id).style.left=x+"px";}
+    function setTop(id,x){document.getElementById(id).style.top=y+"px";}
+    function randomNumber(low,high){return(Math.floor(low+Math.random()*(1+high-low)));}
+    var gameTimer=window.setInterval(movebone,200);
+    document.onkeydown=handleKeys;
+    function handleKeys(e){if(e.keyCode==37){dogX--;}   if(e.keyCode==39){dogX++;}setLeft("dog",dogX*50);setTop("dog",dogY*50);}
+    function moveBone(){boneY=boneY+=1;setLef("bone",boneX*50);setLeft("bone",boneX*50);if(boneY>dogY+5){missedBone();}if((dogX==boneX) && (dogY==boneY)){caghtBone();}} 
+    function missedBone(){boneY=0;boneX=randomNumber(2,16);lives--;document.getElementById("lives").innerText="Lives:"+lives; if(lives==0){gameOver();}}
+    function caughtBone(){boneY=0;boneX=randomNumber(2,16);score++;document.getElementById("scrore").innerText="Score:"+score;}
+    function gameOver(){alert("Game Over! You scored:"+score);location.reload();}
+    </script>
+    </html>
