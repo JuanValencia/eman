@@ -2,103 +2,127 @@
 
 <!-- This is based on DillingerLee's great template here:
 https://github.com/Team-Code/KA_Offline -->
-<html> 
- <head>
-    <title>space invaders 2</title> 
+<html>
+
+<head>
+    <title>space invaders 2</title>
 </head>
- <body>
-    <p align="center"> 
-	<!--This draws the Canvas on the webpage -->
-      <canvas id="mycanvas"></canvas> 
+
+<body>
+    <p align="center">
+        <!--This draws the Canvas on the webpage -->
+        <canvas id="mycanvas"></canvas>
     </p>
- </body>
- 
- <!-- Run all the JavaScript stuff -->
- 
- <script src="https://cdn.jsdelivr.net/processing.js/1.4.8/processing.min.js"></script> 
- 
- <script>
-    var sketchProc = function(processingInstance) {
-     with (processingInstance) {
-        size(400, 400); 
-        frameRate(30);
-// ProgramCodeGoesHere{
-var x=19;
-var keys = [];
-var keyPressed = function() { 
-  keys[keyCode] = true;
-};
-var keyReleased = function() { 
-  keys[keyCode] = false; 
-};   
-var drawpixelart = function(x, y, pixelsize, thecolors, thenames, thepixelart){
-	pushMatrix();
-	translate(x, y);
-	noStroke();
-    for(var i = 0;i<thepixelart.length;i++){
-        for(var a = 0;a<thepixelart[i].length;a++){
-        if(thepixelart[i][a]===" "){
-            noFill();
-        }
-        for(var g = 0;g<thecolors.length&&g<thenames.length;g++){
-            if(thepixelart[i][a]===thenames[g]){
-                fill(thecolors[g]);
-            }
-        }
-        rect(a*pixelsize, i*pixelsize, pixelsize, pixelsize);
-        }
-    }
-    popMatrix();
-};
-var player=[
-"                     l                 ",    
-"                     l                 ", 
-"                    lll                ", 
-"                    lml                ",
-"                    lml                ", 
-"                   lmmml               ", 
-"                   lmmml               ", 
-"                   lmmml               ", 
-"                  lmmmmml              ", 
-"                lllmmmmmlll            ", 
-"             lllllllllllllllll         ", 
-"                   yoooy                ",    
-"                    oyo                 ",    
-"                     o                  ",    
-"                     y                  ",    
-"                                       ",    
-   
-   
-   
-   
-    ];
+</body>
 
-draw=function(){
-background(0, 0, 0);
- drawpixelart(x,305, 5, [color(194, 194, 194), color(127, 128, 126), color(46, 115, 61), color(255, 208, 0), color(255, 166, 0), color(0), color(255),color(209, 205, 209) ], ["l", "m", "d", "y", "o", "b", "w","g"],player);
+<!-- Run all the JavaScript stuff -->
 
-if (keyPressed && keys[LEFT]) {
-      x-=5; 
+<script src="https://cdn.jsdelivr.net/processing.js/1.4.8/processing.min.js"></script>
 
-    
-    }
-if (keyPressed && keys[RIGHT]) {
-      x+=5;  
-    }    
-    
-    
-    
-    
-};        
-//}
-            
-     
-    }};
+<script>
+    var sketchProc = function (processingInstance) {
+        with (processingInstance) {
+            size(400, 400);
+            frameRate(30);
+            // ProgramCodeGoesHere{
+            var ypos = 350;
+            var bullets = []
+            var x = 19;
+            var keys = [];
+            var keyPressed = function () {
+                keys[keyCode] = true;
+            };
+            var keyReleased = function () {
+                keys[keyCode] = false;
+            };
+            var drawpixelart = function (x, y, pixelsize, thecolors, thenames, thepixelart) {
+                pushMatrix();
+                translate(x, y);
+                noStroke();
+                for (var i = 0; i < thepixelart.length; i++) {
+                    for (var a = 0; a < thepixelart[i].length; a++) {
+                        if (thepixelart[i][a] === " ") {
+                            noFill();
+                        }
+                        for (var g = 0; g < thecolors.length && g < thenames.length; g++) {
+                            if (thepixelart[i][a] === thenames[g]) {
+                                fill(thecolors[g]);
+                            }
+                        }
+                        rect(a * pixelsize, i * pixelsize, pixelsize, pixelsize);
+                    }
+                }
+                popMatrix();
+            };
+
+
+            //pixal art{
+            var player = [
+                "                     l                 ",
+                "                     l                 ",
+                "                    lll                ",
+                "                    lml                ",
+                "                    lml                ",
+                "                   lmmml               ",
+                "                   lmmml               ",
+                "                   lmmml               ",
+                "                  lmmmmml              ",
+                "                lllmmmmmlll            ",
+                "             lllllllllllllllll         ",
+                "                   yoooy                ",
+                "                    oyo                 ",
+                "                     o                  ",
+                "                     y                  ",
+                "                                       ",];
+            var monster = [
+                "         r     r     ",
+                "          r   r      ",
+                "         rrrrrrr     ",
+                "        rr rrr rr    ",
+                "       rrrrrrrrrrr   ",
+                "       r rrrrrrr r   ",
+                "       r r     r r   ",
+                "          rr rr     ",
+                "                    ",
+                "                    ",
+                "                    ",
+                "                    ",
+            ];
+            //}
+            draw = function () {
+                background(0, 0, 0);
+                drawpixelart(x, 305, 5, [color(194, 194, 194), color(127, 128, 126), color(46, 115, 61), color(255, 208, 0), color(255, 166, 0), color(0), color(255), color(0, 255, 30)], ["l", "m", "d", "y", "o", "b", "w", "g"], player);
+                drawpixelart(139, 104, 5, [color(194, 194, 194), color(127, 128, 126), color(46, 115, 61), color(0, 255, 30), color(255, 166, 0), color(0), color(255), color(209, 205, 209), color(0, 255, 30)], ["l", "m", "d", "y", "o", "b", "w", "g", "r"], monster);
+                var  drawBullet = function(bullet){
+                    fill(255, 255, 255);
+                    ellipse(bullet.x, bullet.y, 10, 10)    
+                }
+                bullets.forEach(bullet => {
+                    drawBullet(bullet)
+                    bullet.y -= 5
+                });
+                if (keyPressed && keys[LEFT]) {
+                    x -= 5;
+                }
+                if (keyPressed && keys[RIGHT]) {
+                    x += 5;
+                }
+                if (keyReleased && keyCode == "32") {
+                  bullets.push({
+                   x:x,
+                   y:ypos
+                  })  
+                }
+                console.log(bullets)
+            };
+            //}
+        }
+    };
 
     // Get the canvas that Processing-js will use
-    var canvas = document.getElementById("mycanvas"); 
+    var canvas = document.getElementById("mycanvas");
     // Pass the function sketchProc (defined in myCode.js) to Processing's constructor.
     var processingInstance = new Processing(canvas, sketchProc); 
- </script>
+</script>
 
 </html>
