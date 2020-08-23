@@ -119,12 +119,17 @@ This isn't entirely necessary, but it's considered best practice. Some OpenGL ES
         } 
     </style> 
     <body> 
-    <canvas id="overlay" tabindex="0" width="600" height="600" style="position: absolute; top: 0px; left: 0px"></canvas> 
-    <input type="textbox" id="savebox" hidden="true" style="position: absolute; top: 100px; left: 100px; z-index: 1;"> 
+    <!--TODO: put the onchange and make it say "localStorage.setItem("mincraft",saveCode)"or somthing.   -->
+        <canvas id="overlay" tabindex="0" width="600" height="600" style="position: absolute; top: 0px; left: 0px"></canvas> 
+    <input type="textbox" id="savebox" hidden="true" style="position: absolute; top: 100px; left: 100px; z-index: 1;" myFunction(this.value)> 
     <script> 
         // Code edits will erase the world. 
         // Place save code here to load your world. Make extra sure you got it copied so you don't paste in the wrong thing and delete your world on accident lol 
         var loadString = "8jtonx;1e,1z,3b,-s,6h;d;0,0,0,0,1,0,0,2,0,0,3,0,1,0,0,2,4,6,2,4,7,3,2,6,3,4,6,3,1,7,3,2,7,3,3,7,3,4,7;c9hc,ca2o,cd1c,cd8g,don4,drsw,jta8,jtog,jtvk,ju2o,klq8,kow0,ks1s,kv7k,kydc,l1j4,l81s,l88w,l8g0,l8n4;jq4g,jta8,jwg0,jzls,k2rk,k5xc,k934,kc8w,kfeo,kikg,klq8,kow0,ks1s,kv7k,kydc,l1j4;k2rk,k5xc,k934,kc8w,kfeo,kikg,klq8,kow0,ks1s;jwg0,jzls,k2rk,k5xc,k934,kc8w,kfeo,kikg,klq8,kow0,ks1s,kv7k;5c0,5j4,em8,1jwg,1k3k,1kao,1n9c,1ngg,1qf4,2yo0,2yv4;alfk,c074,c3cw,cyyo,cz5s,d24g,d2bk,d5a8,d5hc,d5wc,d924,dc7s,dedc,dekg,derk,dfdn,dhj4,dhq8,dhxc,dkhs,dkow,dkw0,do1s,edj4,edq8,egow,egw0,ejuo,ek1s,enfi,enmk,eqla,eqs8,esjk,esqo,esxs,et4w,etc0,etr2,ety3,evpc,evwg,ew3k,ewao,ewhs,ewwu,ez9c,ezgg,f2f4,fs3k,fsao,fv9c,fvgg,fy1x,fy91,fyg5,fyn9,fyud,fz15,g7b4,g7i8,g7pc,gagw,gao0,gav4,gbha,h6o0,h6v4,h9ts,ha0w,hcmd,hcth,hd0l,hd7p,hdet,hdll,hq1q,il8g,ilfk,ioe8,iolc,irk0,irr4,iv4u,ivbw,iyam,iyhk,j11c,j18g,j1ge,j1nf,j400,j474,j4e8,j4m6,j4sg,jzsw,k000,k2yo,k35s,k64g,k6bk,k9wc,kd20,kfeo,kfls,kfsw,kg00,kg7v,kikg,kirk,kiyo,kj5s,kjcw,km4g,kpa8,ledc,lekg,lerk,lhj4,lhq8,lhxc,lkow,lkw0,lla9,lo1s,lr7k,ltz4,lu68,ludc,lukg,lurk,lx4w,lxc0,lxj4,lxq8,lxxc,m0hs,m0ow,m0w0,m3nk,m3uo,m41s;d3q4,d3x8,d63g,d6ak,d6ho,d6os,d6vw,d730,d994,d9g8,d9nc,d9ug,da1k,da8o,dcez,dcm3,dct7,dd0b,dd7f,ddej,ehi1,ehp5,ehw9,ei3d,eiah,elng,eot4,eryz,ft34,fta8,fthc,fw2h,fw9l,fwgp,fwnt,fwux,fxmp,g07w,g3dk,g6jf,h7nk,h7uo,h81s,hamx,hau1,hb15,hb89,hbfd,hc01,hc75,hesc,hhy0,hl3v,im80,imm8,ip7d,ipeh,ipll,ipsp,ipzt,iqkh,iqrl,itcs,iwig,izob,k54x,k5c1,k6xo,k74s,k7bw,k7j0,k7q4,k7x8,ka3c,kaag,kahk,kaoo,kavs,kb2w,kd97,kdgb,kdnf,kduj,ke1n,ke8r,libl,liip,lji9,ljpd,ljwh;a4g0,a800;buo,c1s,c8w,f0g,f7k,feo,irl,rgg,rnk,ruo,s1s,s8w,um8,utc,v0g,v7k,veo,xz4,y68,ydc,11c0,1w5d,1wch,1wjl,1wqp,1wxt,1x4x,1xc1,2680,26f4,26m8,296o,29ds,29kw,29s0,29z4,3awx,3b41,3bb5,4poh,4pvl;lj4,oow,ruo,v0g,y68,11c0,14hs,17nk,1atc,1dz4;2kg,5q8,8w0,c1s,f7k,idc,lj4,oow,ruo,v0g,y68,11c0,14hs,17nk,1atc,1dz4;2kg,5q8,8w0,c1s,f7k,idc,lj4,oow,ruo,v0g,y68,11c0,14hs,17nk,1atc,1dz4;2kg,5q8,8w0,fsx,g01,g75,ge9,gld,gsh,gzl,h6p,hdt,idc,lj4,oow,ruo,1ssh,1udd,1ukh,1url,1uyp,1v5t,1vcx,1vk1,1vr5"; 
+        function myFunction(val) {
+ val=loadString
+ localStorage.setItem("mincraft",val)
+}
     </script> 
     <script> 
 var canvas = document.getElementById("overlay"); 
@@ -136,7 +141,14 @@ ctx.canvas.height = window.innerHeight;
 /* Set this text editor to max width by copying this into the JS console: 
 document.getElementsByClassName("_1chbfei")[0].setAttribute('style', 'max-width: 100vw !important'); 
 */ 
- 
+ /*
+ window.localStorage
+Storage {emanMinecraft: "asdf", eman: "[object Object]", emanNum: "4", length: 3}eman: "[object Object]"emanMinecraft: "asdf"emanNum: "4"length: 3__proto__: Storage
+localStorage.setItem("eman01",3)
+undefined
+localStorage.eman01
+"3"
+ */
 function delag(f) { 
     delag.stripDetection = delag.stripDetection || function(s) { 
         let outLines = []; 
@@ -567,7 +579,7 @@ var init = delag(function() {
         function lerp(t,a,b) { 
             return a + t * (b - a); 
         } 
- 
+//  <input>
         this.noise3d = function(x, y, z) { 
             let X = Math.floor(x)&255, Y = Math.floor(y)&255, Z = Math.floor(z)&255; 
             x -= Math.floor(x); y -= Math.floor(y); z -= Math.floor(z); 
@@ -3579,4 +3591,4 @@ init();
  
     </script> 
     </body> 
-</html> 
+</html>
