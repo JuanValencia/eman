@@ -121,7 +121,7 @@ This isn't entirely necessary, but it's considered best practice. Some OpenGL ES
     <body> 
     <!--TODO: put the onchange and make it say "localStorage.setItem("mincraft",saveCode)"or somthing.   -->
         <canvas id="overlay" tabindex="0" width="600" height="600" style="position: absolute; top: 0px; left: 0px"></canvas> 
-    <input type="textbox" id="savebox" hidden="true" style="position: absolute; top: 100px; left: 100px; z-index: 1;" myFunction(this.value)> 
+    <input type="textbox" id="savebox" hidden="true" style="position: absolute; top: 100px; left: 100px; z-index: 1;"onchange= myFunction(this.value)> 
     <script> 
         // Code edits will erase the world. 
         // Place save code here to load your world. Make extra sure you got it copied so you don't paste in the wrong thing and delete your world on accident lol 
