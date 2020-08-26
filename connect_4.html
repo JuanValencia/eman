@@ -132,7 +132,7 @@ span.psw {
 
 <h2>Modal Login Form</h2>
 
-<button onclick="document.getElementById('id01').style.display='block'" style="width:auto;">Login</button>
+<button onclick="" style="width:auto;">Login</button>
 
 <div id="id01" class="modal">
   
@@ -160,8 +160,25 @@ span.psw {
     </div>
   </form>
 </div>
-
+<script src="https://cdn.jsdelivr.net/processing.js/1.4.8/processing.min.js"></script>
 <script>
+  
+    var sketchProc = function (processingInstance) {
+        with (processingInstance) {
+            size(400, 400);
+            frameRate(30);
+  var name=function() {
+   document.getElementById('id01').style.display='block' 
+ text()
+ }
+
+
+};
+</script>
+<script>
+
+
+
 var ah="";
 function myfuntion(val){
 ah=val;
