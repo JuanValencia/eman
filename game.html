@@ -1,0 +1,292 @@
+<html> 
+ <head>
+    <title>Processing.JS inside Webpages: Template</title> 
+</head>
+ <body>
+    <p align="center"> 
+	<!--This draws the Canvas on the webpage -->
+      <canvas id="mycanvas"></canvas> 
+    </p>
+ </body>
+ 
+ <!-- Run all the JavaScript stuff -->
+ <!-- Include the processing.js library -->
+ <!-- See https://khanacademy.zendesk.com/hc/en-us/articles/202260404-What-parts-of-ProcessingJS-does-Khan-Academy-support- for differences -->
+ <script src="https://cdn.jsdelivr.net/processing.js/1.4.8/processing.min.js"></script> 
+ 
+ <script>
+    var sketchProc = function(processingInstance) {
+     with (processingInstance) {
+        size(400, 400); 
+        frameRate(30);
+        
+// ProgramCodeGoesHere{
+    var gamescene=function(){ 
+
+noStroke();
+
+var Sky=function(x,y,s){
+    
+var skyColors={
+    "o": color(27, 40, 189),//blue
+    "l": color(10, 20, 112),//darker blue
+    "e": color(47, 77, 196),//lighter blue
+    "m": color(3, 15, 59),//darkert blue
+    "v": color(2, 11, 41),//drakerrett blue
+    "j": color(1, 7, 26),//drakerrett blue
+    "w": color(255, 255, 255,0),//clear
+
+};
+
+var sky =[
+"jjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjvvvvvvvvvvvvvvvvvvvjvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjj",
+"jjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjvmmmmmmmmmmmmmmmmmmvvvvvvvvvvvvvvvvvvjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjj",
+"jjjjjjjjjjjjjjjjjjjjjjjjjvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvjjjjjjjjjjjjjjjjjjjjjjjjjvvvvmmmmmmmmmmvvvvvvvvvvvvvvvvjjjjjj",
+"jjjjjjjjjjjvvvvvvvvvvvvvvvvvvvvvvvmmmmmmmvvvvvvvvvvvvjjjjjjjjjjjjjjjjjjjjjjjjjvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvjjjjjjjjj",
+"jjvvvvvvvvvvvvvvvvvvvvvvvjjjjjjjjjjvvmmmmmvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvlllllllllllljjjjjjvvjvjjjjjjv",
+"jjjvvvvvvvvvvvvvvvvvvvvvvvvvvvjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjmmmmmmmmmmmmvvvvvvvvvvjjjjjjjjjjjjjjj",
+"jjjjjjjjjjjjjjjjjjjjjjjjjjjjjvvvvvvvvvvvvvvvvvvvvvvvvmmmmmmmmmmmmmmmmmmmmmmmmmmmvvvvvlllllllllvvvvvvvvvvvvmmmmmmmmmvvvvvv",
+"jjjjvvvvvvvvvvvvvvvjjjjjjjjjjjjjjjjjjvjjjjmmmmmmmmmmmmmvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvjjjjjjjjjjjjj",
+"jjjjjjjjjjjvvvvvvvvvvvvvvvvvvvvvvvmmmmmmmvvvvvvvvvvvvjjjjjjjjjjjjjjjjjjjjjjjjjvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvjjjjjjjjj",
+"vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvmmmvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvmvv",
+"vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmllllllllllllllllllllllllllllllllvvvvvvvvvvv",
+"vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvooooooooooooooommmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmvvvvvvvvvvvvvvvvvvmmmmvvvvvv",
+"vvvvvvvvvvvvmmmmmmmmmmmlllllllllllllvvvvvvvvvvvvvvvvvvvvvvvmmmmmmmmmmmmmmmmmmmmmmmmmvvvvvvvvvvvvvvvvvvvvvmmmmmmmmmvvvvvv",
+"vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvmmmmmmmmmmmmmmmmmmmmmmmmmmmvvmvllllllmmmmmmmmmmmmmmmmmvvvvvvvvvvvvvmmmmmmmmmvv",
+"vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvmmmmmmmmmmmmmmmmmmmmmmmmmmmvvmvlllllllllllllllllllllvvvvvvvvvvvvvvmmmmmmmmmvv",
+"vvvvvvvvvvvvvvvvvvvvvmmmmmmmmmmmmmmmmmmmmmmmmvvmvvvvvvvvvvvvvvvvvvvvvvvvvvvvmmmmmmmmmmmmmmmmmmvvvvmmmmmmmmmmmmmmmmmvvvvv",
+"vvvvvvvvvvvvvvvvvvvvvvvvvmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvmmmvvvvvv",
+"vvvvvvvvvvmmmmmmmmmmmmmmmmmllllllllllloooolllllllllllllllllllllllllllllllllllllllllvvvvvvlllllllllllmmvvvvvvvvvvvvvvvvvvv",
+"mmmmmmmmmmmmmmmmmmmmmlllllllllllllmmmmmmmmmmmmmmmmmmmmmmmmmmmmmooooooooolllllllllllmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmlmmmmm",
+"mmmmmmmmmmmmmmmmmmmmmmmllllllllllllllllllllmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmlllllllllooooooooooooooooooollllllllllllmm",  
+"mmmmmmmmmmmmmmmmmmmmmmmmmmeeeeeemmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmm",  
+"mmlllllllmmmmmmmmmmmmeeeeeeeeeeeeeeeeemmmmlllllllllllllmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmllllllmmmmmmmmmmmmmmmmmm",  
+"mmlllllllmmmmmeeeeeeeeewweeeeeeemmmmlllllllllllllmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmllllllmmmmmmmmmmmmmmmmmm",     
+"mmlllllllmmmmmmmeeeeeeewwwwweeeeeeemmmmlllllllllllllmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmllllllmmmmmmmmmlmmmmmmmmmmm",      
+"mmlllllllmmmmmmmeeeeeeeewwwwweeeeeeemmmmlllllllllllllmmmeeelloommmmmmmmmeeeeeellllmeeeeemmmmmmllllllmmmmmmmmmmmmmmmmmmmm",      
+"mmlllllllmmmmmmmeeeeeeeewwwwwwweeeeeemmmmlllllllllllllmmmooooooommmmmmmmmmmmmmmmmmmmmmmmmmmmmmmllllllmmmmmmmmmmmllmmmmmmm",     
+"mmlllllllmmmmmmmeeeeeeeeewwwwwweeeeeeeemmmmlllllllllllllmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmllllllmmmmmmmmmmmmmmmmmm",      
+"mmlllllllmmmmmmmeeeeeeeeeewwwwwwweeeeeeemmmmlllllllllllllmmmmmmmmoooooooooooooommmmmmmmmmmmmmmmmllllllmmmmmmmmmmmmmmmmmm",      
+"mmlmmmmmmmmmmmmmmmeeeeeeeewwwwwwweeeeeeeeemmmmlllllllllllllmmmmmmmmmmmmmmllllllllllllllllllleeeeemmmmmmmmmmmmmmmmmmmmmml",      
+"mmlmmmlmmmmmmmmmmmmeeeeeeeewwwwwwwweeeeeeemmmmlllllllmmmmmmlmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmllmmmm",      
+"mmlllllllmmmmmmmmmmmmeeeeeeewwwwwwweeeemmmmmmmlllllllllllllmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmm",     
+"mmmmllmlmmmlmmmmmmmmmmeeeeeewwwwwweeeeeemmmmlllmmlmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmlllloolmmmmmmmmmmmmmlm",      
+"mmmmllmllmmmmmmmmmmmeeeeeeewwwwwwweeeeeeeeemmmmmlllllllllllmmmmmmmmmmmmmmmmmmllllllllllllllllllllllmmlllloolmmmmmmmmmmlm",    
+"mmmmllmllllmmmmmmmmmmmeeeewwwwwwweeeeeeeeeeeemmmmlllllllllllllmmmmmmmmmmmmmmmmmmmmmmlllllllllllllllllllllllllllllllllmmmm",
+"mmmmmmmllllmmmmmmmeeeeeeewwwwwwwweeeeeeeeeeeeemmmmmmmmmmllllllllmmmllllllllllllllllllllllllmmmmlllmmmmmmmmmmmmmmmlllmmmmm",
+"mmmmmmmllllmmmmmmmmmeeeewwwwwwweeeeeeeeemmmmlllllllllllllmmmmmmmmmooooooooooooooooooooooooooolllllleemmmmmmmmmmmmmlmmmmm",
+"mmmlllmmmmmmmmmeeeeeeeewwwwwwweeeeeeeeeeeeemmmmllllllllllllmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmm",
+"mmmmmlllmmmmmmmmeeeeeeeewwwwweeeeeeeeeeeeemmmmllllmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmlllllllllll",
+"mmmlllllemmmmmmeeeeeeeeeewweeeeeeeeeeeeeemmmmlllllllllllllmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmm",
+"mmmmmmmmmmmmmmeeeeeeeeeeeeeeeeeeeeeeeeeemmmmmmmmmmmmmmmmmmmmmmmooooooommmmmmmllllmmmmmmmmmmmmmlllllllllllllllleeemmmmmmmm",
+"mmllllllelolmmmeeeeeeeeeeeeeeeeeeeeeeeeeemmmmmmmmmmmmmmmmmmmmmooooooollllllllllmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmlmmm",
+"mmmmmmmmmmmmmmmeeeeeeeeeeeeeeeeeeeeeemmmmmmellllllllllllllllllooooooooooooooooooooollllllllllllllllllllllllllllmmllllmmm", 
+"mmmmmmmmmmmmmmmmmmmmmmeeeeeeeeeeeemmmmmmmmmmmmmmmmmmmmmmommmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmolllllllllllllllllmmlmlmlmmmm",   
+"ommmmmmmmmmmmmmmmmlllllllllllllllllllllleeeeeeeeeeeeeeoooooooooooommmmmmmmmmmmmmmmmmmmmmmmmmmmllllllllllllooooooooommmmm",   
+"lllmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmllllllllllllllllllllllllleeeeeeeeelllllllllllllllllllllllllllllleoooooo",   
+"vvmllmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmlllllllllllllllllllllllllllllllllleeeeveeeeeeeeeeeeellllllooolllllllllllllllllllllo",   
+"lllllvvvvvvvvvvvvvvllllvlllllllllllleeleleloooooooooooooooooooooooooelelllllllllllllllllllllllllllllelllleeeeooooooooooo",   
+ "eoeeeeeeeeeeeeollllllllllllleeeoooooooooooooooooooooooooeeeoooooooooooooooeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeo",
+"vvvvvvvlmmmvvllllllllllllllllllllleeeeeeeeeeeeeeeeeeeeeoooooooooooooooooooooollllllllllllllllllllllllleoeoeoooooooooooeeo",    
+"llllmmmmmmmmmmmmloeleleeeeeeloooooleeeellllllllllllllllllllllleelelloooeooooooooooooooooooooeeeeelllmmmmmmmmmmmooooooeeo",    
+"mmmlvvvooooooooooolllllllllllllllmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmooooo",    
+"mmmmmmmmlllleeeeeeeeeeeeeeeeeeeeeeeellllllllllllllleeeeeeeeeeeeeeeeeeelllooooeoeoeeoeoeeemmmmmeeeeeeeeeeeeeeeeeeeeeeeooo",     
+ "vvllllvvmmvvveollllllllllllleeeoooooooooooooooooooooooooeeeoooooooooooooooeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeo", 
+"eooeeeeeeeeeeeellllllllllllllllllllleeleleloooooooooooooooooooooooooelelllllllllllllllllllllllllllllelllleeeeooooooooooo",   
+"eooeeooooooooooooooollllllllllllleeeeeooooooloelllllllllllllleeeoooooooooooooooooooooooooooooooooeeoeoeoooooooooollllele",  
+"mmmmmmvllllvjjjjvvvvlllllllllllllllllllooooooooooooooollleeeelllllllllllllllooooooooooooooooooooooooeeellllllllllllllele", 
+"eooeeeeeeeeeeeeeeeeeeeoooooooooooooooooooleoeeeeeeellllllllllllllllooooooooooooooooeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeo",
+ "eoeeeeeeeeeeemmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeo",
+"eoooooollellllllllllllllllooooooooooooooeeleleleeeeeeeeeeeeeeeeeeeeeelllelellllllllllllllooooooooeeeeeeeeeeeeeeeeellleoo",
+"eooeeeeeeeeeeeeeellleeeeoooooooooooooollloeoeleeleeeeeeeeeeeeeeeeeooooooooooooooooooeeeeeoooooeeooooeoeoeoooooooooeeeeoo",
+"eooeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeellllllllllllllleeeeeeeeeeeeeeeeeeelllooooeoeoeeoeoeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeooo",    
+"eooeeeeeeeeeeeeeeeeeeeeeeeeeeeellllleleleeellllllllllllooooooooooooooooooooooooooooooooleeeeeeeeeeeeeeeeeeeeeeeeeellelele",    
+"eoooooooooooooooooooolllolooooeoelooeoeooooooooooooooooooeeeeeeoeoeoeooooeoeeeoooooooooooooeeooeoelllleleoeoeooooooooooo",    
+"eooooeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeellllllllllllllooooeeeoooeeeeeeeeeeeeeeeeeeeeeeeeeeooooooooooooooooooooooooooeoeoeooo",    
+"eooeeeelllleelooooooooooooooooooooleeloooooooooooooooooooeleooooooooooooooooolllllllllloeeeeeeeeeeeeeeeeeeeeeeeeeooooooo",    
+"eooooollllllllllllllllllllllllllllllllleeleeeeeeeeeeeeeeeeeeooooooooooooooooolllllllllllllloeoeoeeooeeeeeeeeelleeeoooooo",    
+"eooooooooooooooooeeeeeeeelllleleeeeeeeoeoeoeleoeleoeloooooooooooooeeeeeeeeeeeeeeeeeeeeeeeeeeeoeoeoeolleleoeleooollllllloo",    
+"eooeeeeeeeeeeeeeeeeeeeeeeeeeeoeoeoeooooeeeeeeeeeeeeeeeeeeeeeooooooooooooooooooooeolllllllooeoeoeoeooooooooooooooooooeoeo",    
+"eoooooooooooooooooooolllolooooeoelooeoeooooooooooooooooooeeeeeeoeoeoeooooeoeoooooooooooooooeeooeoelllleleoeoeooooooooooo",    
+"eeeeoeoeoeoeoeoeoeoeoooooooooooooooooooooooooooooooooooooooooooooooooeoeoeoeoeeeeeeeeeeeeeeeeeeeoooooooooeoeoeoeeeeeeooee",     
+"eeeeeeeoooooooooooooooooooooooooooooooooeeoeeoeoeoeoooooooooooooooooooooooooooooeoeoooooooeeoeeeeeeooooooooooooeoeoeoolooee", 
+"eeeeeeeoooooooeellllleleleoeoeleleleoelloooooooooooooooooooooooooooolleleooooooooooooooooooooooeleoooooooooooooooooolooee",        
+"eeelelelelllleeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeleleleeeeleeleeeleeeeeleleeeeeeeeeeeeeeeeeee",         
+"eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeleeeeleleleeeeleeleeeleeleeeeleeleeeeeeeee",       
+"eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeelllleeeeelelellleeeeeeeeeeeeeeeeeeeeeeee",       
+"eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeelelellllelelllllelele",      
+"eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeellllellllllelelleleeeellllllllllleeeeel",   
+"eeeeeeelllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllll",
+"lllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllll",
+"lllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllll",
+"lllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllll",
+"lllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllll",
+"lllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllll",
+"lllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllll",
+];
+
+for (var i = 0; i < sky.length; i ++) {
+    for (var r = 0; r < sky[i].length; r ++) {
+            fill(skyColors[sky[i][r]]);
+            rect(r * s + x, i * s + y, s, s);
+        }
+    }
+};
+
+Sky(0,0,5);
+
+var Ground=function(x,y,s){
+    
+var groundColors={
+    "b": color(28, 13, 61),//dark blue
+    "l": color(63, 59, 87),//lighter blue 
+    "p": color(166, 61, 142),//dark pink 
+    "o": color(219, 72, 182),//ligh pink
+    "w": color(255, 255, 255,0),//background
+};
+
+var ground =[
+"wwwwwwwwwwwwbbbllllpppo",    
+"wwwwwwwwwwwbbblbllllpppo",   
+"wwwwwwwwwwbbbbbllllllpppp", 
+"wwwwwwwwwbblblllblblopoopp",    
+"wwwwwwwwbbbbllllbllppopooppppwwwwwwwwwwwwwwwwwwwwwwwwwbbbbpo",  
+"wwwwwwwwbbbbbbbbllllblbllpppoowwwwwwwwwwwwwwwwwwwwwwbbbbblpop", 
+"wwwwwwbbllbbbbllllblllblblooppwwwwwwwwwwwwwwwwwwwwbbbbbbllpopo", 
+"wwwwwwbbbbbllllblllblbllppopooppwwwwwwwwwwwwwwwwbllblbllbbbpopo",
+"wwwwwbbbbbbbbllllblllblbllppopooppwwwwwwwwwwwwwbbbbblllbblpopoopwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwbb",
+"wwwwbbbbbbbbllllblllblbllppopopppppwwwwwwwwwwwbblllbbblbblpopopopwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwbll",    
+"wwwbbbbbbbbllllblllblbllppopoopooppowwwwwwwwbbbbbbbbllllblblpopopowwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwbbbb",
+"wbbbbbblllllblllblbllppopoopoooooppowwwwwwwwbbbbbllblblllblpoppopppowwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwbbbbb",
+"wwbbbbbbblllllblllblbllppopoopoooooppppwwwbbbbbbbbbbbbbbbbbbbbllpopoppwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwbbbbbb",
+"wbbbbbblbbllllllbbblpppppopoopoooooppppwbbbbbbbbbbbbbbbbbbllllblblpoppowwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwlbbbbblb",
+"bbbbbbbbbbbbbbbllllllbbblpppppopooopppoobbbbbbbbbbbbbbbllllllllllpopppplwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwlbbbbbbbb",
+"bbbbbbbbbbbbbbbllllllbbblpppppooopopoppppbbbbbbbbbbblblblblbbblllllllppopwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwlbbblblbbbl",
+"bbbbbbbbbbbblllllllllllbblpppppopoooooppopbbbbbbbbbbbbbbbbbbbbbbbblllllpppwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwlllllbbbbbbbb",
+"bbbbbbbbbbbblllllblbppoppppppopoopoooooppppbbbbbbbbbbbbbbbbbbllblblblblbbbppwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwlllllbbbbbbbb",
+"bbbbbbbbbbbbbbbllllllbbblpppppopoopoooooppppbbbbbbbblblblbblbblllblllllbpppppoppwwwwwwwwwwwwwwwwwwwwwwwwwwllllbbbblbbbbb",
+"bbbbbbbbbbbbbbbblbbbbbbbbbbblllllllpoopoopppobbbbbbbbbbbbbbbbbbbbbbbbppopppooplllppopopoppppopwwwwwwwwllllllllllllbbbbbb",
+"bbbbbbbbbbbbbbbbllllllllllllllllllpoopoopppppppobbbbbbbbbbbbbbbbbbbbpppppppoppoopopopppoopopoppooooppllllllllllllbbbbbbb",
+"bbbbbbbbbbbbbbbblbbbbbbblllllllllllpoopooooopppppobbbbbbbbbbbblblbbllllllblblppoplllllllllllllllllllllbllblblpopbbbbbbbb",
+"bbbbbbbbbbbbbbbblblbllllllbblllllllpooppopppooppopobbbbbbbbbbblbbllllllllllllbbblllbblllpppollllllllllllllllllblbbbbbbbbb",
+"bbbbbbbblbllllllbblllllllpoopoooooppopooppppppppoppobbbbbbbbbblllllllbblbllbbbllpollllllllllllllllllpoplllllllbbbbbbbbbbbb",
+"bbbbbbbbbbbbbbbblbbbbbbbbbblllllllpoopooooooppooopoppobbbbllllllllllllllllllllllblllblbbllllllpopplllllllllbbbbbbbbbbbbbbbb",
+"bbbbbbbbbbbbbbbbbbbbbbbbbbbblpoopoooooppopoopppppppoppobbbbblllllllllllllllpolllbblllbllllllllllllllppllllbbbbbbbbbbbbbb",
+"bbbbbbbbbbbbbbbblbbllllllbblllllllpoopoooooppopooppppoppobbbbbbllllllllllllllllllllllllllllllllllllllllllbbbbbbbbbbbbbbb",
+"bbbbbbbbbbbbbbbblblbllllllbblllllllpoopoooooppopooppppppoppobbbbbllllllllllllbblllblbblllpolllllllllllllbbbbbbbbbbbbbbbb",
+"bbbbbbbbbbbbbbbbbblblblllllllllllllpoopooooopopopopooppppppoppobbbbblllllllllllbllllbblbblllllllllllllbbbbbbbbbbbbbbbbbb",
+"bbbbbbbbbbbbbbbbbbbbbbbbblllllllblbllbllbbbllpoopooooopopopppoppobbbbbllllllllpoppolllllllllopoolllllbbbbbbbbbbbbbbbbbbb",
+"bbbbbbbbbbbbbbbbbbbbbbllbllllbllbllbbbllpoopooooopopopopoopopppoppobbblblllllllllllllllllllllllllllbbbbbbbbbbbblllbbbbbb",
+"bbbbbbbbbbbbbllllllllllllllblblbllpoopopoppppoopoppppoppppopoopopoopobbbbbbbbbbbbbbllllllllllllbbbbbbbblbllbbbbbbbbbbbbb",
+"bbbbbbbbbbbbbbbbbllbllllbllbllbbbllpoopooooopopopopopoppppppppooopppoppobbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb", 
+"bbbbbbbbbbbbbbbbbbbbbbbbbllbbbbbbbbbllllllblbopopopopoppppppooopooopppoppobbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb", 
+"bbbbbbbbbbbbbbbbblbllbblllblblllllbllblllpoopooooopopopopopoppppppppooopppoppobbbblbbbbblbbblbbbbbbbbbbbbbbbbbbbbbbbbbbb", 
+"bbbbbbbbbbbbbbbbblblbllllbblblblblllllblllpooppppooppopopopopoppppppppooopppoppobbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb", 
+"bbbbbbbbbblbbblbblllllplllllllblblllbblpppoppoppoppppppppopoooppppppooppooppppopoppbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb", 
+"bbbbbbbbbblbbblbblllllpllllllpllllllblblblllllblblloppppppppopooopppppoooppooppppopoppbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb", 
+"bbbbbbbbbbbbbbbbppopbbbbblbbllllllllpoolllllpppppooppppppooppooopoopoppppoppppoppppopppppoooopppoppopppppopplllbbbbbbbbb", 
+"bbbbbbbbbbbbbbbbppopbbbbblbbllpppppppppppppppppppppppppppppppppppppppppppppoooooooppppppppppoopopppopopopopopppbbbllllll", 
+"bbbbbbbbbbbbbbbbppopbbbbblbbllllllllpoolllllbblblbppoppoppppllbblpopppopopppopopoplppoppoppopppopooppopopppoppppppoppbbb", 
+"bbbbbbbbbbbbblblbbbbbbbbbppopbbbbblbbllllllpoolllllbblblbppolllllllllllllpopopopopopopopopoppoppppppopopopoppppppopoooll", 
+"bbbbbbbbbbbbbbbbbbbbppopbbbbblbbllllllpoollllllbblllblbllolllllllllllllbblpplpplpplppopoppopopopopopopopopopopppppopopoo", 
+"bbbbbbbbbbbbblblbbbbbblbbllllllllllllllllllpoolllbllllllpolllllbbbbbblblblblbpoppboopopoppppppppppppopppooopppppoopppoop", 
+"bbbbbbbbbbbbblblbbbbbbbbbppopbbbbblbbllllllpoolllllbblblbppolllllllllllllbblppopllllllllbbllllllllllllbblbbllllllpolllll", 
+"bbbbbbbbbbbbbbbbbbllllbblllllbbllllllllllllblllllllppppppopppoppoollllllllpppoolllppoppbbbllblblblllllllllllllllllllbbll", 
+"bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbblllbbllllllllllllllllllllllllllllllllllllllllllbbbblllllllllllllllllllllllll", 
+"bbbbbbbbbbbbbbbbbbbbbllbbbbbbbllpbbbllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllblbbblbbllllbbllllllllllllllll", 
+"bbbbbbbbbbbbbbbbbbblbbbbbbbbbbbblllllbbllllllllllpppppoppoppppplpplllllllllllllllllplllllbllloopppobbblppplllllllllbllllb", 
+"bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbllllbbllllllllllpppllooollllllllllbbbbllllloblllllllbblbbllllllllppollllbbbllllllllllll", 
+"bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbblbbbblblllbbllbbllbbbllllllllllllllllllblpolllllllllbbblbbbbllllpppooolplllllblblllllllll", 
+"bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbboppllllllpllllpplllllllbllbblllllpppplbbllbbllbbbblllllpppplllllbbbllbbllllll", 
+"bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbblllllllllllllllllllbbbblllbblllbbbbbblpplpopopopoppopoppllpoplllllllllllllll", 
+"bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbblllllbblllllllllllllllllpppllllllllllllppppplllllllllllplllllllllll", 
+"bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbllbbbbbbblbbbllbbblllbbbbbblllllllllbblllbblllbbllllllllllllllllllllllllllllllllllllllllll", 
+"bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbblllbbllllllllllllllllllllllllllllllllllllllllllllllllll", 
+];
+
+for (var i = 0; i < ground.length; i ++) {
+    for (var r = 0; r < ground[i].length; r ++) {
+            fill(groundColors[ground[i][r]]);
+            rect(r * s + x, i * s + y, s, s);
+        }
+    }
+};
+
+Ground(0,320,5);
+
+var Iron=function(x,y,s){
+    
+var ironColors={
+    "e": color(36, 36, 36),//dark gray 2
+    "l": color(0, 0, 0),//blabk
+    "p": color(56, 56, 56),//dark gray
+    "w": color(151, 140, 250,0),//blank 
+    "g": color(51, 212, 67),//green
+    "b": color(52, 237, 67),//green2
+};
+
+var iron =[
+"wwwbg",
+"wwgbgg",
+"wwgbg",
+"wwwl",
+"wwwl",  
+"wwwlwwwweepp",  
+"wwwlwwweleplewweep",  
+"wwwlwwwpeepepepeepe",  
+"wwwlwwwweeepweepeepep",  
+"wwwlwwwwwwwwwwepeeewp",  
+"wwweewwwwwwweepeeeewwwe",  
+"wwwlwwppeepewweeeeewwe", 
+"wwwlwwwwwwwwwweepeewwp", 
+"wwwlwwwwwwwwwwepeeewwe", 
+"wwwlwwwwwwwwwwwpeewwwe",
+"wwwlwwwwwwwwwwpeepewwe",
+"wwwlwwwwwwwwwwpwwwewwp",
+"wwwlwwwwwwwwwwewwwewwe",
+"wwwlwwwwwwwwwwpwwwewwp",
+"wwwlwwwwwwwwwwpwwwewwp",
+"wwwlwwwwwwwwwwpwwwewwe",
+"wwwlwwwwwwwwwwpwwwewwe",
+"wwwlwwwwwwwwwwpwwwewwp",
+"wwwlwwwwwwwwwwpwwwewww",
+"wwwlwwwwwwwwwwpwwwewww",
+"wwwlwwwwwwwwwwpwwwewww",
+"wwwlwwwwwwwwwwpwwwewww",
+"wwwwwwwwwwwwwwpwwwewww",
+
+];
+
+for (var i = 0; i < iron.length; i ++) {
+    for (var r = 0; r < iron[i].length; r ++) {
+            fill(ironColors[iron[i][r]]);
+            rect(r * s + x, i * s + y, s, s);
+        }
+    }
+};
+
+Iron(400,280,5);
+
+// glow for top of staff{
+fill(129, 250, 118,9);
+for(var i=2; i<41; i++){
+    ellipse(418,289,i,i);
+}
+// }
+};
+gamescene(); 
+    }};
+ 
+    //}
+           
+       
+    // Get the canvas that Processing-js will use
+    var canvas = document.getElementById("mycanvas"); 
+    // Pass the function sketchProc (defined in myCode.js) to Processing's constructor.
+    var processingInstance = new Processing(canvas, sketchProc); 
+ </script>
+
+ 
+
+
+</html>
