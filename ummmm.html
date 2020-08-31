@@ -1,0 +1,406 @@
+
+<!DOCTYPE html>
+
+
+
+
+<html>
+
+
+<head>
+
+
+	<title>Student App</title>
+
+
+	<meta charset="utf-8" />
+
+
+	<link href='css/opensans400.css' rel='stylesheet' type='text/css'>
+
+
+	<link href="css/reflexstyles.css" rel="stylesheet" />
+
+
+	<script>
+
+
+		var useSmallScreen = false;
+
+
+		var altRedirectID = 0;
+
+
+
+
+
+
+		var initData = {
+
+
+			config: 'config/ReflexStudentConfig.xml',
+
+
+			serviceConfig: 'ReflexServiceConfig'
+
+
+		};
+
+
+
+
+
+
+		var queryString = window.location.search;
+
+
+		if ((typeof (queryString) == "string") && (queryString.length > 0))
+
+
+		{
+
+
+			queryString = window.location.search.split("?");
+
+
+			if (queryString.length == 2)
+
+
+			{
+
+
+				queryString = queryString[1].split("&");
+
+
+			}
+
+
+			var len = queryString.length;
+
+
+			var item;
+
+
+			for (var i = 0; i < len; i++)
+
+
+			{
+
+
+				item = queryString[i].split("=");
+
+
+				initData[item[0]] = item[1];
+
+
+				if (item[0] == "useSmallScreen")
+
+
+				{
+
+
+					useSmallScreen = (item[1] == "true");
+
+
+				} else if (item[0] == "altRedirectID")
+
+
+				{
+
+
+					altRedirectID = parseInt(item[1]);	
+
+
+				}
+
+
+			}
+
+
+		}
+
+
+
+
+
+
+		if (!useSmallScreen)
+
+
+		{
+
+
+			useSmallScreen = (typeof window.orientation !== "undefined") || (navigator.userAgent.indexOf('IEMobile') !== -1);
+
+
+		}
+
+
+
+
+
+
+		function showSplash()
+
+
+		{
+
+
+			var splash = document.getElementById("htmlSplash");
+
+
+			var imageTag = document.getElementById("splashImage");
+
+
+
+
+
+
+			if (imageTag)
+
+
+			{
+
+
+				imageTag.setAttribute("src", (altRedirectID == 1) ? "images/ui/splash/SplashScreen_T4L.png" : "images/ui/splash/SplashScreen.png");					
+
+
+			}
+
+
+			if (useSmallScreen)
+
+
+			{
+
+
+				splash.style.left = "-238px";
+
+
+			}
+
+
+
+
+
+
+			splash.style.display = "inline";
+
+
+
+
+
+
+			windowResized();
+
+
+		}
+
+
+
+
+
+
+		function windowResized()
+
+
+		{
+
+
+			var appHeight = 682;
+
+
+			var appMaxWidth = useSmallScreen ? 1024 : 1500;
+
+
+			var appWidth = 1024;
+
+
+			var minScale = 0.5;
+
+
+
+
+
+
+			var windowWidth = window.innerWidth;
+
+
+			var windowHeight = window.innerHeight;
+
+
+
+
+
+
+			var hs = windowHeight / appHeight;
+
+
+			var ws = windowWidth / appWidth;
+
+
+			var scale = Math.max(minScale, Math.min(hs, ws));
+
+
+
+
+
+
+			var w = Math.max(Math.min(windowWidth, appMaxWidth * scale), (appWidth * scale));
+
+
+			var h = Math.max(Math.min(windowHeight, appHeight * scale), (appHeight * scale));
+
+
+			var x = Math.round((windowWidth - w) / 2);
+
+
+
+
+
+
+			var clipRect = document.getElementById("clipRect");
+
+
+			var root = document.getElementById("root");
+
+
+
+
+
+
+			if (clipRect)
+
+
+			{
+
+
+				clipRect.style.width = w + "px";
+
+
+				clipRect.style.height = h + "px";
+
+
+				clipRect.style.left = x + "px";
+
+
+			}
+
+
+
+
+
+
+			if (root)
+
+
+			{
+
+
+				root.style.height = appHeight + "px";
+
+
+				root.style.marginTop = -(appHeight / 2) + "px";
+
+
+				root.style.transform = "scale(" + scale + ")";
+
+
+			}
+
+
+		}
+
+
+
+
+
+
+	</script>
+
+
+</head>
+
+
+<body onresize="windowResized()">
+
+
+	<div id="clipRect" class="clipRect">
+
+
+		<div id="root" class="root">
+
+
+			<div id="htmlSplash" class="contentContainer" style="width:1500px; display:none;">
+
+
+				<img id="splashImage" src="" />
+
+
+			</div>
+
+
+		</div>
+
+
+	</div>
+
+
+
+
+
+
+	<script language="javascript">
+
+
+		showSplash();
+
+
+	</script>
+
+
+
+
+
+
+	<script src="libraries/jquery.min.js"></script>
+
+
+	<script src="libraries/easeljs.min.js"></script>
+
+
+	<script src="libraries/tweenjs.min.js"></script>
+
+
+	<script src="libraries/soundjs.min.js"></script>
+
+
+	<script src="libraries/preloadjs.min.js"></script>
+
+
+	<script src="../service/ReflexServiceConfig.js"></script>
+
+
+	<script src="libraries/ELCoreLibrary.js"></script>
+
+
+	<script src="libraries/ReflexStudentLibrary.js"></script>
+
+
+
+
+
+
+	<audio id="click" preload="auto">
+
+
+		<source src="audio/sfx/ButtonClick.mp3" type="audio/mp3">
+
+
+	</audio>
+
+
+</body>
+
+
+</html>
