@@ -24,15 +24,36 @@ https://github.com/Team-Code/KA_Offline -->
         frameRate(30);
         
         // ProgramCodeGoesHere{
-            textSize(39);
+var money1 = function(x,y){
+textSize(39);
 fill(0, 255, 153);
-rect(46,100,308,159);
-ellipse(200,181,107,160);
+rect(x+-173,y+-79,308,159);
+ellipse(x+-16,y+0,107,160);
 fill(0, 0, 0);
-text("1",52,251);
-text("1",325,137);
-text("1",52,137);
-text("1",325,251);   
+text("1",x-168,y+74);
+text("1",x-168,y-42);
+text("1",x+105,y-42);
+text("1",x+105,y+74);
+
+
+
+
+};
+var money2 = function(x,y){
+textSize(39);
+fill(0, 255, 153);
+rect(x+-173,y+-79,308,159);
+ellipse(x+-16,y+0,107,160);
+fill(0, 0, 0);
+text("5",x-168,y+74);
+text("5",x-168,y-42);
+text("5",x+105,y-42);
+text("5",x+105,y+74);
+
+
+};
+money1(222,112);
+money2(225,302);
         
         
         //}
