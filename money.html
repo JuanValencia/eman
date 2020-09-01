@@ -1,69 +1,73 @@
 <!DOCTYPE html>
 <!-- This is based on DillingerLee's great template here:
 https://github.com/Team-Code/KA_Offline -->
-<html> 
- <head>
-    <title>Processing.JS inside Webpages: Template</title> 
+<html>
+
+<head>
+   <title>Processing.JS inside Webpages: Template</title>
 </head>
- <body>
-    <p align="center"> 
-	<!--This draws the Canvas on the webpage -->
-      <canvas id="mycanvas"></canvas> 
-    </p>
- </body>
- 
- <!-- Run all the JavaScript stuff -->
- <!-- Include the processing.js library -->
- <!-- See https://khanacademy.zendesk.com/hc/en-us/articles/202260404-What-parts-of-ProcessingJS-does-Khan-Academy-support- for differences -->
- <script src="https://cdn.jsdelivr.net/processing.js/1.4.8/processing.min.js"></script> 
- 
- <script>
-    var sketchProc = function(processingInstance) {
-     with (processingInstance) {
-        size(400, 400); 
-        frameRate(30);
-        
-        // ProgramCodeGoesHere{
-var money1 = function(x,y){
-textSize(39);
-fill(0, 255, 153);
-rect(x+-173,y+-79,308,159);
-ellipse(x+-16,y+0,107,160);
-fill(0, 0, 0);
-text("1",x-168,y+74);
-text("1",x-168,y-42);
-text("1",x+105,y-42);
-text("1",x+105,y+74);
+
+<body>
+   <p align="center">
+      <!--This draws the Canvas on the webpage -->
+      <canvas id="mycanvas"></canvas>
+   </p>
+</body>
+
+<!-- Run all the JavaScript stuff -->
+<!-- Include the processing.js library -->
+<!-- See https://khanacademy.zendesk.com/hc/en-us/articles/202260404-What-parts-of-ProcessingJS-does-Khan-Academy-support- for differences -->
+<script src="https://cdn.jsdelivr.net/processing.js/1.4.8/processing.min.js"></script>
+
+<script>
+   var sketchProc = function (processingInstance) {
+      with (processingInstance) {
+         size(400, 400);
+         frameRate(30);
+
+         // ProgramCodeGoesHere{
+         var money1 = function (x, y) {
+            textSize(39);
+            fill(0, 255, 153);
+            rect(x + -173, y + -79, 308, 159);
+            ellipse(x + -16, y + 0, 78, 109);
+            fill(0, 0, 0);
+            text("1", x - 168, y + 74);
+            text("1", x - 168, y - 42);
+            text("1", x + 105, y - 42);
+            text("1", x + 105, y + 74);
+            textSize(20);
+            text("tree fort money", x + -86, y + 74);
+            text("tree fort money", x + -86, y + -57);
+         };
+         var money2 = function (x, y) {
+            textSize(39);
+            fill(0, 255, 153);
+            rect(x + -173, y + -79, 308, 159);
+            ellipse(x + -16, y + 0, 78, 109);
+            fill(0, 0, 0);
+            text("5", x - 168, y + 74);
+            text("5", x - 168, y - 42);
+            text("5", x + 105, y - 42);
+            text("5", x + 105, y + 74);
+            textSize(20);
+            text("tree fort money", x + -86, y + 74);
+            text("tree fort money", x + -86, y + -57);
+         };
+         money1(222, 112);
+         money2(222, 302);
 
 
 
+         //}
 
-};
-var money2 = function(x,y){
-textSize(39);
-fill(0, 255, 153);
-rect(x+-173,y+-79,308,159);
-ellipse(x+-16,y+0,107,160);
-fill(0, 0, 0);
-text("5",x-168,y+74);
-text("5",x-168,y-42);
-text("5",x+105,y-42);
-text("5",x+105,y+74);
+      }
+   };
 
-
-};
-money1(222,112);
-money2(225,302);
-        
-        
-        //}
-       
-    }};
-
-    // Get the canvas that Processing-js will use
-    var canvas = document.getElementById("mycanvas"); 
-    // Pass the function sketchProc (defined in myCode.js) to Processing's constructor.
-    var processingInstance = new Processing(canvas, sketchProc); 
- </script>
+   // Get the canvas that Processing-js will use
+   var canvas = document.getElementById("mycanvas");
+   // Pass the function sketchProc (defined in myCode.js) to Processing's constructor.
+   var processingInstance = new Processing(canvas, sketchProc); 
+</script>
 
 </html>
