@@ -367,16 +367,16 @@ learned 100% of Khan Academy's 'Intro to JS'.
             var i = $("#text-input");
             var storeEverything = function(){
                 posts.push(i.value);
-                localStorage.setItem("postArray",JSON.stringify(posts));
+                globalStorage.setItem("postArray",JSON.stringify(posts));
                 
-                $("#list").innerHTML = "<li><input type = 'checkbox'/>"+(JSON.parse(localStorage.getItem("postArray")).join('</li><li><input type = "checkbox"/>'));
+                $("#list").innerHTML = "<li><input type = 'checkbox'/>"+(JSON.parse(globalStorage.getItem("postArray")).join('</li><li><input type = "checkbox"/>'));
                 i.value = "";
 
             };
             
-            if(localStorage.getItem("postArray")){
-                posts = JSON.parse(localStorage.getItem("postArray"));
-                $("#list").innerHTML = "<li><input type = 'checkbox'/>"+(JSON.parse(localStorage.getItem("postArray")).join('</li><li><input type = "checkbox"/>'));
+            if(globalStorage.getItem("postArray")){
+                posts = JSON.parse(globalStorage.getItem("postArray"));
+                $("#list").innerHTML = "<li><input type = 'checkbox'/>"+(JSON.parse(globalStorage.getItem("postArray")).join('</li><li><input type = "checkbox"/>'));
             }else{
                 
             }
@@ -401,7 +401,7 @@ learned 100% of Khan Academy's 'Intro to JS'.
                 }
             });
             $("#erase").addEventListener("click",function(e){
-                localStorage.clear();
+                globalStorage.clear();
                 posts = ["Start by creating a post!  When You 've finished, check this item off!"];
                 $("#list").innerHTML = "<li><input type = 'checkbox'>"+posts;
             });
