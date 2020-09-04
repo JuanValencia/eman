@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html> <!--
+    WHAT IS THIS?
+    It's a message thing that saves all the messages you write.  Write some down, reload the page, program, and finally, close this tab and open it again.  It'll save your data.  Don't worry.  Nobody can see your messages.  It's LOCAL storage.  not GLOBAL.
+    
+    EVERYBODY, PLEASE READ:
+    I know localStorage is against the guidelines, but To13     won a contest and used it in a webpage:
+    https://www.khanacademy.org/computer-programming/khan-api-course-lab/6693037677641728
+--------------------------------------------------------    
+    NOTES TO JUDGES:
+    1.  I admit that I did use Local Storage for this project.  I know it is okay to do this in a webpage because To13 won a contest and he used Local Storage.
+    See here: https://www.khanacademy.org/computer-programming/khan-api-course-lab/6693037677641728
+    
+    2.  The reason I wanted to make this simple project is to show the users on KA the power and awesomeness of local Storage.  I wrote a little tutorial below.
+    
+    3.  The form I had to fill out is at the bottom of the page below the tutorial.
+--------------------------------------------------------    
+    
+    LEARNING EXPERIENCE: localStorage
+    Have you ever wanted to learn how to store data so that a user didn't have to make a save code?
+    Well here's how to do it.  Scroll down for more.
+    
+    What is local storage?
+    
+    Local storage is the way data is stored in a web browser.  Have you every played a video game that saved whatever level you were on or your checkpoint and didn't require you to make a save code?  (not a game on KA).
+    That's local storage.
+    Note that nobody can see the posts you make in this program, so you don't have to worry about privacy.  Even I can't see them if I try.
+--------------------------------------------------------
+    
+    
+    Local vs. Global Storage
+    
+    When you create a post on KA that everyone can see or make a program that everyone can see, that's Global storage.  You need to know a backend language to do that.  Local storage can be done with plain JSON and JS, but you'll need PHP, Node, MongoDB, SQL, etc-- --to do global storage.
+    Local storage is private info and can be stored forever without any expiration date AND can only be viewed by you.
+--------------------------------------------------------
+    
+    Local Storage vs.  Cookies
+    
+    If you asked me which I'd prefer, I'd say local storage over cookies.  I wrote a list of stuff about each one below:
+    Cookies
+    1.  They can't store a lot of data
+    2.  The data expires in one year or less
+    3.  It's harder to analyze the data and harder to store it because of special syntax
+    4.  You can't eat them.
+    5.  Nobody can view your cookie data
+    
+    localStorage
+    1.  You can store up to 10MB of data
+    2.  The data NEVER expires unless the user or developer does.
+    3.  It's really simple.  You can store unlimited storage variables.  Also, it's easy to store data because of simple syntax
+    4.  Nobody can view your localStorage data
+    5.  You can't eat it either.
+    --------------------------------------------------------
+    
+    How to apply local storage to one of your programs
+    
+    Chapter 1: Q&A
+    Q: When can I use it?
+    A: You can use it in a KA webpage, or on any other code editor off of KA.  If a PJS program with localStorage reaches the hotlist or is viewed by a guardian, it usually will be hidden.
+    
+    Q: What if I want to apply if to Processing.js?
+    A: You can still do this in a webpage.  If you want to, go here:
+    https://www.khanacademy.org/computer-programming/processingjs-inside-webpages-template/5157014494511104
+    
+    Q: localStorage doesn't expire.  What if I want my data erased?
+    A: Don't worry.  You can use the localStorage.clear() function.  More will be explained later.
+    
+    Do you have a question?  Ask in the T&T.
+--------------------------------------------------------
+    
+    Chapter 2:  localStorage Property.
+    
+    keep in mind the DOM localStorage property.  Make sure you spell it correctly when you use it.
+    
+    localStorage
+    
+    
+    Okay, I know you're dying to get into the coding stuff and yeah, it's coming.  Please read everything below CAREFULLY.
+    
+    End of chapter 2
+--------------------------------------------------------
+    Chapter 3:  Coding Start;
+    
+    Here's the coding part!
+    Open up a new webpage and I'll show you how to make your own little app that keeps charge of how many times you click a button.
+    
+    Step 1:
+    Open up a new webpage and add some HTML code to the body.  You will need the following code below.  Feel free to change the text inside of each element, but not every id, class, type, or just any HTML attribute.  Place the code below into the <body> tag of your webpage.
+    
+    <div id = "counter-text">You have clicked the button <span id = "count">0</span> times</div>
+    <button id = "add">Add</button>
+    <button id = "subtract">Subtract</button>
+    <button id = "reset">Reset</button>
+    
+    OPTIONAL:
+    Right now, clicking the buttons will do nothing.
+    Go ahead and use CSS to style the webpage any way you want.  You should know how to do that.  I am not adding any CSS because you ain't here to learn CSS :P
+    
+    Step 2:
+    Create a <script> tag in the body of your webpage.  Put it under all of the previous code (along with a few line breaks to keep it clean)
+    
+    <script></script>
+    
+    Now let's get into the coding.
+    
+    Step 3: DOM made easy
+    Moder web developers don't like to use jquery.  It's really unefficient and all, so I won't use it.  I will show you how to remake the dollar-sign function.  Paste the following code inside of the script tag.
+    
+    function $(prop){
+        return document.querySelector(prop);
+    }
+    
+    Note:
+    If you haven't taken the Khan Academy DOM course, please go learn at least how document.querySelector() works before you move on.
+    
+    If you haven't used the dollar-sign function before (in jquery), go learn the first lesson and come back here.
+    
+    Here are a few ways that we'll use the dollar-sign function:
+    Jquery:
+    1.  $(tag).html() <--Change an element's HTML
+    DOM:
+    1.  $(tag).innerHTML = "alternate HTML" <--Does the same
+    
+    Jquery:
+    2.  $(tag).css("property","value");  <--set css property
+    DOM:
+    2.  $(tag).style.property = value;  <--same
+    
+    Jquery:
+    3.  $(tag).val() <--get element value
+    DOM:
+    3.  $(tag).value <--same
+    
+    Jquery:
+    4.  $(tag).attr("attribute","value"); <--set attribute
+    DOM:
+    4.  $(tag).attribute = value; <-- same
+    
+    Jquery:
+    5.  $(tag).on("event",function(){...});<--event listener
+    DOM:
+    5.  $(tag).addEventListener("event",function(){...});
+    
+    Due to the modern "no-jquery" developer trend, we'll use all of the DOM methods in the list above.
+--------------------------------------------------------
+    Chapter 4: localStorage.setItem();
+    
+    Yeah!  You're excited!  We're getting into setting data now!!
+    So here's what's going to happen.  First, create a function called 'storeAll' and a variable 'clicks'
+    
+    var clicks = 0;
+    function storeAll(){
+    
+    }
+    
+    Inside the function, write the code below:
+    
+    localStorage.setItem("clickNumber",clicks);
+    
+    This will store the data of the 'clicks' variable.
+    Now let's create an event listener for whenever the "add", "subtract", and "reset" buttons are clicked.  Apply the following code OUTSIDE and BELOW the function.
+    
+    $("#add").addEventListener("click",function(){
+    
+    });
+    $("#substract").addEventListener("click",function(){
+    
+    });
+    $("#reset").addEventListener("click",function(){
+    
+    });
+    
+    In the add and subtract event functions, ivoke the storeAll function.
+    
+    $("#add").addEventListener("click",function(){
+        storeAll();
+    });
+    $("#substract").addEventListener("click",function(){
+        storeAll();
+    });
+    
+    Inside the add and subtract event listeners, make them do their job of adding and subtracting the count number.
+    
+    $("#add").addEventListener("click",function(){
+        clicks++;
+        $("#count").innerHTML = clicks;
+        storeAll();
+    });
+    $("#subtract").addEventListener("click",function(){
+        clicks--;
+        $("#count").innerHTML = clicks;
+        storeAll();
+    });
+    
+    Now it should be working properly.  Save the program and reload the page.  Why doesn't localStorage keep your number?
+    
+    We'll find that out right now.
+--------------------------------------------------------
+    Chapter 5:  localStorage.getItem();
+    
+    The reason the data was not saved yet is because you haven't retrieved the saved data.  It was saved but not retrieved or displayed.  That's what you'll do with the localStorage.getItem() function.
+    Let's say you store a storage variable called "name"
+    
+    localStorage.setItem("name","Sal Khan");
+    
+    The way you'd retrieve that data would be like this:
+    
+    localStorage.getItem("name");
+    
+    We haven't used that method so that's why the data wasn't displayed yet.
+    Inside of your storeAll() function, declare a variable     'getCount' and set it to localStorage.getItem("clickNumber");
+    
+    var getCount = localStorage.getItem("clickNumber");
+    
+    Now that we've done that, let's apply getCount to the #count elemen't innerHTML.  Make sure you put the following code in the function.
+    
+    $("#getCount").innerHTML = getCount;
+    
+    Does it save the data yet?  Nope.  You are probably really mad right now.  So am I when I was learning how to do localStorage.
+    Well here's why.  First of all, in the HTML, the #count element had a value of zero.  Then, every time the buttons are clicked, they start at zero because the clicks variable is set to zero.
+    
+    Go ahead and delete the lines in your add and subtract event listeners that say to update the HTML.
+    They should look like this:
+    
+    $("#add").addEventListener("click",function(){
+        clicks++;
+        storeAll();
+    });
+    $("#subtract").addEventListener("click",function(){
+        clicks--;
+        storeAll();
+    });
+    
+    BELOW and OUT of the function, create an if statement followed by an else statement like this:
+    
+    if(localStorage.getItem("clickNumber")){
+    
+    }else{
+    
+    }
+    
+    That will decide whether or not the storage property "clickNumber" is set or not.
+    Inside of the if statement, write the code below:
+    
+    clicks = localStorage.getItem("clickNumber");
+        $("#count").innerHTML = localStorage.getItem("clickNumber");
+        
+    Boom!  Your local storage thing works now!
+    But wait!  I have to explain it to you first before you go "ye-haw yipee!" and go dancing around the room.
+    
+    So translating the if statement to english would be something like this:
+    
+    "If the storage item of "clickNumber" is set and not undefined, set the clicks variable to the currently stored value.  Then set the #count html element to the newly updated clicks variable."
+    
+    If localStorage.getItem("clickNumber") is undefined, set the clicks variable to zero inside of the else statement.
+    
+    clicks = 0;
+--------------------------------------------------------
+    Chapter 6: localStorage.clear();
+    The reset button doesn't work just yet.  Put the function localStorage.clear() inside the event function
+    
+    localStorage.clear();
+    
+    and then follow that line of code by 
+    
+    clicks = 0;
+    storeAll();
+    
+    After the reset button is clicked, all of the storage will clear.  Then you'll have to store the data.
+    
+    USE AT YOUR OWN RISK: localStorage.clear()
+    the function will clear ALL.  I mean ALL of the data stored with localStorage.  If you want to just store a couple variables and erase one, just set that individual one to undefined.  There is only one varible here, so that's why you're using it.
+--------------------------------------------------------
+    And You're done!
+    Now if you haven't yet, style the page any way you want.
+    Go and maybe make a tycoon game with localStorage.
+    If you want to learn more about localStorage, go here:
+    
+    https://www.freecodecamp.org/news/how-to-store-data-in-web-browser-storage-localstorage-and-session-storage-explained/
+    
+    I didn't explain how to store arrays, objects, strings, or booleans here because you'd be reading like a thousand lines of code.  I hope you enjoy.
+    Remember:
+    •Only use localStorage in webpages.
+    •Put your new knowledge to Good Use.
+    •Have fun
+    •Keep on learning
+
+    If yours doesn't work, go look at the one I made here:
+    https://www.khanacademy.org/computer-programming/testing/5992286783356928
+    
+    -->
+    <!-- 
+    I have been programming for around 36 months and have
+learned 100% of Khan Academy's 'Intro to JS'.
+
+    I would prefer to be placed in the Advanced bracket. 
+    -->
+    <head>
+    <link href="https://fonts.googleapis.com/css2?family=Coming+Soon&family=Nanum+Pen+Script&display=swap" rel="stylesheet">
+        <title>Todo list: Learning Experience</title> 
+        <style>
+        body, html{
+            font-family: 'Coming Soon', cursive;
+            background:rgb(249, 252, 151);
+        }
+            h1{
+                text-align:center;
+                font-size:40px;
+            }
+            li{
+                width:90%;
+                padding:5px;
+                margin-left:5%;
+                margin-bottom:5px;
+                margin-top:5px;
+                font-size:20px;
+                border:none;
+                border-radius:5px;
+                box-shadow:inset 0px 0px 5px black;
+                border:solid rgb(100,100,100) 1px;
+            }
+            #text-input{
+                width:40%;
+                margin-left:11.5%;
+                padding:5px;
+                font-size:20px;
+                margin-top:2px;
+                outline:none;
+                box-shadow:inset 0px 0px 5px black;
+                background:rgb(249, 252, 151);
+                border:solid rgb(100,100,100) 1px;
+                border-radius:5px;
+            }
+            #submit{
+                height:36px;
+                width:10%;
+                font-family: 'Coming Soon', cursive;
+                font-size:20px;
+            }
+            #erase{
+                height:36px;
+                width:30%;
+                font-family: 'Coming Soon', cursive;
+                font-size:20px;
+            }
+            button:hover{
+                cursor:hand;
+            }
+            
+        </style>
+    </head>
+    <body>
+        <h1>Todo List</h1>
+        <input id = "text-input"><button id = "submit">Post</button><button id = "erase">Erase The List</button>
+        <ol id = "list">
+            
+        </ol>
+        
+        
+        <script>
+            
+            var posts = ["Start by creating a post!  When You 've finished, check this item off!"];
+            
+            var $ = function(prop){
+                return document.querySelector(prop);
+            };
+            var i = $("#text-input");
+            var storeEverything = function(){
+                posts.push(i.value);
+                localStorage.setItem("postArray",JSON.stringify(posts));
+                
+                $("#list").innerHTML = "<li><input type = 'checkbox'/>"+(JSON.parse(localStorage.getItem("postArray")).join('</li><li><input type = "checkbox"/>'));
+                i.value = "";
+
+            };
+            
+            if(localStorage.getItem("postArray")){
+                posts = JSON.parse(localStorage.getItem("postArray"));
+                $("#list").innerHTML = "<li><input type = 'checkbox'/>"+(JSON.parse(localStorage.getItem("postArray")).join('</li><li><input type = "checkbox"/>'));
+            }else{
+                
+            }
+            
+            /*if(localStorage.getItem("postArray")){
+            posts = (JSON.parse(localStorage.getItem("postArray")).join('</li><li>'));
+                $("#list").innerHTML = "<li>"+(JSON.parse(localStorage.getItem("postArray")).join('</li><li>'));
+            }else{
+                $("#list").innerHTML = "<li>"+posts;
+            }*/
+            
+
+            
+            i.addEventListener("keydown",function(e){
+                if(e.keyCode === 13&&i.value !== ""){
+                storeEverything();
+                }
+            });
+            $("#submit").addEventListener("click",function(e){
+                if(i.value !== ""){
+                storeEverything();
+                }
+            });
+            $("#erase").addEventListener("click",function(e){
+                localStorage.clear();
+                posts = ["Start by creating a post!  When You 've finished, check this item off!"];
+                $("#list").innerHTML = "<li><input type = 'checkbox'>"+posts;
+            });
+        </script>
+        
+        <!-- Program Auto-Saver made by Bluebird:
+https://khanacademy.org/profile/kaid_157624541333313939750668
+-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/0.4.1/html2canvas.js"></script>
+    <script>
+    var save = function(){
+            html2canvas(document.body,{
+                onrendered: function(canvas) {
+                    
+                    b64Img = canvas.toDataURL();
+                    window.top.postMessage(b64Img, "https://www.khanacademy.org/");
+                },
+                allowTaint : false,
+                useCORS: true,
+                width:window.innerWidth,
+                height:window.innerWidth
+            });
+    };
+    window.setInterval(save,10000);     
+    </script>
+    <!-- End of Program Auto-Saver -->
+    </body>
+    
+</html>
+
+
