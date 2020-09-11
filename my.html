@@ -12,10 +12,19 @@ background:white;
 text-align:center;
 font-family: sans-serif;
 }
+.button{
+background-color: rgb(255, 255, 255);   
+border-radius: 0px;
+color:orange;
+}
 </style>
 <h1 class="all">
 All About Me  
 </h1>
+<button onclick="home()" class="button">home</button>
+<button onclick="projects()" class="button">projects</button>
+<button onclick="lolno()" class="button">bcbcjw</button>
+
 <pre class="all">
 hello, my name is eman and I am 10 years old. I like coding, reading, math, computer games and sports. my faverite sports are
 dodgeball, swimming, and track. 
@@ -25,10 +34,16 @@ dodgeball, swimming, and track.
 
 <body>
 
-
-    <script>
-
-
+<noscript>You need to enable JavaScript to run this program.</noscript>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+<script>
+function home(){
+    $("pre").text("hello, my name is eman and I am 10 years old. I like coding, reading, math, computer games and sports. my faverite sports are
+dodgeball, swimming, and track. ");
+}
+function projects(){
+    $("pre").text("bldbhbweucbwjckwebchj");   
+}
 
     </script>
 </body>
