@@ -13,23 +13,37 @@ text-align:center;
 font-family: sans-serif;
 }
 .button{
+width: 100px;
 background-color: rgb(255, 255, 255);   
 border-radius: 0px;
 color:orange;
+left:400px;
+}
+#can{
+ text-align: center;   
 }
 </style>
 <h1 class="all">
-All About Me  
+All About Me: home  
 </h1>
+<div id="can">
 <button onclick="home()" class="button">home</button>
 <button onclick="projects()" class="button">projects</button>
 <button onclick="lolno()" class="button">bcbcjw</button>
+</div>
+<pre>
 
-<pre class="all">
-hello, my name is eman and I am 10 years old. I like coding, reading, math, computer games and sports. my faverite sports are
-dodgeball, swimming, and track. 
 
+
+
+
+
+
+    
 </pre>
+<p class="all">
+hello, my name is eman and I am 10 years old. I like coding, reading, math, computer games and sports. my faverite sports are dodgeball, swimming, and track. 
+</p>
 </head>
 
 <body>
@@ -38,10 +52,16 @@ dodgeball, swimming, and track.
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
 <script>
 function home(){
-    $("pre").text("hello, my name is eman and I am 10 years old. I like coding, reading, math, computer games and sports. my faverite sports are dodgeball, swimming, and track. ");
+    $("p").text("hello, my name is eman and I am 10 years old. I like coding, reading, math, computer games and sports. my faverite sports are dodgeball, swimming, and track. ");
+    $("h1").text("All About Me: home");
 }
 function projects(){
-    $("pre").text("bldbhbweucbwjckwebchj");   
+    $("p").html("<a href='https://juanvalencia.github.io/eman/space_invaders_2.html'>space invaders?    </a>  <a href='https://juanvalencia.github.io/eman/connect_4.html'>connect 4    </a> <a href='https://juanvalencia.github.io/eman/checklist.html'>checklist      </a><a href='https://juanvalencia.github.io/eman/mincraft.html'>mincraft    </a><a href='https://juanvalencia.github.io/eman/'>super smash bros    </a><a href='https://juanvalencia.github.io/eman/flutes.html'>all about flutes      </a><a href='https://juanvalencia.github.io/eman/game.html'>game?   </a>");   
+    $("h1").text("All About Me: projects");
+}
+function lolno(){
+    $("p").text("???????????????????");
+    $("h1").text("All About Me: bcbcjw");
 }
 
     </script>
