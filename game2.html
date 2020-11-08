@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<!-- This is based on DillingerLee's great template here:
+https://github.com/Team-Code/KA_Offline -->
+<html>
+
+<head>
+   <title>game</title>
+</head>
+
+<body>
+   <p align="center">
+      <!--This draws the Canvas on the webpage -->
+      <canvas id="mycanvas"></canvas>
+   </p>
+</body>
+
+<!-- Run all the JavaScript stuff -->
+<!-- Include the processing.js library -->
+<!-- See https://khanacademy.zendesk.com/hc/en-us/articles/202260404-What-parts-of-ProcessingJS-does-Khan-Academy-support- for differences -->
+<script src="https://cdn.jsdelivr.net/processing.js/1.4.8/processing.min.js"></script>
+
+<script>
+   var sketchProc = function (processingInstance) {
+      with (processingInstance) {
+         size(1000, 726);
+         frameRate(30);
+
+         // ProgramCodeGoesHere{
+            var scene = 0; 
+var rhourglass = 0;
+var hourglass = function(x, y, s, clr){
+    pushMatrix();
+        translate(x+27, y+41);
+        scale(s/100);
+        
+        if(rhourglass > 15){
+            rotate(rhourglass-15);
+        }
+        translate(-36, -50);
+        
+        noStroke();
+        var glassarray = [
+        [2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,0,0],
+        [2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,0,0],
+        [0,2,0,0,0,0,0,0,0,0,0,0,0,0,0,0,2,0,0,0],
+        [0,2,0,0,0,0,0,0,0,0,0,0,0,0,0,0,2,0,0,0],
+        [0,2,0,0,0,0,0,0,0,0,0,0,0,0,0,0,2,0,0,0],
+        [0,2,0,0,0,0,0,0,0,0,0,0,0,0,0,0,2,0,0,0],
+        [0,0,2,2,0,0,0,0,0,0,0,0,0,0,2,2,0,0,0,0],
+        [0,0,0,0,2,0,0,0,0,0,0,0,0,2,0,0,0,0,0,0],
+        [0,0,0,0,0,2,2,0,0,0,0,2,2,0,0,0,0,0,0,0],
+        [0,0,0,0,0,0,2,0,0,0,0,2,0,0,0,0,0,0,0,0],
+        [0,0,0,0,0,0,2,0,0,0,0,2,0,0,0,0,0,0,0,0],
+        [0,0,0,0,0,2,2,0,0,0,0,2,2,0,0,0,0,0,0,0],
+        [0,0,0,0,2,0,0,0,0,0,0,0,0,2,0,0,0,0,0,0],
+        [0,0,2,2,0,0,0,0,0,0,0,0,0,0,2,2,0,0,0,0],
+        [0,2,0,0,0,0,0,0,0,0,0,0,0,0,0,0,2,0,0,0],
+        [0,2,0,0,0,0,0,0,0,0,0,0,0,0,0,0,2,0,0,0],
+        [0,2,0,0,0,0,0,0,0,0,0,0,0,0,0,0,2,0,0,0],
+        [0,2,0,0,0,0,0,0,0,0,0,0,0,0,0,0,2,0,0,0],
+        [2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,0,0],
+        [2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,0,0],
+        ];
+        
+        fill(clr);
+        for(var i = 0; i < glassarray[0].length; i++){
+            for(var j = 0; j < glassarray.length; j++){
+                if(glassarray[j][i] === 2){
+                    rect(i*(4), j*(5), 4, 5);
+                }
+            }
+        }
+        
+        if(rhourglass === 0){
+            rect(11, 13, 50, 14);
+            rect(19, 27, 34, 6);
+            rect(24, 32, 24, 6);
+        }
+        if(rhourglass === 1){
+            rect(11, 13, 21, 14);
+            rect(41, 13, 20, 14);
+            rect(19, 27, 34, 6);
+            rect(24, 32, 24, 6);
+            rect(31, 38, 10, 10);
+        }
+        if(rhourglass === 2){
+            rect(11, 13, 21, 14);
+            rect(41, 13, 20, 14);
+            rect(19, 27, 13, 6);
+            rect(41, 27, 12, 6);
+            rect(24, 32, 24, 6);
+            rect(31, 38, 10, 20);
+        }
+        if(rhourglass === 3){
+            rect(11, 13, 10, 14);
+            rect(41, 13, 20, 14);
+            rect(19, 27, 13, 6);
+            rect(41, 27, 12, 6);
+            rect(24, 32, 24, 6);
+            rect(31, 38, 10, 30);
+        }
+        if(rhourglass === 4){
+            rect(11, 13, 10, 14);
+            rect(51, 13, 10, 14);
+            rect(19, 27, 13, 6);
+            rect(41, 27, 12, 6);
+            rect(24, 32, 24, 6);
+            rect(31, 38, 10, 40);
+        }
+        if(rhourglass === 5){
+            rect(51, 13, 10, 14);
+            rect(19, 27, 13, 6);
+            rect(41, 27, 12, 6);
+            rect(24, 32, 24, 6);
+            rect(31, 38, 10, 50);
+        }
+        if(rhourglass === 6){
+            rect(19, 27, 13, 6);
+            rect(41, 27, 12, 6);
+            rect(24, 32, 24, 6);
+            rect(31, 38, 10, 50);
+            rect(21, 74, 10, 14);
+        }
+        if(rhourglass === 7){
+            rect(41, 27, 12, 6);
+            rect(24, 32, 24, 6);
+            rect(31, 38, 10, 50);
+            rect(21, 74, 10, 14);
+            rect(41, 74, 10, 14);
+        }
+        if(rhourglass === 8){
+            rect(24, 32, 24, 6);
+            rect(31, 38, 10, 50);
+            rect(21, 74, 10, 14);
+            rect(41, 74, 10, 14);
+            rect(11, 74, 10, 14);
+        }
+        if(rhourglass === 9){
+            rect(24, 32, 17, 6);
+            rect(31, 38, 10, 50);
+            rect(21, 74, 10, 14);
+            rect(41, 74, 10, 14);
+            rect(11, 74, 10, 14);
+            rect(51, 74, 10, 14);
+        }
+        if(rhourglass === 10){
+            rect(24, 32, 7, 6);
+            rect(31, 38, 10, 50);
+            rect(21, 74, 10, 14);
+            rect(41, 74, 10, 14);
+            rect(11, 74, 10, 14);
+            rect(51, 74, 10, 14);
+            rect(19, 67, 12, 14);
+        }
+        if(rhourglass === 11){
+            rect(31, 38, 10, 50);
+            rect(21, 74, 10, 14);
+            rect(41, 74, 10, 14);
+            rect(11, 74, 10, 14);
+            rect(51, 74, 10, 14);
+            rect(19, 67, 12, 14);
+            rect(41, 67, 12, 14);
+        }
+        if(rhourglass === 12){
+            rect(31, 48, 10, 40);
+            rect(21, 74, 10, 14);
+            rect(41, 74, 10, 14);
+            rect(11, 74, 10, 14);
+            rect(51, 74, 10, 14);
+            rect(19, 67, 12, 14);
+            rect(41, 67, 12, 14);
+            rect(36, 63, 12, 14);
+        }
+        if(rhourglass === 13){
+            rect(31, 58, 10, 30);
+            rect(21, 74, 10, 14);
+            rect(41, 74, 10, 14);
+            rect(11, 74, 10, 14);
+            rect(51, 74, 10, 14);
+            rect(19, 67, 12, 14);
+            rect(41, 67, 12, 14);
+            rect(36, 63, 12, 14);
+            rect(24, 63, 12, 14);
+        }
+        if(rhourglass >= 14){
+            rect(31, 65, 10, 23);
+            rect(21, 74, 10, 14);
+            rect(41, 74, 10, 14);
+            rect(11, 74, 10, 14);
+            rect(51, 74, 10, 14);
+            rect(19, 67, 12, 14);
+            rect(41, 67, 12, 14);
+            rect(36, 63, 12, 14);
+            rect(24, 63, 12, 14);
+        }
+        
+        if(rhourglass < 15 && frameCount % 10 === 0){
+            rhourglass++;
+        }
+        if(rhourglass >= 15){
+            rhourglass += 3;
+        }
+        if(rhourglass === 195){
+            rhourglass = 0;
+        }
+    popMatrix();
+};
+draw = function() {
+background(0, 255, 81);
+var Button = function(config) {
+    this.x = config.x || 0;
+    this.y = config.y || 0;
+    this.width = config.width || 150;
+    this.height = config.height || 50;
+    this.label = config.label || "Click";
+    this.onClick = config.onClick || function() {};
+};
+Button.prototype.draw = function() {
+    fill(0, 234, 255);
+    rect(this.x, this.y, this.width, this.height, 5);
+    fill(0, 0, 0);
+    textSize(19);
+    textAlign(LEFT, TOP);
+    text(this.label, this.x+10, this.y+this.height/4);
+};
+Button.prototype.isMouseInside = function() {
+    return mouseX > this.x &&
+           mouseX < (this.x + this.width) &&
+           mouseY > this.y &&
+           mouseY < (this.y + this.height);
+};
+Button.prototype.handleMouseClick = function() {
+    if (this.isMouseInside()) {
+        this.onClick();
+    }
+};
+pushMatrix();
+translate(14, 14);
+var btn1 = new Button({
+    x: 214,
+    y: 385,
+    label: "click to play",
+    onClick: function() {
+    scene=1;   
+       
+    }
+});
+if(scene===0){
+fill(0, 0, 0);
+textSize(54);
+text("game",221,200);
+btn1.draw();
+}
+mouseClicked = function() {
+    btn1.handleMouseClick();
+    
+};        
+if (scene===1){
+        background(0, 0, 0);
+        hourglass(267, 264, 100, color(255, 255, 255));
+     fill(255, 255, 255);
+     textSize(41); 
+     text("Loading . . .",221,159);
+     
+     }
+popMatrix();
+if (scene===2){}   
+};
+
+         //}
+
+      }
+   };
+
+   // Get the canvas that Processing-js will use
+   var canvas = document.getElementById("mycanvas");
+   // Pass the function sketchProc (defined in myCode.js) to Processing's constructor.
+   var processingInstance = new Processing(canvas, sketchProc); 
+</script>
+
+</html>
