@@ -1,0 +1,4 @@
+science=snow lepard
+pe = lion
+spanish = 
+art=sea otter

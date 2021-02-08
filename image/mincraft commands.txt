@@ -1,0 +1,2 @@
+/give <playername> minecraft:diamond_sword 1 0 {ench:[{id:16,lvl:1000},{id:34,lvl:1000}]}
+/give <playername> minecraft:diamond_sword 1 0 {ench:[{id:16,lvl:1000}],Unbreakable:1}
