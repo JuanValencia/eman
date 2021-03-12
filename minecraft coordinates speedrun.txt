@@ -1,3 +1,8 @@
 in "best seed in the world?" on minecraft coordinates of nether fortress are -145 78 -277
 the bastian is at 198 51 -290
 the stronghold is at -724 44 898
+x y z
+y = hieght
+x = north?
+z = west
+ 
