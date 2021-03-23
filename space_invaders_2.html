@@ -25,7 +25,7 @@ https://github.com/Team-Code/KA_Offline -->
             size(400, 400);
             frameRate(30);
             // ProgramCodeGoesHere{
-            var y=14;
+            var y = 14;
             var ypos = 350;
             var bullets = []
             var x = 19;
@@ -59,22 +59,22 @@ https://github.com/Team-Code/KA_Offline -->
 
             //pixal art{
             var player = [
-                "                     l                 ",
-                "                     l                 ",
-                "                    lll                ",
-                "                    lml                ",
-                "                    lml                ",
-                "                   lmmml               ",
-                "                   lmmml               ",
-                "                   lmmml               ",
-                "                  lmmmmml              ",
-                "                lllmmmmmlll            ",
-                "             lllllllllllllllll         ",
-                "                   yoooy                ",
-                "                    oyo                 ",
-                "                     o                  ",
-                "                     y                  ",
-                "                                       ",];
+                "        l",
+                "        l                  ",
+                "       lll                 ",
+                "       lml                 ",
+                "       lml                 ",
+                "      lmmml                ",
+                "      lmmml                ",
+                "      lmmml                ",
+                "     lmmmmml               ",
+                "   lllmmmmmlll             ",
+                "lllllllllllllllll          ",
+                "      yoooy                ",
+                "       oyo                 ",
+                "        o                  ",
+                "        y                  ",
+                "                           ",];
             var monster = [
                 "         r     r     ",
                 "          r   r      ",
@@ -93,15 +93,20 @@ https://github.com/Team-Code/KA_Offline -->
             draw = function () {
                 background(0, 0, 0);
                 drawpixelart(x, 305, 5, [color(194, 194, 194), color(127, 128, 126), color(46, 115, 61), color(255, 208, 0), color(255, 166, 0), color(0), color(255), color(0, 255, 30)], ["l", "m", "d", "y", "o", "b", "w", "g"], player);
-                drawpixelart(139, y, 5, [color(194, 194, 194), color(127, 128, 126), color(46, 115, 61), color(0, 255, 30), color(255, 166, 0), color(0), color(255), color(209, 205, 209), color(0, 255, 30)], ["l", "m", "d", "y", "o", "b", "w", "g", "r"], monster);
-                drawpixelart(57, y-250, 5, [color(194, 194, 194), color(127, 128, 126), color(46, 115, 61), color(0, 255, 30), color(255, 166, 0), color(0), color(255), color(209, 205, 209), color(0, 255, 30)], ["l", "m", "d", "y", "o", "b", "w", "g", "r"], monster);
-                drawpixelart(243, y-200, 5, [color(194, 194, 194), color(127, 128, 126), color(46, 115, 61), color(0, 255, 30), color(255, 166, 0), color(0), color(255), color(209, 205, 209), color(0, 255, 30)], ["l", "m", "d", "y", "o", "b", "w", "g", "r"], monster);
-                drawpixelart(139, y-335, 5, [color(194, 194, 194), color(127, 128, 126), color(46, 115, 61), color(0, 255, 30), color(255, 166, 0), color(0), color(255), color(209, 205, 209), color(0, 255, 30)], ["l", "m", "d", "y", "o", "b", "w", "g", "r"], monster);
-                
-                var  drawBullet = function(bullet){
-                    fill(255, 255, 255);
+                var alean = function () {
+                    drawpixelart(139, Y, 5, [color(194, 194, 194), color(127, 128, 126), color(46, 115, 61), color(0, 255, 30), color(255, 166, 0), color(0), color(255), color(209, 205, 209), color(0, 255, 30)], ["l", "m", "d", "y", "o", "b", "w", "g", "r"], monster);
+                    drawpixelart(57, Y - 250, 5, [color(194, 194, 194), color(127, 128, 126), color(46, 115, 61), color(0, 255, 30), color(255, 166, 0), color(0), color(255), color(209, 205, 209), color(0, 255, 30)], ["l", "m", "d", "y", "o", "b", "w", "g", "r"], monster);
+                    drawpixelart(243, Y - 200, 5, [color(194, 194, 194), color(127, 128, 126), color(46, 115, 61), color(0, 255, 30), color(255, 166, 0), color(0), color(255), color(209, 205, 209), color(0, 255, 30)], ["l", "m", "d", "y", "o", "b", "w", "g", "r"], monster);
+                    drawpixelart(139, Y - 335, 5, [color(194, 194, 194), color(127, 128, 126), color(46, 115, 61), color(0, 255, 30), color(255, 166, 0), color(0), color(255), color(209, 205, 209), color(0, 255, 30)], ["l", "m", "d", "y", "o", "b", "w", "g", "r"], monster);
+                }
+               
+                    alean();//TO DO: debug movement
                   
-                    ellipse(bullet.x, bullet.y, 10, 10)    
+
+                var drawBullet = function (bullet) {
+                    fill(255, 255, 255);
+
+                    ellipse(bullet.x, bullet.y, 10, 10)
                 }
                 bullets.forEach(bullet => {
                     drawBullet(bullet)
@@ -114,22 +119,34 @@ https://github.com/Team-Code/KA_Offline -->
                     x += 5;
                 }
                 if (keyReleased && keyCode == "32") {
-                  bullets.push({
-                   x:x,
-                   y:ypos
-                  })  
+                    bullets.push({
+                        x: x,
+                        y: ypos
+                    })
                 }
                 console.log(bullets)
-           y+=3;
+                Y += 3;
             };
             //}
         }
     };
 
+
+
+
+
+
+
+
+
+
+
+
+
     // Get the canvas that Processing-js will use
     var canvas = document.getElementById("mycanvas");
     // Pass the function sketchProc (defined in myCode.js) to Processing's constructor.
-    var processingInstance = new Processing(canvas, sketchProc); 
+    var processingInstance = new Processing(canvas, sketchProc);
 </script>
 
 </html>
