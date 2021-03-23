@@ -25,6 +25,8 @@ https://github.com/Team-Code/KA_Offline -->
             size(400, 400);
             frameRate(30);
             // ProgramCodeGoesHere{
+            var pus = 3; 
+            var dif = 1; 
             var y = 14;
             var ypos = 350;
             var bullets = []
@@ -93,16 +95,41 @@ https://github.com/Team-Code/KA_Offline -->
             draw = function () {
                 background(0, 0, 0);
                 drawpixelart(x, 305, 5, [color(194, 194, 194), color(127, 128, 126), color(46, 115, 61), color(255, 208, 0), color(255, 166, 0), color(0), color(255), color(0, 255, 30)], ["l", "m", "d", "y", "o", "b", "w", "g"], player);
-                var alean = function () {
+                var alean = function (Y) {
                     drawpixelart(139, Y, 5, [color(194, 194, 194), color(127, 128, 126), color(46, 115, 61), color(0, 255, 30), color(255, 166, 0), color(0), color(255), color(209, 205, 209), color(0, 255, 30)], ["l", "m", "d", "y", "o", "b", "w", "g", "r"], monster);
                     drawpixelart(57, Y - 250, 5, [color(194, 194, 194), color(127, 128, 126), color(46, 115, 61), color(0, 255, 30), color(255, 166, 0), color(0), color(255), color(209, 205, 209), color(0, 255, 30)], ["l", "m", "d", "y", "o", "b", "w", "g", "r"], monster);
                     drawpixelart(243, Y - 200, 5, [color(194, 194, 194), color(127, 128, 126), color(46, 115, 61), color(0, 255, 30), color(255, 166, 0), color(0), color(255), color(209, 205, 209), color(0, 255, 30)], ["l", "m", "d", "y", "o", "b", "w", "g", "r"], monster);
-                    drawpixelart(139, Y - 335, 5, [color(194, 194, 194), color(127, 128, 126), color(46, 115, 61), color(0, 255, 30), color(255, 166, 0), color(0), color(255), color(209, 205, 209), color(0, 255, 30)], ["l", "m", "d", "y", "o", "b", "w", "g", "r"], monster);
-                }
+                   }
                
-                    alean();//TO DO: debug movement
-                  
-
+                   
+                   
+                   
+                    alean(Y);//TO DO: make this loop. 
+                    alean(Y-340);
+                    alean(Y-680);
+                    alean(Y-1020);
+                    alean(Y-1360);
+                    alean(Y-1700);
+                    alean(Y-2040);
+                    alean(Y-2380);
+                    alean(Y-2720);
+                    alean(Y-3060);
+                    alean(Y-3400);
+                    alean(Y-3740);
+                    alean(Y-4080);
+                    alean(Y-4420);
+                    alean(Y-4760);
+                    alean(Y-5100);
+                    alean(Y-5440);
+                    if (dif===1){
+                        pus=3
+                    }
+                    if (dif===2){
+                        pus=4.5
+                    }
+                    if (dif===3){
+                        pus=6
+                    }
                 var drawBullet = function (bullet) {
                     fill(255, 255, 255);
 
@@ -125,7 +152,7 @@ https://github.com/Team-Code/KA_Offline -->
                     })
                 }
                 console.log(bullets)
-                Y += 3;
+                Y += pus;
             };
             //}
         }
