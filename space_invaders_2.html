@@ -6,6 +6,7 @@ https://github.com/Team-Code/KA_Offline -->
 
 <head>
     <title>space invaders 2</title>
+    
 </head>
 
 <body>
@@ -13,14 +14,21 @@ https://github.com/Team-Code/KA_Offline -->
         <!--This draws the Canvas on the webpage -->
         <canvas id="mycanvas"></canvas>
     </p>
+<style>
+.button {
+    color: rgb(44, 218, 44);    
+    size: 50px;
+}
+
+</style>
 </body>
 
 <!-- Run all the JavaScript stuff -->
 
 <script src="https://cdn.jsdelivr.net/processing.js/1.4.8/processing.min.js"></script>
-
+<button onclick="difeasy()" class="button">easy</button>
 <script>
-    var sketchProc = function (processingInstance) {
+    var sketchProc = function (processingInstance) {//TO DO: make buttons work and 3 easy is green medium is orange and red is hard. 
         with (processingInstance) {
             size(400, 400);
             frameRate(30);
@@ -57,37 +65,10 @@ https://github.com/Team-Code/KA_Offline -->
                 }
                 popMatrix();
             };
-            var Button = function(config) {
-
-    this.x = config.x || 0;
-    this.y = config.y || 0;
-    this.width = config.width || 150;
-    this.height = config.height || 50;
-    this.label = config.label || "Click";
-};
-Button.prototype.draw = function() {
-    fill(0, 234, 255);
-    rect(this.x, this.y, this.width, this.height, 5);
-    fill(0, 0, 0);
-    textSize(19);
-    textAlign(LEFT, TOP);
-    text(this.label, this.x+10, this.y+this.height/4);
-};
-
-Button.prototype.isMouseInside = function() {
-    return mouseX > this.x &&
-           mouseX < (this.x + this.width) &&
-           mouseY > this.y &&
-           mouseY < (this.y + this.height);
-};
-
-
-var btn1 = new Button({
-    x: 100,
-    y: 100,
-    label: "easy"
-});
-
+            var difeasy = function(){
+            dif=1;     
+            }
+           
             //pixal art{
             var player = [
                 "        l",
@@ -121,6 +102,7 @@ var btn1 = new Button({
                 "                    ",
             ];
             //}
+            
             draw = function () {
                 background(0, 0, 0);
                 drawpixelart(x, 305, 5, [color(194, 194, 194), color(127, 128, 126), color(46, 115, 61), color(255, 208, 0), color(255, 166, 0), color(0), color(255), color(0, 255, 30)], ["l", "m", "d", "y", "o", "b", "w", "g"], player);
@@ -182,8 +164,92 @@ var btn1 = new Button({
                 }
                 console.log(bullets)
                 Y += pus;
-            };
-            btn1.draw();
+            
+            //-----------------buttons------------------\\
+            var Button = function(config) {
+    this.x = config.x || 0;
+    this.y = config.y || 0;
+    this.width = config.width || 70;
+    this.height = config.height || 35;
+    this.label = config.label || "Click";
+};
+Button.prototype.draw = function() {
+    fill(0, 255, 0);
+    rect(this.x, this.y, this.width, this.height, 5);
+    fill(0, 0, 0);
+    textSize(19);
+    textAlign(LEFT, TOP);
+    text(this.label, this.x+10, this.y+this.height/4);
+};
+Button.prototype.isMouseInside = function() {
+    return mouseX > this.x &&
+           mouseX < (this.x + this.width) &&
+           mouseY > this.y &&
+           mouseY < (this.y + this.height);
+};
+var btn1 = new Button({
+    x: 2,
+    y: 2,
+    label: "Easy"
+});
+btn1.draw();
+
+var Button = function(config) {
+    this.x = config.x || 0;
+    this.y = config.y || 0;
+    this.width = config.width || 80;
+    this.height = config.height || 35;
+    this.label = config.label || "Click";
+};
+Button.prototype.draw = function() {
+    fill(255, 140, 0);
+    rect(this.x, this.y, this.width, this.height, 5);
+    fill(0, 0, 0);
+    textSize(19);
+    textAlign(LEFT, TOP);
+    text(this.label, this.x+10, this.y+this.height/4);
+};
+Button.prototype.isMouseInside = function() {
+    return mouseX > this.x &&
+           mouseX < (this.x + this.width) &&
+           mouseY > this.y &&
+           mouseY < (this.y + this.height);
+};
+var btn2 = new Button({
+    x: 75,
+    y: 2,
+    label: "Medium"
+});
+btn2.draw();            
+
+var Button = function(config) {
+    this.x = config.x || 0;
+    this.y = config.y || 0;
+    this.width = config.width || 65;
+    this.height = config.height || 35;
+    this.label = config.label || "Click";
+};
+Button.prototype.draw = function() {
+    fill(255, 0, 0);
+    rect(this.x, this.y, this.width, this.height, 5);
+    fill(0, 0, 0);
+    textSize(19);
+    textAlign(LEFT, TOP);
+    text(this.label, this.x+10, this.y+this.height/4);
+};
+Button.prototype.isMouseInside = function() {
+    return mouseX > this.x &&
+           mouseX < (this.x + this.width) &&
+           mouseY > this.y &&
+           mouseY < (this.y + this.height);
+};
+var btn3 = new Button({
+    x: 160,
+    y: 2,
+    label: "Hard"
+});
+btn3.draw();       
+};
             //}
         }
     };
@@ -205,5 +271,10 @@ var btn1 = new Button({
     // Pass the function sketchProc (defined in myCode.js) to Processing's constructor.
     var processingInstance = new Processing(canvas, sketchProc);
 </script>
+<canvas id="mycanvas"></canvas> 
+
+
+
+
 
 </html>
