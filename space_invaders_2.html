@@ -34,6 +34,7 @@ https://github.com/Team-Code/KA_Offline -->
             frameRate(30);
             // ProgramCodeGoesHere{
             var pus = 3; 
+            var X = 0; 
             var dif = 1; 
             var y = 14;
             var ypos = 350;
@@ -68,7 +69,12 @@ https://github.com/Team-Code/KA_Offline -->
             var difeasy = function(){
             dif=1;     
             }
-           
+            var aleanobject = {
+                    x:139,
+                    y:19,
+                    hp:1
+                }
+
             //pixal art{
             var player = [
                 "        l",
@@ -88,50 +94,41 @@ https://github.com/Team-Code/KA_Offline -->
                 "        y                  ",
                 "                           ",];
             var monster = [
-                "         r     r     ",
-                "          r   r      ",
-                "         rrrrrrr     ",
-                "        rr rrr rr    ",
-                "       rrrrrrrrrrr   ",
-                "       r rrrrrrr r   ",
-                "       r r     r r   ",
-                "          rr rr     ",
-                "                    ",
-                "                    ",
-                "                    ",
-                "                    ",
+                "  r     r",
+                "   r   r",
+                "  rrrrrrr",
+                " rr rrr rr",
+                "rrrrrrrrrrr",
+                "r rrrrrrr r",
+                "r r     r r",
+                "   rr rr",
+                
             ];
+            
             //}
             
             draw = function () {
                 background(0, 0, 0);
                 drawpixelart(x, 305, 5, [color(194, 194, 194), color(127, 128, 126), color(46, 115, 61), color(255, 208, 0), color(255, 166, 0), color(0), color(255), color(0, 255, 30)], ["l", "m", "d", "y", "o", "b", "w", "g"], player);
+                
+                
+                
+                // var singlealean (posY,posX) {
+                //     drawpixelart(posX, posY, 5, [color(194, 194, 194), color(127, 128, 126), color(46, 115, 61), color(0, 255, 30), color(255, 166, 0), color(0), color(255), color(209, 205, 209), color(0, 255, 30)], ["l", "m", "d", "y", "o", "b", "w", "g", "r"], monster);
+                // }
+                
                 var alean = function (Y) {
-                    drawpixelart(139, Y, 5, [color(194, 194, 194), color(127, 128, 126), color(46, 115, 61), color(0, 255, 30), color(255, 166, 0), color(0), color(255), color(209, 205, 209), color(0, 255, 30)], ["l", "m", "d", "y", "o", "b", "w", "g", "r"], monster);
-                    drawpixelart(57, Y - 250, 5, [color(194, 194, 194), color(127, 128, 126), color(46, 115, 61), color(0, 255, 30), color(255, 166, 0), color(0), color(255), color(209, 205, 209), color(0, 255, 30)], ["l", "m", "d", "y", "o", "b", "w", "g", "r"], monster);
-                    drawpixelart(243, Y - 200, 5, [color(194, 194, 194), color(127, 128, 126), color(46, 115, 61), color(0, 255, 30), color(255, 166, 0), color(0), color(255), color(209, 205, 209), color(0, 255, 30)], ["l", "m", "d", "y", "o", "b", "w", "g", "r"], monster);
-                   }
-               
+                    drawpixelart(aleanobject.x, aleanobject.y, 5, [color(194, 194, 194), color(127, 128, 126), color(46, 115, 61), color(0, 255, 30), color(255, 166, 0), color(0), color(255), color(209, 205, 209), color(0, 255, 30)], ["l", "m", "d", "y", "o", "b", "w", "g", "r"], monster);
+                    drawpixelart(aleanobject.x-82, aleanobject.y - 250, 5, [color(194, 194, 194), color(127, 128, 126), color(46, 115, 61), color(0, 255, 30), color(255, 166, 0), color(0), color(255), color(209, 205, 209), color(0, 255, 30)], ["l", "m", "d", "y", "o", "b", "w", "g", "r"], monster);
+                    drawpixelart(aleanobject.x+104, aleanobject.y - 200, 5, [color(194, 194, 194), color(127, 128, 126), color(46, 115, 61), color(0, 255, 30), color(255, 166, 0), color(0), color(255), color(209, 205, 209), color(0, 255, 30)], ["l", "m", "d", "y", "o", "b", "w", "g", "r"], monster);
+                   };
                    
+                   while (X<5445){
+                    alean(aleanobject.y+(0+X))
+                    X+=340
+                    }
+
                    
-                   
-                    alean(Y);//TO DO: make this loop. 
-                    alean(Y-340);
-                    alean(Y-680);
-                    alean(Y-1020);
-                    alean(Y-1360);
-                    alean(Y-1700);
-                    alean(Y-2040);
-                    alean(Y-2380);
-                    alean(Y-2720);
-                    alean(Y-3060);
-                    alean(Y-3400);
-                    alean(Y-3740);
-                    alean(Y-4080);
-                    alean(Y-4420);
-                    alean(Y-4760);
-                    alean(Y-5100);
-                    alean(Y-5440);
                     if (dif===1){
                         pus=3
                     }
@@ -141,7 +138,8 @@ https://github.com/Team-Code/KA_Offline -->
                     if (dif===3){
                         pus=6
                     }
-                var drawBullet = function (bullet) {
+
+                    var drawBullet = function (bullet) {
                     fill(255, 0, 0);
 
                     ellipse(bullet.x, bullet.y, 10, 10)
@@ -149,6 +147,7 @@ https://github.com/Team-Code/KA_Offline -->
                 bullets.forEach(bullet => {
                     drawBullet(bullet)
                     bullet.y -= 5
+                    // if (bullet.y()) 
                 });
                 if (keyPressed && keys[LEFT]) {
                     x -= 5;
@@ -161,12 +160,15 @@ https://github.com/Team-Code/KA_Offline -->
                         x: x,
                         y: ypos
                     })
+                
                 }
                 console.log(bullets)
-                Y += pus;
+                aleanobject.y += pus;
+            
+                // if (aleanobject.y>20) {alert('it works!')}
             
             //-----------------buttons------------------\\
-            var Button = function(config) {
+var Button = function(config) {
     this.x = config.x || 0;
     this.y = config.y || 0;
     this.width = config.width || 70;
@@ -258,6 +260,7 @@ mouseClicked = function() {
     } else if (btn3.ismouseinside()) {
         dif=3;
     }
+   
 };
 
 };
@@ -265,7 +268,8 @@ mouseClicked = function() {
         }
     };
 
-
+ //-------------------------------------------------------------------------\\
+//---------------------------------------------------------------------------\\
 
 
 

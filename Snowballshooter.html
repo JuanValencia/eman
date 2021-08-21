@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<!-- This is based on DillingerLee's great template here:
+https://github.com/Team-Code/KA_Offline -->
+<html> 
+ <head>
+    <title>Processing.JS inside Webpages: Template</title> 
+</head>
+ <body>
+    <p align="center"> 
+	<!--This draws the Canvas on the webpage -->
+      <canvas id="mycanvas"></canvas> 
+    </p>
+ </body>
+ 
+ <!-- Run all the JavaScript stuff -->
+ <!-- Include the processing.js library -->
+ <!-- See https://khanacademy.zendesk.com/hc/en-us/articles/202260404-What-parts-of-ProcessingJS-does-Khan-Academy-support- for differences -->
+ <script src="https://cdn.jsdelivr.net/processing.js/1.4.8/processing.min.js"></script> 
+ 
+ <script>
+    var sketchProc = function(processingInstance) {
+     with (processingInstance) {
+        size(400, 400); 
+        frameRate(30);
+        /**
+* This is my first game, so it might not be very good
+* Leaderboard:
+    1. Emanuel valencia(me)--------------------2149$
+    2. ???
+    3. ???
+    4. ???
+    5. ???
+    6. ???
+    7. ???
+    8. ???
+    9. ???
+    10. ???
+*/
+// other pre-program stuff{
+noStroke();
+textSize(30);
+//}
+// variables{
+var y = 0;
+var r = 34;
+var g = 255;
+var b = 0;
+var money = 1;
+var lives = 5;
+var powerUps = 0;
+var scene = 0; 
+var lig = 5;
+var x = 0;
+var dif = 3;
+var mop = 1;
+var dif2 = 3;
+//}
+draw = function() {
+    cursor('crosshair');
+    if (scene===0){
+    background(255, 255, 255);
+    fill(0, 0, 0);
+    textSize(30);
+    text("Snowball Shooter", 85, 75);
+    textSize(19);
+    text("Lives: "+lives,12,2);
+text("Money: "+money,126,2);
+text("Power Ups: "+powerUps,282,2);
+var btn1 = {
+    x: 146,
+    y: 146,
+    width: 100,
+    height: 50
+};
+var btn2 = {
+    x: 145,
+    y: 200,
+    width: 100,
+    height: 50
+};
+var btn3 = {
+    x: 145,
+    y: 255,
+    width: 100,
+    height: 50
+};
+var btn4 = {
+    x: 145,
+    y: 309,
+    width: 100,
+    height: 50
+};
+var drawButton = function(btn) {
+    fill(r, g, b);
+    rect(btn.x, btn.y, btn.width, btn.height, 5);
+    fill(0, 0, 0);
+    textSize(19);
+    textAlign(LEFT, TOP);
+    text("    Play", btn.x+10, btn.y+btn.height/4);
+};
+var drawButton2 = function(btn) {
+    fill(r, g, b);
+    rect(btn.x, btn.y, btn.width, btn.height, 5);
+    fill(0, 0, 0);
+    textSize(19);
+    textAlign(LEFT, TOP);
+    text("  How to", btn.x+10, btn.y+btn.height/4);
+};
+var drawButton3 = function(btn) {
+    fill(r, g, b);
+    rect(btn.x, btn.y, btn.width, btn.height, 5);
+    fill(0, 0, 0);
+    textSize(19);
+    textAlign(LEFT, TOP);
+    text("  Shop", btn.x+10, btn.y+btn.height/4);
+};
+var drawButton4 = function(btn) {
+    fill(r, g, b);
+    rect(btn.x, btn.y, btn.width, btn.height, 5);
+    fill(0, 0, 0);
+    textSize(19);
+    textAlign(LEFT, TOP);
+    text(" Difficulty", btn.x+10, btn.y+btn.height/4);
+};
+var isMouseInside = function(btn) {
+    return (mouseX >= btn.x &&
+            mouseX <= (btn.x+btn.width) &&
+            mouseY >= btn.y && 
+            mouseY <= (btn.y+btn.height));
+};
+mouseClicked = function() {
+    if (isMouseInside(btn1)&&scene===0){
+        scene=4;
+        
+    } else if (isMouseInside(btn2)&&scene===0){
+        
+    scene = 1; 
+    
+    } else if (isMouseInside(btn3)&&scene===0){
+        scene=2;
+        
+    
+    } else if (isMouseInside(btn4)&&scene===0){
+        scene=3;
+    }
+};
+drawButton(btn1);
+drawButton2(btn2);
+drawButton3(btn3);
+drawButton4(btn4);
+}//dun first scene
+    if (scene===1){
+    background(255, 255, 255);
+    textSize(19);
+    text("Lives: "+lives,12,2);
+text("Money: "+money,126,2);
+text("Power Ups: "+powerUps,282,2);
+    textSize(19);
+    text("        click to shoot\nhit the ohnoes to get coins\n if you miss, you lose a life\nbuy power ups, lives, and\n more money per shot at \n           the shop",92,97);
+textSize(30);
+text("How to",147,37);
+    var btnb = {
+    x: 151,
+    y: 317,
+    width: 71,
+    height: 50
+};
+
+var drawButton = function(btn) {
+    fill(13, 255, 0);
+    rect(btn.x, btn.y, btn.width, btn.height, 57);
+    fill(0, 0, 0);
+    textSize(19);
+    textAlign(LEFT, TOP);
+    text("Home", btn.x+10, btn.y+btn.height/4);
+};
+
+
+mouseClicked = function() {
+    if (mouseX >= btnb.x && mouseX <= (btnb.x+btnb.width) &&
+        mouseY >= btnb.y && mouseY <= (btnb.y+btnb.height))     {
+        scene=0;   
+    }
+};
+
+
+drawButton(btnb);
+
+    
+    }//dun how to
+    if (scene===3){
+        background(255, 255, 255);
+        textSize(30);
+        fill(0, 0, 0);
+        text("Difficulty",148,37);
+        var btn1 = {
+    x: 41,
+    y: 200,
+    width: 100,
+    height: 50
+};
+        var btn2 = {
+    x: 145,
+    y: 200,
+    width: 100,
+    height: 50
+};
+        var btn3 = {
+    x: 251,
+    y: 200,
+    width: 100,
+    height: 50
+};
+        var btn4 = {
+    x: 145,
+    y: 309,
+    width: 100,
+    height: 50
+};
+var drawButton = function(btn) {
+    fill(34, 255, 0);
+    rect(btn.x, btn.y, btn.width, btn.height, 5);
+    fill(0, 0, 0);
+    textSize(19);
+    textAlign(LEFT, TOP);
+    text("    Easy", btn.x+10, btn.y+btn.height/4);
+};
+var drawButton2 = function(btn) {
+    fill(34, 255, 0);
+    rect(btn.x, btn.y, btn.width, btn.height, 5);
+    fill(0, 0, 0);
+    textSize(19);
+    textAlign(LEFT, TOP);
+    text(" Medium", btn.x+10, btn.y+btn.height/4);
+};
+var drawButton3 = function(btn) {
+    fill(34, 255, 0);
+    rect(btn.x, btn.y, btn.width, btn.height, 5);
+    fill(0, 0, 0);
+    textSize(19);
+    textAlign(LEFT, TOP);
+    text("  Hard", btn.x+10, btn.y+btn.height/4);
+};
+var drawButton4 = function(btn) {
+    fill(34, 255, 0);
+    rect(btn.x, btn.y, btn.width, btn.height, 5);
+    fill(0, 0, 0);
+    textSize(19);
+    textAlign(LEFT, TOP);
+    text("   Home", btn.x+10, btn.y+btn.height/4);
+};
+var isMouseInside = function(btn) {
+    return (mouseX >= btn.x &&
+            mouseX <= (btn.x+btn.width) &&
+            mouseY >= btn.y && 
+            mouseY <= (btn.y+btn.height));
+};
+mouseClicked = function() {
+    if (isMouseInside(btn1)&&scene===3){
+        dif=3;
+        dif2=3;
+    } else if (isMouseInside(btn2)&&scene===3){
+           
+    dif=5; 
+    dif2=5; 
+    } else if (isMouseInside(btn3)&&scene===3){
+        dif=7;
+        dif2=7;
+    
+    } else if (isMouseInside(btn4)&&scene===3){
+        scene=0;
+    }
+};
+drawButton(btn1);
+drawButton2(btn2);
+drawButton3(btn3);
+drawButton4(btn4);
+
+    
+    }//dun difficulty
+    if (scene===2){
+    background(255, 255, 255);
+    textSize(30);
+    text("Shop",164,56);
+     textSize(19);
+    text("Lives: "+lives,12,2);
+text("Money: "+money,126,2);
+text("Power Ups: "+powerUps,282,2);
+     var btnb = {
+    x: 167,
+    y: 317,
+    width: 71,
+    height: 50
+};
+
+var drawButton = function(btn) {
+    fill(0, 255, 30);
+    rect(btn.x, btn.y, btn.width, btn.height, 57);
+    fill(0, 0, 0);
+    textSize(19);
+    textAlign(LEFT, TOP);
+    text("Home", btn.x+10, btn.y+btn.height/4);
+};
+
+    drawButton(btnb);
+    var btn2 = {
+    x: 51,
+    y: 132,
+    width: 131,
+    height: 84
+};
+
+var drawButton2 = function(btn) {
+    fill(0, 255, 30);
+    rect(btn.x, btn.y, btn.width, btn.height, 57);
+    fill(0, 0, 0);
+    textSize(19);
+    textAlign(LEFT, TOP);
+    text("  More Lives\n        2$", btn.x+10, btn.y+btn.height/4);
+};
+var btnb2 = {
+    x: 209,
+    y: 133,
+    width: 130,
+    height: 100
+};
+
+var drawButtonb2 = function(btn) {
+    fill(0, 255, 30);
+    rect(btn.x, btn.y, btn.width, btn.height, 57);
+    fill(0, 0, 0);
+    textSize(19);
+    textAlign(LEFT, TOP);
+    text("More coins\n    per hit\n      17$", btn.x+10, btn.y+btn.height/4);
+};
+
+    drawButtonb2(btnb2);
+mouseClicked = function() {
+    if (mouseX >= btnb.x && mouseX <= (btnb.x+btnb.width) &&
+        mouseY >= btnb.y && mouseY <= (btnb.y+btnb.height))     {
+        scene=0;   
+    
+    
+        }else if (mouseX >= btn2.x && mouseX <= (btn2.x+btn2.width) &&
+        mouseY >= btn2.y && mouseY <= (btn2.y+btn2.height))     {
+        lives=lives+1;   
+        money=money-2;
+    
+        
+        
+        }else if(mouseX >= btnb2.x && mouseX <= (btnb2.x+btnb2.width) &&
+        mouseY >= btnb2.y && mouseY <= (btnb2.y+btnb2.height)) {
+         
+        money=money-17;
+        mop=mop+1;
+        }
+};
+    drawButton2(btn2);
+    
+    }//not dun shop
+    if (scene===4){
+background(214, 214, 214);
+textSize(19); 
+text("Lives: "+lives,12,2);
+text("Money: "+money,126,2);
+text("Power Ups: "+powerUps,282,2);
+
+// image(getImage("creatures/OhNoes"), 100, 100, 110, 99);
+
+if(mouseIsPressed){
+            fill(255, 255, 255);
+            ellipse(mouseX,mouseY,30,30);
+            }
+var btnb = {
+    x: x,
+    y: y,
+    width: 71,
+    height: 50
+};
+var drawButton = function(btn) {
+    fill(0, 0, 0);
+    rect(btn.x, btn.y, btn.width, btn.height, 57);
+    fill(255, 0, 0);
+    ellipse(btn.x+19,btn.y+13,11,11);
+    ellipse(btn.x+47,btn.y+13,11,11);
+    ellipse(btn.x+34,btn.y+34,20,20);
+    fill(0, 0, 0);
+    textSize(19);
+    textAlign(LEFT, TOP);
+    text(" ", btn.x+10, btn.y+btn.height/4);
+};
+mouseClicked = function() {
+    if (mouseX >= btnb.x && mouseX <= (btnb.x+btnb.width) &&
+        mouseY >= btnb.y && mouseY <= (btnb.y+btnb.height))     {
+        money=money+mop; 
+        lives=lives+1;
+    
+        }
+lives=lives-1;
+
+};
+drawButton(btnb);   
+if (lives<=0){
+        scene=5;
+        
+    }    
+//----------------------------
+    x+=dif;        
+    y+=dif;
+    if(x>=360){
+    dif=-dif;
+    
+    
+    }        
+    if(x<=-10){
+        dif=dif2;
+    
+    
+    }
+//-----------------------------    
+    }//game dun 
+    if (scene===5){
+        background(0, 0, 0);
+        textSize(30);
+        fill(255, 0, 0);
+        text("You died!",139,104);
+        var btnb = {
+        x: 167,
+        y: 269,
+        width: 71,
+        height: 50
+    };
+        var drawButton = function(btn) {
+        fill(255, 0, 0);
+        rect(btn.x, btn.y, btn.width, btn.height, 57);
+        fill(0, 0, 0);
+        textSize(19);
+        textAlign(LEFT, TOP);
+        text("Home", btn.x+10, btn.y+btn.height/4);
+    };
+        mouseClicked = function() {
+        if (mouseX >= btnb.x && mouseX <= (btnb.x+btnb.width) &&
+            mouseY >= btnb.y && mouseY <= (btnb.y+btnb.height))     {
+            scene=0;   
+        }
+    };
+        drawButton(btnb);
+    }//scene after game dun
+    if (money<=0){
+        background(0, 0, 0);
+        textSize(30);
+        fill(255, 0, 0);
+        text("         You're broke! \nPress restart to try again!",45,157);
+    }
+    lig = lig;    
+    lives=lives;
+};//Actually quite clean code in here
+
+//OMG 435 lines and i haven't even finished the shop yet!!!
+
+        
+    }};
+
+    // Get the canvas that Processing-js will use
+    var canvas = document.getElementById("mycanvas"); 
+    // Pass the function sketchProc (defined in myCode.js) to Processing's constructor.
+    var processingInstance = new Processing(canvas, sketchProc); 
+ </script>
+
+</html>

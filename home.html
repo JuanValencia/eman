@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html>
+    <head>
+      <title>E-Home</title>
+      <style>
+ ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #333;
+}
+
+li {
+  float: left;
+}
+
+li a, .dropbtn {
+  display: inline-block;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+li a:hover, .dropdown:hover .dropbtn {
+  background-color: rgb(80,80,80);
+}
+
+li.dropdown {
+  display: inline-block;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+.dropdown-content a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+  text-align: left;
+}
+
+.dropdown-content a:hover {background-color: #f1f1f1;}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+   #k{
+       width: 80px;
+   
+   }
+ #docs{
+ position: relative;
+ left: 710px;
+  }
+      #g{
+          width:80px;
+      }
+      #mail{
+        position: relative;
+        left:710px; 
+       
+      }
+      #khan{
+        position: relative;
+        left:710px; 
+      }
+      body {
+        background-image: url("https://media0.giphy.com/media/tj5v01sQumzCg/200w.gif?cid=82a1493bl382733a8xk84b6un250kgowzr03ri1f2d18od55&rid=200w.gif&ct=g");
+  background-repeat: repeat;
+
+        }
+      h1{
+        position: relative;
+        left:700px;
+        color: blue;
+        text-shadow: 2.5px 2px 5px rgb(0, 0, 0);
+      }
+      input{
+        position: relative;
+        left:675px;
+      }
+      p{
+        position: relative;
+        left:575px;
+     top:35px;
+     color: blue;
+     text-shadow: 4px 2px 5px rgb(0, 0, 0);
+      }
+      #od{
+        position: relative;
+        left:585px;
+     top:35px;
+     
+     
+     
+      }
+     #in2{
+      border-style: inset;
+      border-color: blue;
+      border-radius: 10px;
+     }
+     #in{
+      border-style: inset;
+      border-color: blue;
+      border-radius: 10px;
+     }
+      </style>
+      
+      
+        <meta charset="utf-8">
+        <ul>
+          <li><a href="file:///C:/Users/emanv/Documents/GitHub/eman/home.html?fname2=eman">Home</a></li>
+          <li><a href="file:///C:/Users/emanv/Documents/GitHub/eman/homeaboutme.html">All about me</a></li>
+          <li class="dropdown">
+            <a href="javascript:void(0)" class="dropbtn">Projects</a>
+            <div class="dropdown-content">
+              <a href="https://juanvalencia.github.io/eman/space_invaders_2.html">Space invaders 2</a>
+              <a href="https://juanvalencia.github.io/eman/connect_4.html">Connect 4 pictures</a>
+              <a href="https://juanvalencia.github.io/eman/game2.html">Game starting screen </a>
+              <a href="https://juanvalencia.github.io/eman/checklist.html">Checklist</a>
+              <a href="https://juanvalencia.github.io/eman/game.html">Game starting screen with pixal art</a>
+              <a href="https://juanvalencia.github.io/eman/">Super smash bros</a>
+              <a href="https://juanvalencia.github.io/eman/flutes.html">All about flutes</a>
+              
+            </div>
+          </li>
+        </ul>
+        <h1>E-Home</h1>
+        <p id='od'>Khan search: </p>
+        <form id="frm2" >
+          <input onkeydown="keyCode2(event)" type="text" name="fname2" id="in"><br>
+         
+         </form> 
+       
+        <p>Google search: </p>
+        <form id="frm1" >
+          <input onkeydown="keyCode(event)" type="text" name="fname" id = 'in2'><br>
+         
+        </form> 
+        
+        <p id="demo"></p>
+        <p id="demo2"></p>
+        <script>
+        //TO DO: WORK ON STYLE
+        function myFunction() {
+          var y = document.getElementById("frm1");
+          var text = "";
+          var i;
+          for (i = 0; i < y.length ;i++) {
+            text += y.elements[i].value ;
+          }
+          document.getElementById("demo").innerHTML = text;
+          window.open("https://www.google.com/search?q="+text);
+        }
+        function keyCode(event) {
+  var x = event.keyCode;
+  if (x == 13) {
+    myFunction()
+  }
+}
+function myFunction2() {
+          var y = document.getElementById("frm2");
+          var text = "";
+          var i;
+          for (i = 0; i < y.length ;i++) {
+            text += y.elements[i].value ;
+          }
+          document.getElementById("demo2").innerHTML = text;
+          window.open("https://www.khanacademy.org/search?search_again=1&page_search_query="+text);
+        }
+        function keyCode2(event) {
+  var x = event.keyCode;
+  if (x == 13) {
+    myFunction2()
+  }
+}
+        </script>
+
+       <div>
+        <a target="_blank" href="https://www.khanacademy.org/">
+          <p id='khan'>
+     
+              <img id='k' src='https://www.npmjs.com/npm-avatar/eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhdmF0YXJVUkwiOiJodHRwczovL3MuZ3JhdmF0YXIuY29tL2F2YXRhci81YjE3NWFiMzA5MDM4NWIzMWNjNWYwNGVmMDhmMGZjMz9zaXplPTQ5NiZkZWZhdWx0PXJldHJvIn0.xIHSBkJcytYJWIv-0fHfdzzOaxZ2NBllEntuvrnITik'>
+      </p>
+        <a target="_blank" href="https://mail.google.com/mail/u/1/#inbox">
+        <p id='mail'>
+   
+         <img id='g' src='https://img.flaticon.com/icons/png/512/281/281769.png?size=1200x630f&pad=10,10,10,10&ext=png&bg=FFFFFFFF' > 
+       
+    </p>
+    </a>
+    <a target="_blank" href="https://docs.google.com/document/u/0/?tgif=d">
+      <p id='docs'>
+ 
+       <img id='g' src='https://www.pinclipart.com/picdir/big/378-3789173_google-docs-png-google-docs-app-icon-clipart.png' > 
+     
+  </p>
+  </a> </div>
+        
+      </head>
+    <body>

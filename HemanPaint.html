@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<!-- This is based on DillingerLee's great template here:
+https://github.com/Team-Code/KA_Offline -->
+<html> 
+ <head>
+    <title>Processing.JS inside Webpages: Template</title> 
+</head>
+ <body>
+    <p align="center"> 
+	<!--This draws the Canvas on the webpage -->
+      <canvas id="mycanvas"></canvas> 
+    </p>
+ </body>
+ 
+ <!-- Run all the JavaScript stuff -->
+ <!-- Include the processing.js library -->
+ <!-- See https://khanacademy.zendesk.com/hc/en-us/articles/202260404-What-parts-of-ProcessingJS-does-Khan-Academy-support- for differences -->
+ <script src="https://cdn.jsdelivr.net/processing.js/1.4.8/processing.min.js"></script> 
+ 
+ <script>
+    var sketchProc = function(processingInstance) {
+     with (processingInstance) {
+        size(400, 400); 
+        frameRate(30);
+        //WARNING: drag mouse SLOWLY or else it will look ugly
+// code{
+var r = 0;
+var g = 0;
+var b = 0;
+text(r,220,200);
+var Button = function(config) {
+    this.x = config.x || 0;
+    this.y = config.y || 0;
+    this.width = config.width || 65;
+    this.height = config.height || 40;
+    this.label = config.label || "Click";
+};
+Button.prototype.draw = function() {
+    fill(0, 0, 0);
+    rect(this.x, this.y, this.width, this.height, 5);
+    fill(255, 255, 255);
+    textSize(19);
+    textAlign(LEFT, TOP);
+    text(this.label, this.x+10, this.y+this.height/4);
+};
+Button.prototype.isMouseInside = function() {
+    return mouseX > this.x &&
+           mouseX < (this.x + this.width) &&
+           mouseY > this.y &&
+           mouseY < (this.y + this.height);
+};
+var btn1 = new Button({
+    x: 8,
+    y: 12,
+    label: "Black"
+});
+btn1.draw();
+var Button = function(config) {
+    this.x = config.x || 0;
+    this.y = config.y || 0;
+    this.width = config.width || 65;
+    this.height = config.height || 40;
+    this.label = config.label || "Click";
+};
+Button.prototype.draw = function() {
+    fill(255, 0, 0);
+    rect(this.x, this.y, this.width, this.height, 5);
+    fill(0, 0, 0);
+    textSize(19);
+    textAlign(LEFT, TOP);
+    text(this.label, this.x+10, this.y+this.height/4);
+};
+Button.prototype.isMouseInside = function() {
+    return mouseX > this.x &&
+           mouseX < (this.x + this.width) &&
+           mouseY > this.y &&
+           mouseY < (this.y + this.height);
+};
+var btn2 = new Button({
+    x: 80,
+    y: 12,
+    label: "red"
+});
+btn2.draw();
+var Button = function(config) {
+    this.x = config.x || 0;
+    this.y = config.y || 0;
+    this.width = config.width || 65;
+    this.height = config.height || 40;
+    this.label = config.label || "Click";
+};
+Button.prototype.draw = function() {
+    fill(60, 0, 255);
+    rect(this.x, this.y, this.width, this.height, 5);
+    fill(0, 0, 0);
+    textSize(19);
+    textAlign(LEFT, TOP);
+    text(this.label, this.x+10, this.y+this.height/4);
+};
+Button.prototype.isMouseInside = function() {
+    return mouseX > this.x &&
+           mouseX < (this.x + this.width) &&
+           mouseY > this.y &&
+           mouseY < (this.y + this.height);
+};
+var btn3 = new Button({
+    x: 149,
+    y: 12,
+    label: "blue"
+});
+btn3.draw();
+var Button = function(config) {
+    this.x = config.x || 0;
+    this.y = config.y || 0;
+    this.width = config.width || 65;
+    this.height = config.height || 40;
+    this.label = config.label || "Click";
+};
+Button.prototype.draw = function() {
+    fill(0, 255, 0);
+    rect(this.x, this.y, this.width, this.height, 5);
+    fill(0, 0, 0);
+    textSize(19);
+    textAlign(LEFT, TOP);
+    text(this.label, this.x+10, this.y+this.height/4);
+};
+Button.prototype.isMouseInside = function() {
+    return mouseX > this.x &&
+           mouseX < (this.x + this.width) &&
+           mouseY > this.y &&
+           mouseY < (this.y + this.height);
+};
+var btn4 = new Button({
+    x: 218,
+    y: 12,
+    label: "green"
+});
+btn4.draw();
+var Button = function(config) {
+    this.x = config.x || 0;
+    this.y = config.y || 0;
+    this.width = config.width || 65;
+    this.height = config.height || 40;
+    this.label = config.label || "Click";
+};
+Button.prototype.draw = function() {
+    fill(255, 234, 0);
+    rect(this.x, this.y, this.width, this.height, 5);
+    fill(0, 0, 0);
+    textSize(19);
+    textAlign(LEFT, TOP);
+    text(this.label, this.x+10, this.y+this.height/4);
+};
+Button.prototype.isMouseInside = function() {
+    return mouseX > this.x &&
+           mouseX < (this.x + this.width) &&
+           mouseY > this.y &&
+           mouseY < (this.y + this.height);
+};
+var btn5 = new Button({
+    x: 289,
+    y: 12,
+    label: "yellow"
+});
+btn5.draw();
+var Button = function(config) {
+    this.x = config.x || 0;
+    this.y = config.y || 0;
+    this.width = config.width || 65;
+    this.height = config.height || 40;
+    this.label = config.label || "Click";
+};
+Button.prototype.draw = function() {
+    fill(255, 255, 255);
+    rect(this.x, this.y, this.width, this.height, 5);
+    fill(0, 0, 0);
+    textSize(19);
+    textAlign(LEFT, TOP);
+    text(this.label, this.x+10, this.y+this.height/4);
+};
+Button.prototype.isMouseInside = function() {
+    return mouseX > this.x &&
+           mouseX < (this.x + this.width) &&
+           mouseY > this.y &&
+           mouseY < (this.y + this.height);
+};
+var btn6 = new Button({
+    x: 429,
+    y: 12,
+    label: "eraser"
+});
+btn6.draw();
+var Button = function(config) {
+    this.x = config.x || 0;
+    this.y = config.y || 0;
+    this.width = config.width || 70;
+    this.height = config.height || 40;
+    this.label = config.label || "Click";
+};
+Button.prototype.draw = function() {
+    fill(255, 153, 0);
+    rect(this.x, this.y, this.width, this.height, 5);
+    fill(0, 0, 0);
+    textSize(19);
+    textAlign(LEFT, TOP);
+    text(this.label, this.x+10, this.y+this.height/4);
+};
+Button.prototype.isMouseInside = function() {
+    return mouseX > this.x &&
+           mouseX < (this.x + this.width) &&
+           mouseY > this.y &&
+           mouseY < (this.y + this.height);
+};
+var btn7 = new Button({
+    x: 356,
+    y: 12,
+    label: "orange"
+});
+btn7.draw();
+var Button = function(config) {
+    this.x = config.x || 0;
+    this.y = config.y || 0;
+    this.width = config.width || 65;
+    this.height = config.height || 40;
+    this.label = config.label || "Click";
+};
+Button.prototype.draw = function() {
+    fill(199, 199, 199);
+    rect(this.x, this.y, this.width, this.height, 5);
+    fill(0, 0, 0);
+    textSize(19);
+    textAlign(LEFT, TOP);
+    text(this.label, this.x+10, this.y+this.height/4);
+};
+Button.prototype.isMouseInside = function() {
+    return mouseX > this.x &&
+           mouseX < (this.x + this.width) &&
+           mouseY > this.y &&
+           mouseY < (this.y + this.height);
+};
+var btn8 = new Button({
+    x: 9,
+    y: 60,
+    label: "pen"
+});
+btn8.draw();
+var Button = function(config) {
+    this.x = config.x || 0;
+    this.y = config.y || 0;
+    this.width = config.width || 88;
+    this.height = config.height || 40;
+    this.label = config.label || "Click";
+};
+Button.prototype.draw = function() {
+    fill(199, 199, 199);
+    rect(this.x, this.y, this.width, this.height, 5);
+    fill(0, 0, 0);
+    textSize(19);
+    textAlign(LEFT, TOP);
+    text(this.label, this.x+10, this.y+this.height/4);
+};
+Button.prototype.isMouseInside = function() {
+    return mouseX > this.x &&
+           mouseX < (this.x + this.width) &&
+           mouseY > this.y &&
+           mouseY < (this.y + this.height);
+};
+var btn9 = new Button({
+    x: 9,
+    y: 106,
+    label: "thick pen"
+});
+btn9.draw();
+var Button = function(config) {
+    this.x = config.x || 0;
+    this.y = config.y || 0;
+    this.width = config.width || 88;
+    this.height = config.height || 40;
+    this.label = config.label || "Click";
+};
+Button.prototype.draw = function() {
+    fill(199, 199, 199);
+    rect(this.x, this.y, this.width, this.height, 5);
+    fill(0, 0, 0);
+    textSize(19);
+    textAlign(LEFT, TOP);
+    text(this.label, this.x+10, this.y+this.height/4);
+};
+Button.prototype.isMouseInside = function() {
+    return mouseX > this.x &&
+           mouseX < (this.x + this.width) &&
+           mouseY > this.y &&
+           mouseY < (this.y + this.height);
+};
+var btn10 = new Button({
+    x: 9,
+    y: 149,
+    label: "marker"
+});
+btn10.draw();
+var penSize=10;
+
+noStroke();
+draw= function() {
+  
+  fill(r, g, b);
+    if (mouseIsPressed) {
+ellipse(mouseX, mouseY, penSize, penSize); 
+
+fill(255, 0, 0);
+
+    }
+mouseClicked=function(){
+if (btn1.isMouseInside()) {
+        r=0;
+        g=0;
+        b=0;
+    
+    }else if(btn2.isMouseInside()) {
+    r=255;
+    g=0;
+    b=0;
+  
+    
+    }else if(btn3.isMouseInside()) {
+   r=0;
+   g=0;
+   b=255;
+    
+    }else if(btn4.isMouseInside()) {
+        g=255;
+        r=0;
+        b=0;
+    
+    }else if(btn5.isMouseInside()) {
+    //255, 234, 0
+    r=255;
+    g=234;
+    b=0;
+    
+    }else if(btn6.isMouseInside()) {
+    r=255;
+    g=255;
+    b=255;
+    
+    }else if(btn7.isMouseInside()) {
+    r=255;
+    g=153;
+    b=0;
+    }
+if(btn8.isMouseInside()) {
+    penSize=6;
+
+    }else if(btn9.isMouseInside()) {
+        penSize=10;
+    
+    }else if(btn10.isMouseInside()) {
+        penSize=17;
+    }
+
+
+};
+
+
+};
+
+
+//}
+
+        
+        
+    }};
+
+    // Get the canvas that Processing-js will use
+    var canvas = document.getElementById("mycanvas"); 
+    // Pass the function sketchProc (defined in myCode.js) to Processing's constructor.
+    var processingInstance = new Processing(canvas, sketchProc); 
+ </script>
+
+</html>
