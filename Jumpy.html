@@ -24,13 +24,14 @@ https://github.com/Team-Code/KA_Offline -->
         // frameRate(30);
         
         // ProgramCodeGoesHere
-      //WARNING: YOU HAVE TO TAK LESS THAN 160 MILLISECONDS TO JUMP SO PRESS THE JUMP BUTTON QUICKLY OTHERWISE IT WONT WORK!
+      //WARNING: YOU HAVE TO TAKE LESS THAN 160 MILLISECONDS TO JUMP SO PRESS THE JUMP BUTTON QUICKLY OTHERWISE IT WONT WORK!
 //pre game stuff{
+
 noStroke();
 var velocity = 0;
 var y = 329;
 var scene = 0;
-var y = 329;
+var xposa = 64;
 var keys = [];
 var e = 4;
 var xpl=0;
@@ -40,10 +41,28 @@ var keyPressed = function(){
 };
 var jump = function(){
 // velocity=-6;
-  y = min(y + velocity, 329);
+  player.y = min(player.y + velocity, 329);
 
 
 };
+var isPlayerInside = function(player) {
+    return (xposa >= player.x &&
+            xposa <= (player.x+player.width) &&
+            y >= player.y && 
+            y <= (player.y+player.height));
+};
+var player = {
+    x:64,
+    y:329,
+    height:35,
+    width:35
+}
+var coin = {
+    x:64,
+    y:329,
+    height:35,
+    width:35
+}
 // var air = false;
 var keyReleased = function(){
 keys[keyCode] = false;
@@ -208,10 +227,10 @@ drawButton(btn2);
         background(0, 255, 255);
         noStroke();
         fill(255, 255, 255);
-        rect(64,y,35,35,5);
+        rect(player.x,player.y,player.width,player.height,5);
         fill(0, 0, 0);
-        ellipse(73,y+10,9,9);
-        ellipse(91,y+10,9,9);
+        ellipse(73,player.y+10,9,9);
+        ellipse(91,player.y+10,9,9);
          //drawing stuff{
           var grass = function(x,y){
             noStroke();
@@ -254,7 +273,9 @@ drawButton(btn2);
     
          //}
       
-     
+    //  if(){
+         
+    //  }
      
         
          if (keyPressed && keys[UP]) { //this checks if up arrow is pressed
@@ -286,10 +307,10 @@ drawButton(btn2);
 y+=100;
     }
    fill(0, 0, 0);
-textSize(25);
-text(velocity,240,200);
-text(y,127,200);
-text(min(y,242),174,150);
+// textSize(25);
+// text(velocity,240,200);
+// text(y,127,200);
+// text(min(y,242),174,150);
 // text(air,65,200);
 
 };
