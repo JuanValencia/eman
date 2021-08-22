@@ -30,6 +30,7 @@ https://github.com/Team-Code/KA_Offline -->
 noStroke();
 var velocity = 0;
 var y = 329;
+var money = 0;
 var scene = 0;
 var xposa = 64;
 var keys = [];
@@ -45,24 +46,19 @@ var jump = function(){
 
 
 };
-var isPlayerInside = function(player) {
+var isPlayerInsidecoin = function(player) {
     return (xposa >= player.x &&
             xposa <= (player.x+player.width) &&
-            y >= player.y && 
+          
             y <= (player.y+player.height));
 };
 var player = {
-    x:64,
-    y:329,
+    x:xposa,
+    y:y,
     height:35,
     width:35
 }
-var coin = {
-    x:64,
-    y:329,
-    height:35,
-    width:35
-}
+
 // var air = false;
 var keyReleased = function(){
 keys[keyCode] = false;
@@ -252,15 +248,17 @@ drawButton(btn2);
           };
           var coin = function(x,y){
           fill(255, 255, 0);
-          ellipse(x,y,37,37);
+          ellipse(coinobj.x+x,y,coinobj.width,coinobj.height);
           fill(179, 172, 68);
           ellipse(x,y,25,25);
           fill(255, 255, 0);
           ellipse(x,y,23,23);
           };
+   
     var x = 0;//grass
     var x2 = 0;//spikes
     var x3 = 0;//coins
+  
     while(x<8000){
     grass(x+xpl,364);
     spike(x2+xpl,365);
@@ -273,9 +271,9 @@ drawButton(btn2);
     
          //}
       
-    //  if(){
-         
-    //  }
+     if(!isPlayerInsidecoin(player)){
+        money+=.02174;
+     }
      
         
          if (keyPressed && keys[UP]) { //this checks if up arrow is pressed
@@ -307,16 +305,21 @@ drawButton(btn2);
 y+=100;
     }
    fill(0, 0, 0);
-// textSize(25);
-// text(velocity,240,200);
+textSize(19);
+text("Money: "+round(money),8,8);
 // text(y,127,200);
 // text(min(y,242),174,150);
 // text(air,65,200);
 
 };
 //Nice, 230 lines so far
-
-
+ var coinobj = {
+    x:0,
+    y:329,
+    height:37,
+    width:37
+}
+//stop programming here
     }};
 
     // Get the canvas that Processing-js will use
