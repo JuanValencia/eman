@@ -22,12 +22,13 @@ https://github.com/Team-Code/KA_Offline -->
      with (processingInstance) {
         size(400, 400); 
         // frameRate(30);
-        
+        //TO DO: fix double jumping glitch
         // ProgramCodeGoesHere
       //WARNING: YOU HAVE TO TAKE LESS THAN 160 MILLISECONDS TO JUMP SO PRESS THE JUMP BUTTON QUICKLY OTHERWISE IT WONT WORK!
 //pre game stuff{
-
-    noStroke();
+var jumpy = false
+var score=0;
+noStroke();
 var coinobj = {
     x:0,
     y:329,
@@ -36,8 +37,8 @@ var coinobj = {
 }
 var velocity = 0;
 var y = 329;
-var money = 0;
-var scene = 0;
+var money = 100;
+var scene = 6;
 var xposa = 64;
 var keys = [];
 var e = 4;
@@ -52,15 +53,20 @@ var jump = function(){
 
 
 };
-
+var playerR = 255
+var playerG = 255
+var playerB = 255
 var player = {
     x:xposa,
     y:y,
     height:35,
     width:35
+   
+   
 }
-
-// var air = false;
+var greenbought = "Cost: 20";
+var greencost=20;
+var air = false;
 var keyReleased = function(){
 keys[keyCode] = false;
 };
@@ -68,17 +74,23 @@ keys[keyCode] = false;
 frameRate(60);
 //}
 draw= function() {
-  var isPlayerInsidecoin = function(player) {
-    return (x >= player.x &&
-            x <= (player.x+player.width) &&
+if (jumpy ===true){
+    jump();
+}
+//   var isPlayerInsidecoin = function(player) {
+//     return (x >= player.x &&
+//             x <= (player.x+player.width) &&
           
-            y <= (player.y+player.height));
-};
-//   if(y<329){
+//             y <= (player.y+player.height));
+// };
+//   if(keyIsPressed){
 //   air=true;
 // }else{
 //     air=false;
 // }
+if(player.y<329){
+    air=true
+}else{air=false}
     if(scene===0){
         background(0, 255, 255);
         fill(0, 0, 0);
@@ -143,7 +155,7 @@ mouseClicked = function() {
     scene = 1; 
     
     } else if (isMouseInside(btn3)&&scene===0){
-        scene=2;
+        scene=6;
         
     
     }
@@ -200,14 +212,29 @@ drawButton(btn2);
     width: 80,
     height: 50
 };
-var drawButton = function(btn) {
-    fill(0, 255, 102);
+ var btn3 = {
+    x: 21,
+    y: 122,
+    width: 100,
+    height: 157
+};
+var drawButton2 = function(btn) {
+    fill(0, 255,0);
     rect(btn.x, btn.y, btn.width, btn.height, 5);
     fill(0, 0, 0);
     textSize(19);
     textAlign(LEFT, TOP);
-    text(" Home", btn.x+10, btn.y+btn.height/4);
+    text(" Back", btn.x+10, btn.y+btn.height/4);
 };
+var drawButton3 = function(btn) {
+    fill(0,0,0);
+    rect(btn.x, btn.y, btn.width, btn.height, 5);
+    fill(255, 255, 255);
+    textSize(19);
+    textAlign(LEFT, TOP);
+    text("  Green \n   Dude\n"+greenbought, btn.x+10, btn.y+btn.height/4);
+};
+
 var isMouseInside = function(btn) {
     return (mouseX >= btn.x &&
             mouseX <= (btn.x+btn.width) &&
@@ -217,18 +244,36 @@ var isMouseInside = function(btn) {
 mouseClicked = function() {
     if (isMouseInside(btn2))     {
         
-        scene=0;
+        scene=6;
     
-    } 
+    
+        
+    } else if(isMouseInside(btn3)&&money>=20){
+        greenbought=" (Owned)"
+        money-=greencost
+        greencost=0
+        playerR=0
+        playerG=255
+        playerB=0
+        //buy skin
+    }
+
+    
 };
-drawButton(btn2);
-    
-    }//shop not dun
+drawButton2(btn2);
+  drawButton3(btn3);  
+ fill(0,255,0)
+rect(54, 236, 35, 35, 5)
+fill(0)
+ellipse(63,246,9,9);
+     ellipse(80,246,9,9);
+     
+    }//shop skins not dun
     if(scene===3){
-       
+        score+=1/60
         background(0, 255, 255);
         noStroke();
-        fill(255, 255, 255);
+        fill(playerR, playerG, playerB);
         rect(player.x,player.y,player.width,player.height,5);
         fill(0, 0, 0);
         ellipse(73,player.y+10,9,9);
@@ -262,13 +307,28 @@ drawButton(btn2);
           };
          
     var x = 0;//grass
-   
+    var x2 = 260;//spikes
+    var x3=430;//coins
   
     while(x<8000){
     grass(x+xpl,364);
+     spike(xpl+x2-20,365);
+    coin(xpl+x3-20,263);
     
+    if(player.x+35>=xpl+x2&&player.x<=xpl+x2&&player.y>=365-37){
+      scene=4;
+//   println("")
+       
+   }
+   
+    if(player.x+35>=xpl+x3&&player.x<=xpl+x3&&player.y<=365-37){
+      
+   money+=1/18;
+       
+   }
     x+=35;
-  
+  x2+=170;
+  x3+=170*4;
     }
      grass(xpl,364);
     spike(xpl+430-20,365);
@@ -280,45 +340,46 @@ drawButton(btn2);
     xpl-=2;
    
   //negative is <-- that way
-   if(player.x+35>=xpl+430&&player.x<=xpl+430){
+  if(player.x+35>=xpl+430&&player.x<=xpl+430){
     //   scene=4;
     if(player.y>=365-37){
-   println("");
+  println("");
     }else{
         money+=1/18;
     }
-   }//spike w/ coin
-  if(player.x+35>=xpl+260&&player.x<=xpl+260&&player.y>=365-37){
-    //   scene=4;
-   println("")
-       
-   }
+  }//spike w/ coin
+ 
     if(player.x+35>=xpl+600&&player.x<=xpl+600&&player.y>=365-37){
-    //   scene=4;
-   println("")
+      scene=4;
+  println("")
        
-   }
+  }
    
-   if(xpl<-600){
-       xpl=0;
-      
+  if(xpl<-7600){
+      scene=5;
+      xpl=0;
+    //   println("bap")
        
-   }
+  }
          //}
-      if(!x >= player.x &&x <= (player.x+player.width) &&y <= (player.y+player.height)) {  //  if(!isPlayerInsidecoin(player)){
-        money+=.02174;
-      }
+    //   if(!x >= player.x &&x <= (player.x+player.width) &&y <= (player.y+player.height)) {  //  if(!isPlayerInsidecoin(player)){
+    //     money+=.02174;
+    //   }
      
         
          if (keyPressed && keys[UP]) { //this checks if up arrow is pressed
-    jump();
-    
+    jumpy=true;
+   
     
         
     
     }else{
     velocity=-6;
     }//check
+ if(xpl<=-7700){
+        scene=5;
+        println("work")
+    }
 //  if(velocity>=6){
 //     velocity=0;
 //  y = 329;
@@ -326,127 +387,25 @@ drawButton(btn2);
 //  }
     }//game not dun
     if(scene===4){
+        score=0;
+        xpl=0;
         background(0,0,0)
-    }//death scene not dun
-    if(y<=329){
-   velocity+=g;
-
-    }else{
-    //   y+=6;
-    }
-  if(y<=242){
-  
-y+=100;
-    }
-   fill(0, 0, 0);
-textSize(19);
-text("Money: "+round(money),8,8);
-text(coinobj.x,127,200);
-text(xpl,200,200)
-text(xpl+770-20,174,150);
-// text(air,65,200);
-//  println(xpl+770-20)
-};
-  
-//   if(y<329){
-//   air=true;
-// }else{
-//     air=false;
-// }
-    if(scene===0){
-        background(0, 255, 255);
-        fill(0, 0, 0);
-        textSize(40);
-        text("Jumpy",140,101);
+        fill(255,0,0)
+        textSize(56)
+        text("You died",90,100)
     var btn1 = {
     x: 146,
-    y: 146+30,
+    y: 225+30,
     width: 100,
-    height: 50
-};
-var btn2 = {
-    x: 145,
-    y: 200+30,
-    width: 100,
-    height: 50
-};
-var btn3 = {
-    x: 145,
-    y: 255+30,
-    width: 100,
-    height: 50
-};
-
-var drawButton = function(btn) {
-    fill(0, 255, 55);
-    rect(btn.x, btn.y, btn.width, btn.height, 5);
-    fill(0, 0, 0);
-    textSize(19);
-    textAlign(LEFT, TOP);
-    text("    Play", btn.x+10, btn.y+btn.height/4);
-};
-var drawButton2 = function(btn) {
-    fill(4, 255, 0);
-    rect(btn.x, btn.y, btn.width, btn.height, 5);
-    fill(0, 0, 0);
-    textSize(19);
-    textAlign(LEFT, TOP);
-    text("  How to", btn.x+10, btn.y+btn.height/4);
-};
-var drawButton3 = function(btn) {
-    fill(0, 255, 26);
-    rect(btn.x, btn.y, btn.width, btn.height, 5);
-    fill(0, 0, 0);
-    textSize(19);
-    textAlign(LEFT, TOP);
-    text("  Shop", btn.x+10, btn.y+btn.height/4);
-};
-
-var isMouseInside = function(btn) {
-    return (mouseX >= btn.x &&
-            mouseX <= (btn.x+btn.width) &&
-            mouseY >= btn.y && 
-            mouseY <= (btn.y+btn.height));
-};
-mouseClicked = function() {
-    if (isMouseInside(btn1)&&scene===0){
-        scene=3;
-        
-    } else if (isMouseInside(btn2)&&scene===0){
-        
-    scene = 1; 
-    
-    } else if (isMouseInside(btn3)&&scene===0){
-        scene=2;
-        
-    
-    }
-};
-drawButton(btn1);
-drawButton2(btn2);
-drawButton3(btn3);
-
-    }//first scene not dun
-    if(scene===1){
-        background(0, 255, 255);
-        textSize(40);
-        text("How To",134,26);
-        textSize(19);
-        text("          Press the up key to jump\nCollect coins to buy skins at the shop\n          If you hit a spike, you die",48,144);
-   
-var btn2 = {
-    x: 170,
-    y: 312,
-    width: 80,
     height: 50
 };
 var drawButton = function(btn) {
-    fill(0, 255, 102);
+    fill(255, 0,0);
     rect(btn.x, btn.y, btn.width, btn.height, 5);
     fill(0, 0, 0);
     textSize(19);
     textAlign(LEFT, TOP);
-    text(" Home", btn.x+10, btn.y+btn.height/4);
+    text("Continue?", btn.x+10, btn.y+btn.height/4);
 };
 var isMouseInside = function(btn) {
     return (mouseX >= btn.x &&
@@ -454,17 +413,15 @@ var isMouseInside = function(btn) {
             mouseY >= btn.y && 
             mouseY <= (btn.y+btn.height));
 };
-mouseClicked = function() {
-    if (isMouseInside(btn2))     {
-        
+  mouseClicked = function() {
+    if (isMouseInside(btn1)){
         scene=0;
-    
+        
     } 
 };
-drawButton(btn2);
-    
-    }//how to dun
-    if(scene===2){
+drawButton(btn1)
+    }//death scene not dun
+    if(scene===6) {
         background(0, 255, 255);
     textSize(40);
     text("Shop",160,46);
@@ -474,14 +431,29 @@ drawButton(btn2);
     width: 80,
     height: 50
 };
-var drawButton = function(btn) {
-    fill(0, 255, 102);
+ var btn3 = {
+    x: 21,
+    y: 122,
+    width: 80,
+    height: 50
+};
+var drawButton2 = function(btn) {
+    fill(0, 255,0);
     rect(btn.x, btn.y, btn.width, btn.height, 5);
     fill(0, 0, 0);
     textSize(19);
     textAlign(LEFT, TOP);
     text(" Home", btn.x+10, btn.y+btn.height/4);
 };
+var drawButton3 = function(btn) {
+    fill(0,255,0);
+    rect(btn.x, btn.y, btn.width, btn.height, 5);
+    fill(0, 0, 0);
+    textSize(19);
+    textAlign(LEFT, TOP);
+    text(" Skins", btn.x+10, btn.y+btn.height/4);
+};
+
 var isMouseInside = function(btn) {
     return (mouseX >= btn.x &&
             mouseX <= (btn.x+btn.width) &&
@@ -493,87 +465,94 @@ mouseClicked = function() {
         
         scene=0;
     
-    } 
-};
-drawButton(btn2);
     
-    }//shop not dun
-    if(scene===3){
+        
+    } else if(isMouseInside(btn3)){
+        scene=2
+        //buy skin
+    }
+
+    
+};
+drawButton2(btn2);
+  drawButton3(btn3);  
+//  fill(0,255,0)
+// rect(54, 236, 35, 35, 5)
+// fill(0)
+// ellipse(63,246,9,9);
+//      ellipse(80,246,9,9);
+     
+    }//shop main
+   if(scene===7){
        
         background(0, 255, 255);
-        noStroke();
-        fill(255, 255, 255);
-        rect(player.x,player.y,player.width,player.height,5);
-        fill(0, 0, 0);
-        ellipse(73,player.y+10,9,9);
-        ellipse(91,player.y+10,9,9);
-         //drawing stuff{
-          var grass = function(x,y){
-            noStroke();
-            fill(122, 0, 0);
-        rect(x,y,35,35,2);
-        fill(0, 255, 17);
-        rect(x+0,y+0,5,5);
-        rect(x+5,y+0,5,5);
-        rect(x+0,y+0,35,5);
-        rect(x+5,y+0,30,10);
-        fill(122, 0, 17);
-        rect(x+10,y+5,5,5);
-        rect(x+26,y+5,5,5);
-        rect(x+30,y+5,5,5);
-        };
-          var spike = function(x,y){
-          fill(148, 148, 148);
-          triangle(x+-25,y,x+-7,y+-37,x+10,y);
-          };
-          var coin = function(x,y){
-          fill(255, 255, 0);
-          ellipse(coinobj.x+x,y,coinobj.width,coinobj.height);
-          fill(179, 172, 68);
-          ellipse(x,y,25,25);
-          fill(255, 255, 0);
-          ellipse(x,y,23,23);
-          };
-   
-    var x = 0;//grass
-    var x2 = 0;//spikes
-    var x3 = 0;//coins
-  
-    while(x<8000){
-    grass(x+xpl,364);
-    spike(x2+xpl,365);
-    coin(x3+xpl,263);
-    x+=35;
-    x2+=200;
-    x3+=800;
+    textSize(40);
+    text("Shop",160,46);
+    var btn2 = {
+    x: 170,
+    y: 312,
+    width: 80,
+    height: 50
+};
+ var btn3 = {
+    x: 21,
+    y: 122,
+    width: 100,
+    height: 157
+};
+var drawButton2 = function(btn) {
+    fill(0, 255,0);
+    rect(btn.x, btn.y, btn.width, btn.height, 5);
+    fill(0, 0, 0);
+    textSize(19);
+    textAlign(LEFT, TOP);
+    text(" Back", btn.x+10, btn.y+btn.height/4);
+};
+var drawButton3 = function(btn) {
+    fill(0,0,0);
+    rect(btn.x, btn.y, btn.width, btn.height, 5);
+    fill(255, 255, 255);
+    textSize(19);
+    textAlign(LEFT, TOP);
+    text("  Green \n   Dude\n"+greenbought, btn.x+10, btn.y+btn.height/4);
+};
+
+var isMouseInside = function(btn) {
+    return (mouseX >= btn.x &&
+            mouseX <= (btn.x+btn.width) &&
+            mouseY >= btn.y && 
+            mouseY <= (btn.y+btn.height));
+};
+mouseClicked = function() {
+    if (isMouseInside(btn2))     {
+        
+        scene=6;
+    
+    
+        
+    } else if(isMouseInside(btn3)&&money>=20){
+        greenbought=" (Owned)"
+        money-=greencost
+        greencost=0
+        playerR=0
+        playerG=255
+        playerB=0
+        //buy skin
     }
-    xpl-=2;
+
     
-         //}
-      
-     if(!isPlayerInsidecoin(player)){
-        money+=.02174;
-     }
+};
+drawButton2(btn2);
+  drawButton3(btn3);  
+ fill(0,255,0)
+rect(54, 236, 35, 35, 5)
+fill(0)
+ellipse(63,246,9,9);
+     ellipse(80,246,9,9);
      
-        
-         if (keyPressed && keys[UP]) { //this checks if up arrow is pressed
-    jump();
     
-    
-        
-    
-    }else{
-    velocity=-6;
-    }//check
-//  if(velocity>=6){
-//     velocity=0;
-//  y = 329;
- 
-//  }
-    }//game not dun
-    if(scene===4){
-        
-    }//death scene not dun
+   }//shop eyes(add button for this to shop main)
+   
     if(y<=329){
    velocity+=g;
 
@@ -587,20 +566,53 @@ y+=100;
    fill(0, 0, 0);
 textSize(19);
 text("Money: "+round(money),8,8);
-// text(y,127,200);
-// text(min(y,242),174,150);
-// text(air,65,200);
+text("Score: "+round(score),130,8);
+text(air,127,200);
+text(y,200,200)
+// text(xpl+770-20,174,150);
+// text(x,7,200);
+ 
+ if(scene===5){
+         var btn1 = {
+    x: 146,
+    y: 188+30,
+    width: 100,
+    height: 50
+};
+      background(197,197,197)
+  fill(0,255,0)
+  textSize(30)
+  text("You won this stage! ",58,150)
+ var drawButton = function(btn) {
+    fill(0, 255, 55);
+    rect(btn.x, btn.y, btn.width, btn.height, 5);
+    fill(0, 0, 0);
+    textSize(19);
+    textAlign(LEFT, TOP);
+    text("Continue?", btn.x+10, btn.y+btn.height/4);
+};
+var isMouseInside = function(btn) {
+    return (mouseX >= btn.x &&
+            mouseX <= (btn.x+btn.width) &&
+            mouseY >= btn.y && 
+            mouseY <= (btn.y+btn.height));
+};
+mouseClicked = function() {
+    if (isMouseInside(btn1)){
+        scene=3;
+        
+    } 
+};
+drawButton(btn1)
+  }//stage scene nd
 
+
+//  println(xpl+770-20)
 };
 //Nice, 230 lines so far
- var coinobj = {
-    x:0,
-    y:329,
-    height:37,
-    width:37
-}
+ 
 //stop programming here
-    };
+    }};
 
     // Get the canvas that Processing-js will use
     var canvas = document.getElementById("mycanvas"); 
