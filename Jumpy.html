@@ -22,14 +22,68 @@ https://github.com/Team-Code/KA_Offline -->
      with (processingInstance) {
         size(400, 400); 
         // frameRate(30);
-        //TO DO: fix double jumping glitch
+        
         // ProgramCodeGoesHere
       //WARNING: YOU HAVE TO TAKE LESS THAN 160 MILLISECONDS TO JUMP SO PRESS THE JUMP BUTTON QUICKLY OTHERWISE IT WONT WORK!
 //pre game stuff{
-var jumpy = false
+var eye1 = function(x,y){
+     ellipse(x+105,y,9,9);
+     ellipse(x+17+105,y,9,9);};
+
+ var eye2 = function(x,y){
+fill(255, 0, 0);
+ ellipse(x+105,y,9,9);
+     ellipse(x+17+105,y,9,9);
+     fill(60, 0, 255);
+     ellipse(x+105,y,3,9);
+     ellipse(x+17+105,y,3,9);
+};
+
+  var eye3 = function(xposit,yposit){
+fill(150, 150, 150);
+ ellipse(xposit+105,yposit,9,9);
+     ellipse(xposit+17+105,yposit,9,9);
+    //  fill(125, 125, 125);
+    stroke(150, 150, 150);
+     line(xposit+18+105,yposit,xposit+0+105,yposit);
+    stroke(217, 0, 255);
+    noFill();
+   
+    ellipse(xposit+105,yposit,9,9);
+     ellipse(xposit+105,yposit,5,5);
+      ellipse(xposit+122,yposit,9,9);
+     ellipse(xposit+122,yposit,5,5);
+     fill(255, 255, 255);
+       ellipse(xposit+105,yposit,9,9);
+     ellipse(xposit+105,yposit,3,3);
+      ellipse(xposit+122,yposit,8,8);
+     ellipse(xposit+122,yposit,3,3);
+    //  ellipse(x+105,y,3,9);
+    //  ellipse(x+17+105,y,3,9);
+    // fill(0)
+    noStroke();
+};
+
+//TO DO: FIX VARIABLES ON SKINS AND ADD HYPNO GLASSES SKIN IN EYES
 var score=0;
 noStroke();
-var coinobj = {
+  var lock  = function(x,y,rotateNum){
+rotate(rotateNum);
+fill(133, 133, 133);
+rect(x,y,80,80,10);
+ noFill();
+    stroke(166, 166, 166);
+    strokeWeight(18);
+ arc(x+39, y-0, 61, 85, 161, 377);  
+noStroke();
+fill(133, 133, 133);
+rect(x,y,80,80,10);
+fill(0, 0, 0);
+ellipse(x+38,y+28,20,20);
+rect(x+34,y+28,10,26);
+rotate(-rotateNum)
+};
+ var  coinobj = {
     x:0,
     y:329,
     height:37,
@@ -37,13 +91,14 @@ var coinobj = {
 }
 var velocity = 0;
 var y = 329;
-var money = 100;
-var scene = 6;
+
+var scene = 0;
 var xposa = 64;
 var keys = [];
 var e = 4;
 var xpl=0;
 var g = 0.2;
+
 var keyPressed = function(){
    setTimeout(function(){ keys[keyCode] = true; }, 160);
 };
@@ -53,9 +108,7 @@ var jump = function(){
 
 
 };
-var playerR = 255
-var playerG = 255
-var playerB = 255
+
 var player = {
     x:xposa,
     y:y,
@@ -64,34 +117,35 @@ var player = {
    
    
 }
-var greenbought = "Cost: 20";
-var greencost=20;
-var air = false;
+var saveCode = [true,false,false,0,false,false,false,255,255,255,'Cost: 20',20,'Cost: 20',20,'Cost: 20',20,0,10,10,'Cost: 10','Cost: 10'
+    
+    ]
+
+// var eye1Bought=true;var eye2Bought=false;var eye3Bought=false;var money = 1000;var rbought = false;var gbought = false;var bbought = false;var playerR = 255;var playerG = 255;var playerB = 255
+// var greenbought = 'Cost: 20';var greencostb=20;var redbought = 'Cost: 20';var redcost=20;var bluebought = 'Cost: 20';var bluecostbp=20;var eyeNum = 0;var eye2Cost = 10;var eye3Cost = 10;var bab = 'Cost: 10';var nib = 'Cost: 10';
+
+// var air = false;
 var keyReleased = function(){
 keys[keyCode] = false;
 };
-
+//TO DO: fix BOTH shops
 frameRate(60);
 //}
 draw= function() {
-if (jumpy ===true){
-    jump();
-}
+
 //   var isPlayerInsidecoin = function(player) {
 //     return (x >= player.x &&
 //             x <= (player.x+player.width) &&
           
 //             y <= (player.y+player.height));
 // };
-//   if(keyIsPressed){
+//   if(y<329){
 //   air=true;
 // }else{
 //     air=false;
 // }
-if(player.y<329){
-    air=true
-}else{air=false}
-    if(scene===0){
+ 
+      if(scene===0){
         background(0, 255, 255);
         fill(0, 0, 0);
         textSize(40);
@@ -114,7 +168,12 @@ var btn3 = {
     width: 100,
     height: 50
 };
-
+var btn4 = {
+    x: 304,
+    y: 15,
+    width: 83,
+    height: 40.0
+};
 var drawButton = function(btn) {
     fill(0, 255, 55);
     rect(btn.x, btn.y, btn.width, btn.height, 5);
@@ -139,7 +198,14 @@ var drawButton3 = function(btn) {
     textAlign(LEFT, TOP);
     text("  Shop", btn.x+10, btn.y+btn.height/4);
 };
-
+var drawButton4 = function(btn) {
+    fill(0, 255, 26);
+    rect(btn.x, btn.y, btn.width, btn.height, 5);
+    fill(0, 0, 0);
+    textSize(19);
+    textAlign(LEFT, TOP);
+    text("  Save", btn.x+10, btn.y+btn.height/4);
+};
 var isMouseInside = function(btn) {
     return (mouseX >= btn.x &&
             mouseX <= (btn.x+btn.width) &&
@@ -159,14 +225,18 @@ mouseClicked = function() {
         
     
     }
+     if (isMouseInside(btn4)&&scene===0){
+        println("var saveCode = ["+saveCode+"]")
+        
+    }
 };
 drawButton(btn1);
 drawButton2(btn2);
 drawButton3(btn3);
-
-    }//first scene not dun
-    if(scene===1){
-        background(0, 255, 255);
+drawButton4(btn4);
+    }//first scene dun
+      if(scene===1){
+         background(0, 255, 255);
         textSize(40);
         text("How To",134,26);
         textSize(19);
@@ -202,23 +272,77 @@ mouseClicked = function() {
 drawButton(btn2);
     
     }//how to dun
-    if(scene===2){
+      if(scene===2){
+       
         background(0, 255, 255);
     textSize(40);
     text("Shop",160,46);
+  
     var btn2 = {
     x: 170,
-    y: 312,
+    y: 334,
     width: 80,
     height: 50
 };
- var btn3 = {
+ 
+   var btn3 = {
     x: 21,
-    y: 122,
+    y: 104,
     width: 100,
-    height: 157
+    height: 67
 };
-var drawButton2 = function(btn) {
+    var btn4 = {
+    x: 21,
+    y: 194,
+    width: 100,
+    height: 67
+};//red
+     var btn5 = {
+    x: 21,
+    y: 257,
+    width: 100,
+    height: 67
+};
+ 
+   var btn6 = {
+    x: 21+133,
+    y: 104,
+    width: 100,
+    height: 67
+};
+   var btn7 = {
+    x: 21+133,
+    y: 194,
+    width: 100,
+    height: 67
+};//green
+   var btn8 = {
+    x: 21+133,
+    y: 257,
+    width: 100,
+    height: 67
+};
+
+   var btn9 = {
+    x: 21+(133*2),
+    y: 104,
+    width: 100,
+    height: 67
+};
+   var btn10 = {
+    x:  21+(133*2),
+    y: 194,
+    width: 100,
+    height: 67
+};//blue
+   var btn11 = {
+    x: 21+(133*2),
+    y: 257,
+    width: 100,
+    height: 67
+};
+
+   var drawButton2 = function(btn) {
     fill(0, 255,0);
     rect(btn.x, btn.y, btn.width, btn.height, 5);
     fill(0, 0, 0);
@@ -226,58 +350,209 @@ var drawButton2 = function(btn) {
     textAlign(LEFT, TOP);
     text(" Back", btn.x+10, btn.y+btn.height/4);
 };
-var drawButton3 = function(btn) {
+
+ var drawButton3 = function(btn) {
     fill(0,0,0);
     rect(btn.x, btn.y, btn.width, btn.height, 5);
     fill(255, 255, 255);
     textSize(19);
     textAlign(LEFT, TOP);
-    text("  Green \n   Dude\n"+greenbought, btn.x+10, btn.y+btn.height/4);
+    text("Buy Red\n"+saveCode[12], btn.x+10, btn.y+btn.height/4);
+};
+  var drawButton4 = function(btn) {
+    fill(0,0,0);
+    rect(btn.x, btn.y, btn.width, btn.height, 5);
+    fill(255, 255, 255);
+    textSize(19);
+    textAlign(LEFT, TOP);
+    text("      ↑", btn.x+10, btn.y+btn.height/4);
+};
+  var drawButton5 = function(btn) {
+    fill(0,0,0);
+    rect(btn.x, btn.y, btn.width, btn.height, 5);
+    fill(255, 255, 255);
+    textSize(19);
+    textAlign(LEFT, TOP);
+    text("      ↓", btn.x+10, btn.y+btn.height/4);
 };
 
-var isMouseInside = function(btn) {
+  var drawButton6 = function(btn) {
+    fill(0,0,0);
+    rect(btn.x, btn.y, btn.width, btn.height, 5);
+    fill(255, 255, 255);
+    textSize(19);
+    textAlign(LEFT, TOP);
+    text("Buy Green\n"+saveCode[10], btn.x+10, btn.y+btn.height/4);
+};
+  var drawButton7 = function(btn) {
+    fill(0,0,0);
+    rect(btn.x, btn.y, btn.width, btn.height, 5);
+    fill(255, 255, 255);
+    textSize(19);
+    textAlign(LEFT, TOP);
+    text("      ↑", btn.x+10, btn.y+btn.height/4);
+};
+  var drawButton8 = function(btn) {
+    fill(0,0,0);
+    rect(btn.x, btn.y, btn.width, btn.height, 5);
+    fill(255, 255, 255);
+    textSize(19);
+    textAlign(LEFT, TOP);
+    text("      ↓", btn.x+10, btn.y+btn.height/4);
+};
+
+  var drawButton9 = function(btn) {
+    fill(0,0,0);
+    rect(btn.x, btn.y, btn.width, btn.height, 5);
+    fill(255, 255, 255);
+    textSize(19);
+    textAlign(LEFT, TOP);
+    text("Buy Blue\n"+saveCode[14], btn.x+10, btn.y+btn.height/4);
+};
+  var drawButton10 = function(btn) {
+    fill(0,0,0);
+    rect(btn.x, btn.y, btn.width, btn.height, 5);
+    fill(255, 255, 255);
+    textSize(19);
+    textAlign(LEFT, TOP);
+    text("      ↑", btn.x+10, btn.y+btn.height/4);
+};
+  var drawButton11 = function(btn) {
+    fill(0,0,0);
+    rect(btn.x, btn.y, btn.width, btn.height, 5);
+    fill(255, 255, 255);
+    textSize(19);
+    textAlign(LEFT, TOP);
+    text("      ↓", btn.x+10, btn.y+btn.height/4);
+};//rbought4, bbought5, and gbought6
+
+  var isMouseInside = function(btn) {
     return (mouseX >= btn.x &&
             mouseX <= (btn.x+btn.width) &&
             mouseY >= btn.y && 
             mouseY <= (btn.y+btn.height));
-};
-mouseClicked = function() {
-    if (isMouseInside(btn2))     {
+};// redcost is 11 bluecostbp is 13 and greencost is 15
+
+  mouseClicked = function() {
+ if (isMouseInside(btn2)){
         
         scene=6;
     
     
+        } else if(isMouseInside(btn3)&&saveCode[3]>=saveCode[11]){
+        saveCode[4]=true
+        saveCode[12]=" (Owned)"
         
-    } else if(isMouseInside(btn3)&&money>=20){
-        greenbought=" (Owned)"
-        money-=greencost
-        greencost=0
-        playerR=0
-        playerG=255
-        playerB=0
+        saveCode[3]-=saveCode[11]
+        saveCode[11]=0
+        // greencost=0
+      //unlock red
         //buy skin
-    }
-
+    }else if(isMouseInside(btn6)&&saveCode[3]>=saveCode[13]){
+        saveCode[6]=true;
+        saveCode[10]=" (Owned)"
+        saveCode[3]-=saveCode[15]
+       saveCode[15]=0
+        
+      //unlock red
+        //buy skin
+        }if (isMouseInside(btn5)&&saveCode[4]===true&&saveCode[7]>0){
+        
+        saveCode[7]--;
     
-};
-drawButton2(btn2);
-  drawButton3(btn3);  
- fill(0,255,0)
-rect(54, 236, 35, 35, 5)
-fill(0)
-ellipse(63,246,9,9);
-     ellipse(80,246,9,9);
+    
+        }else if (isMouseInside(btn4)&&saveCode[7]<255&& saveCode[4]===true)     {
+        
+        saveCode[7]++;
+    
      
+        
+    }if (isMouseInside(btn7)&&saveCode[6]===true&&saveCode[8]<255){
+        
+       saveCode[8]++;
+    
+    
+        }  else if (isMouseInside(btn8)&&saveCode[6]===true){
+        
+        saveCode[8]--;
+    
+     
+        
+    }if(isMouseInside(btn9)&&saveCode[3]>=saveCode[13]){
+    bluecost=true
+    saveCode[14]="(Owned)"
+saveCode[5]=true
+    saveCode[3]-=saveCode[13];
+   saveCode[13]=0;
+}if (isMouseInside(btn10)&&bluecost===true&&saveCode[9]<255){
+        
+        saveCode[9]++;
+    
+    }  else if (isMouseInside(btn11)&&bluecost===true){
+        
+        saveCode[9]--;
+    
+     
+        
+    }
+};
+
+// text(rbought,200,200)
+drawButton2(btn2);
+ 
+  drawButton3(btn3);  
+  drawButton4(btn4);
+  drawButton5(btn5);  
+  
+  drawButton6(btn6);
+  drawButton7(btn7);  
+  drawButton8(btn8);
+   
+  drawButton9(btn9);
+  drawButton10(btn10);  
+  drawButton11(btn11);
+fill(0)
+text("You: ",51,40)
+ fill(saveCode[7],saveCode[8],saveCode[9])
+rect(99, 36, 35, 35, 5)
+fill(0)  //MOVE THIS TO TOP LEFT
+eye1(3,45);
+
+ fill(255)
+ text(saveCode[7],50,243);   
+  text(saveCode[8],185,243);   
+   text(saveCode[9],185+133,243);   
+  
+   if(!saveCode[4]){
+      lock(4,237,-0.1)
+    //draw lock
+   }
+     if(!saveCode[6]){
+      lock(184,213,0.1)
+    //draw lock
+   }
+      if(!saveCode[5]){
+      lock(184+85,268,-0.1)
+    //draw lock
+   }
     }//shop skins not dun
-    if(scene===3){
+      if(scene===3){
         score+=1/60
         background(0, 255, 255);
         noStroke();
-        fill(playerR, playerG, playerB);
+        fill(saveCode[7],saveCode[8], saveCode[9]);
         rect(player.x,player.y,player.width,player.height,5);
         fill(0, 0, 0);
-        ellipse(73,player.y+10,9,9);
-        ellipse(91,player.y+10,9,9);
+       if(saveCode[16]<=1){
+        eye1(-32.5,player.y+10);
+       
+           }
+       if (saveCode[16]===2){
+              eye2(-32.5,player.y+10)
+       }
+        if (saveCode[16]===3){
+           eye3(-32.5,player.y+10)
+       }
          //drawing stuff{
           var grass = function(x,y){
             noStroke();
@@ -322,9 +597,9 @@ ellipse(63,246,9,9);
    }
    
     if(player.x+35>=xpl+x3&&player.x<=xpl+x3&&player.y<=365-37){
-      
-   money+=1/18;
-       
+    //   saveCode[3]=round(saveCode[3])
+   saveCode[3]+=100000000000000000000001/1800000000000000000000000;
+        // saveCode[3]=round(saveCode[3])
    }
     x+=35;
   x2+=170;
@@ -342,11 +617,11 @@ ellipse(63,246,9,9);
   //negative is <-- that way
   if(player.x+35>=xpl+430&&player.x<=xpl+430){
     //   scene=4;
-    if(player.y>=365-37){
-  println("");
-    }else{
-        money+=1/18;
-    }
+//     if(player.y>=365-37){
+// //   println("");
+//     }else{
+//         // money+=1/18;
+//     }
   }//spike w/ coin
  
     if(player.x+35>=xpl+600&&player.x<=xpl+600&&player.y>=365-37){
@@ -368,25 +643,24 @@ ellipse(63,246,9,9);
      
         
          if (keyPressed && keys[UP]) { //this checks if up arrow is pressed
-    jumpy=true;
-   
+    jump();
+    if(xpl<=-7700){
+        scene=5;
+        println("work")
+    }
     
         
     
     }else{
     velocity=-6;
     }//check
- if(xpl<=-7700){
-        scene=5;
-        println("work")
-    }
 //  if(velocity>=6){
 //     velocity=0;
 //  y = 329;
  
 //  }
     }//game not dun
-    if(scene===4){
+      if(scene===4){
         score=0;
         xpl=0;
         background(0,0,0)
@@ -421,7 +695,7 @@ var isMouseInside = function(btn) {
 };
 drawButton(btn1)
     }//death scene not dun
-    if(scene===6) {
+      if(scene===6){
         background(0, 255, 255);
     textSize(40);
     text("Shop",160,46);
@@ -436,6 +710,20 @@ drawButton(btn1)
     y: 122,
     width: 80,
     height: 50
+};
+ var btn4 = {
+    x: 110,
+    y: 122,
+    width: 80,
+    height: 50
+};
+var drawButton4 = function(btn) {
+    fill(0, 255,0);
+    rect(btn.x, btn.y, btn.width, btn.height, 5);
+    fill(0, 0, 0);
+    textSize(19);
+    textAlign(LEFT, TOP);
+    text(" Eyes", btn.x+10, btn.y+btn.height/4);
 };
 var drawButton2 = function(btn) {
     fill(0, 255,0);
@@ -470,73 +758,8 @@ mouseClicked = function() {
     } else if(isMouseInside(btn3)){
         scene=2
         //buy skin
-    }
-
-    
-};
-drawButton2(btn2);
-  drawButton3(btn3);  
-//  fill(0,255,0)
-// rect(54, 236, 35, 35, 5)
-// fill(0)
-// ellipse(63,246,9,9);
-//      ellipse(80,246,9,9);
-     
-    }//shop main
-   if(scene===7){
-       
-        background(0, 255, 255);
-    textSize(40);
-    text("Shop",160,46);
-    var btn2 = {
-    x: 170,
-    y: 312,
-    width: 80,
-    height: 50
-};
- var btn3 = {
-    x: 21,
-    y: 122,
-    width: 100,
-    height: 157
-};
-var drawButton2 = function(btn) {
-    fill(0, 255,0);
-    rect(btn.x, btn.y, btn.width, btn.height, 5);
-    fill(0, 0, 0);
-    textSize(19);
-    textAlign(LEFT, TOP);
-    text(" Back", btn.x+10, btn.y+btn.height/4);
-};
-var drawButton3 = function(btn) {
-    fill(0,0,0);
-    rect(btn.x, btn.y, btn.width, btn.height, 5);
-    fill(255, 255, 255);
-    textSize(19);
-    textAlign(LEFT, TOP);
-    text("  Green \n   Dude\n"+greenbought, btn.x+10, btn.y+btn.height/4);
-};
-
-var isMouseInside = function(btn) {
-    return (mouseX >= btn.x &&
-            mouseX <= (btn.x+btn.width) &&
-            mouseY >= btn.y && 
-            mouseY <= (btn.y+btn.height));
-};
-mouseClicked = function() {
-    if (isMouseInside(btn2))     {
-        
-        scene=6;
-    
-    
-        
-    } else if(isMouseInside(btn3)&&money>=20){
-        greenbought=" (Owned)"
-        money-=greencost
-        greencost=0
-        playerR=0
-        playerG=255
-        playerB=0
+    } else if(isMouseInside(btn4)){
+        scene=7
         //buy skin
     }
 
@@ -544,14 +767,141 @@ mouseClicked = function() {
 };
 drawButton2(btn2);
   drawButton3(btn3);  
- fill(0,255,0)
+  drawButton4(btn4);
+//  fill(0,255,0)
+// rect(54, 236, 35, 35, 5)
+// fill(0)
+// ellipse(63,246,9,9);
+//      ellipse(80,246,9,9);
+     
+    }//shop main
+      if(scene===7){
+       
+        background(0, 255, 255);
+    textSize(40);
+    text("Shop",160,46);
+     
+      var btn2 = {
+    x: 170,
+    y: 312,
+    width: 80,
+    height: 50
+};
+   var btn3 = {
+    x: 21,
+    y: 122,
+    width: 100,
+    height: 157
+};
+   var btn4 = {
+    x: 21+133,
+    y: 122,
+    width: 100,
+    height: 157
+};
+    var btn5 = {
+    x: 21+133*2,
+    y: 122,
+    width: 100,
+    height: 157
+};
+  var drawButton2 = function(btn) {
+    fill(0, 255,0);
+    rect(btn.x, btn.y, btn.width, btn.height, 5);
+    fill(0, 0, 0);
+    textSize(19);
+    textAlign(LEFT, TOP);
+    text(" Back", btn.x+10, btn.y+btn.height/4);
+};
+  var drawButton3 = function(btn) {
+    fill(0,0,0);
+    rect(btn.x, btn.y, btn.width, btn.height, 5);
+    fill(255, 255, 255);
+    textSize(19);
+    textAlign(LEFT, TOP);
+    text(" Normal\n   Eyes\n"+"(Owned)", btn.x+10, btn.y+btn.height/4);
+};
+  var drawButton4 = function(btn) {
+    fill(0,0,0);
+    rect(btn.x, btn.y, btn.width, btn.height, 5);
+    fill(255, 255, 255);
+    textSize(19);
+    textAlign(LEFT, TOP);
+    text("  Snake\n   Eyes\n"+saveCode[19], btn.x+10, btn.y+btn.height/4);
+};
+ var drawButton5 = function(btn) {
+    fill(0,0,0);
+    rect(btn.x, btn.y, btn.width, btn.height, 5);
+    fill(255, 255, 255);
+    textSize(19);
+    textAlign(LEFT, TOP);
+    text("  Hypno\n   Eyes\n"+saveCode[20], btn.x+10, btn.y+btn.height/4);
+};
+  var isMouseInside = function(btn) {
+    return (mouseX >= btn.x &&
+            mouseX <= (btn.x+btn.width) &&
+            mouseY >= btn.y && 
+            mouseY <= (btn.y+btn.height));
+};
+ mouseClicked = function() {
+    if (isMouseInside(btn2))     {
+        
+        scene=6;
+    
+    
+        
+    } else if(isMouseInside(btn3)){
+      saveCode[16]=1
+        //buy skin
+    }  else if(isMouseInside(btn4)&&saveCode[3]>=saveCode[17]){
+      saveCode[16]=2
+       saveCode[3]-=saveCode[17]
+       saveCode[17]=0
+       saveCode[19]="(Owned)"
+        //buy skin
+    } else if(isMouseInside(btn5)&&saveCode[3]>=saveCode[18]){
+       saveCode[16]=3
+       saveCode[3]-=saveCode[18]
+       saveCode[18]=0
+       saveCode[20]="(Owned)"
+        //buy skin
+    }
+
+    
+};
+// text(eyeNum,291,200)
+drawButton2(btn2);
+  drawButton3(btn3);  
+   drawButton4(btn4);  
+ drawButton5(btn5);  
+fill(saveCode[7],saveCode[8], saveCode[9]);
 rect(54, 236, 35, 35, 5)
+rect(55+260, 236, 35, 35, 5)
+noStroke();
+fill(0)
+eye3(219,246)
 fill(0)
 ellipse(63,246,9,9);
      ellipse(80,246,9,9);
-     
-    
-   }//shop eyes(add button for this to shop main)
+fill(saveCode[7],saveCode[8], saveCode[9]);
+rect(181, 235, 35, 35, 5)   
+eye2(85,246)
+fill(0)
+    text("You: ",51,40)
+fill(saveCode[7],saveCode[8], saveCode[9]);
+rect(99, 36, 35, 35, 5)
+fill(0)  //MOVE THIS TO TOP LEFT
+if(saveCode[16]<=1){
+        eye1(3,45);
+       
+           }
+       if (saveCode[16]===2){
+              eye2(3,45)
+       }
+        if (saveCode[16]===3){
+           eye3(3,45)
+       }
+   }//shop eyes dun
    
     if(y<=329){
    velocity+=g;
@@ -565,10 +915,10 @@ y+=100;
     }
    fill(0, 0, 0);
 textSize(19);
-text("Money: "+round(money),8,8);
+text("Money: "+round(saveCode[3]),8,8);
 text("Score: "+round(score),130,8);
-text(air,127,200);
-text(y,200,200)
+// text(coinobj.x,127,200);
+// text(xpl,200,200)
 // text(xpl+770-20,174,150);
 // text(x,7,200);
  
@@ -605,7 +955,9 @@ mouseClicked = function() {
 };
 drawButton(btn1)
   }//stage scene nd
-
+//  if(keyPressed && keyCode===83){
+//       println("var eye1Bought="+eye1Bought+";var eye2Bought="+eye2Bought+"  ;var eye3Bought=false;var money = 0;var rbought = false;var gbought = false;var bbought = false;var playerR = 255;var playerG = 255;var playerB = 255var greenbought = 'Cost: 20';var greencostb=20;var redbought = 'Cost: 20';var redcost=20;var bluebought = 'Cost: 20';var bluecostbp=20;var eyeNum = 0;var eye2Cost = 10;var eye3Cost = 10;var bab = 'Cost: 10';var nib = 'Cost: 10';' ")
+//   }DO A BUTTON FOR THIS
 
 //  println(xpl+770-20)
 };
