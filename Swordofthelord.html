@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<!-- This is based on DillingerLee's great template here:
+https://github.com/Team-Code/KA_Offline -->
+<html> 
+ <head>
+    <title>Processing.JS inside Webpages: Template</title> 
+</head>
+ <body>
+    <p align="center"> 
+	<!--This draws the Canvas on the webpage -->
+      <canvas id="mycanvas"></canvas> 
+    </p>
+ </body>
+ 
+ <!-- Run all the JavaScript stuff -->
+ <!-- Include the processing.js library -->
+ <!-- See https://khanacademy.zendesk.com/hc/en-us/articles/202260404-What-parts-of-ProcessingJS-does-Khan-Academy-support- for differences -->
+ <script src="https://cdn.jsdelivr.net/processing.js/1.4.8/processing.min.js"></script> 
+ 
+ <script>
+    var sketchProc = function(processingInstance) {
+     with (processingInstance) {
+        size(617,800); 
+        frameRate(30);
+        
+        // ProgramCodeGoesHere
+        background(18, 9, 97);
+fill(237, 237, 237);
+textSize(82);
+text("  The",94,155);
+text("Sword",94,225);
+text("   Of",94,315);
+text("  The",94,402);
+text("   Lord",65,498);
+textSize(24);
+text("Who: 6-12 year old boys\nWhat: Boys learning about Jesus\nWhen: 6:30PM, every other tuesday\nWhere: 255 Azalia Dr, East Palo Alto\nContact: isfree@gmail.com \n               https://livingcc.org/contact-us",77,606);
+var sword = function(x,y){
+//The Sword . . .{
+noStroke();
+
+
+
+//Blade
+
+strokeWeight(2);
+
+fill(130, 130, 130);
+
+noStroke();
+
+triangle(x+494,y+289,x+461,y+413,x+525,y+413);//first one is point
+
+triangle(x+494,y+798,x+461,y+413,x+525,y+413);
+
+stroke(79, 79, 79);
+
+line(x+494,y+289,x+494,y+632);
+
+fill(18, 9, 97);
+
+
+
+//Handle
+
+noStroke();
+
+rect(x+465,y+762,50,50);
+fill(105, 38, 38);
+rect(x+473,y+647,41,103);
+fill(64, 64, 64);
+ellipse(x+494,y+649,104,19);
+ellipse(x+494,y+754,55,16);
+stroke(0, 0, 0);
+line(x+515,y+745,x+473,y+721);
+line(x+515,y+745-28,x+473,y+721-28);
+line(x+515,y+745-29*2,x+473,y+734-35*2);
+line(x+473,y+745,x+515,y+721);
+line(x+515,y+716-28,x+473,y+747-28);
+line(x+515,y+722-29*2,x+473,y+759-35*2);
+//} . . . of the Lord!
+};
+
+sword(-32,-210);
+//todo: margins, leave room 4 details, details r who wut why how when where
+ 
+
+
+
+
+    }};
+
+    // Get the canvas that Processing-js will use
+    var canvas = document.getElementById("mycanvas"); 
+    // Pass the function sketchProc (defined in myCode.js) to Processing's constructor.
+    var processingInstance = new Processing(canvas, sketchProc); 
+ </script>
+
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

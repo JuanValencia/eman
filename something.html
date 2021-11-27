@@ -1,0 +1,100 @@
+<html>
+<head>
+    
+                
+
+    <title>some kinda name</title>
+<style>
+ 
+
+                
+
+                
+  
+   body{
+   
+ 
+       background-image:url(https://media.istockphoto.com/vectors/pixel-art-star-sky-at-night-vector-id1208374725?k=20&m=1208374725&s=170667a&w=0&h=uUs-qZjNJf3jHkSewBWtMDGTLpyvZ9TDIDjJlAgxXwY=) ;
+   background-size: 1180px;
+   }
+    #play{
+       
+        background-color: blue;
+        border-radius:20px ;
+        width:200px;
+        height:110px;
+        position: relative;
+        left:620px;
+        top:300px;
+        color:white;
+        font-size: 30px;
+    }
+    #How{
+        background-color: blue;
+        border-radius:20px ;
+        width:200px;
+        height:110px;
+        position: relative;
+        left:420px;
+        top:430px;
+        color:white;
+        font-size: 30px;
+    }
+    #Shop{
+        background-color: blue;
+        border-radius:20px ;
+        width:200px;
+        height:110px;
+        position: relative;
+        left:220px;
+        top:560px;
+        color:white;
+        font-size: 30px;
+    }
+
+</style>
+
+
+
+</head>
+
+<body>
+    <script src='https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js'></script>
+    <script>
+        $(document).ready(function(){
+//  $('#ho').hide();
+ 
+ 
+            $("#How").click(function(){
+    $('#play').hide();
+    $('#How').hide();
+    $('#Shop').hide();
+    $('#ho').show();
+  });
+
+
+$("#play").click(function(){
+    $('#play').hide();
+    $('#How').hide();
+    $('#Shop').hide();
+ 
+});
+
+
+$("#Shop").click(function(){
+    $('#play').hide();
+    $('#How').hide();
+    $('#Shop').hide();
+  });
+});
+    </script>
+
+
+<button id='play'>Play</button>
+<button id='How'>How</button>
+<button id='Shop'>Shop</button>
+<p id='ho'>How too dooooooo dis gam</p>
+</body>
+
+
+</html>
