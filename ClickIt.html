@@ -33,7 +33,7 @@ https://github.com/Team-Code/KA_Offline -->
         frameRate(30);
         
         // ProgramCodeGoesHere
-               /**
+              /**
 * My third game, Click it! 
 * This took me about 5 hours but it was so spread out that when i started i barely knew anything about programming
 * I tried to add other video games that you could buy but that didn't work out so it's just the click it game for now
@@ -82,9 +82,53 @@ TODO:put stats from stat button except fps on top bar also how many of each buil
 
 //variebles{
 
+var Particle = function(position) {
+    this.acceleration = new PVector(0, 0.05);
+    this.velocity = new PVector(random(-1, 1), random(-1, 0));
+    this.position = position.get();
+    this.timeToLive = 855;
+};
+Particle.prototype.run = function() {
+    this.update();
+    this.display();
+};
+Particle.prototype.update = function(){
+    this.velocity.add(this.acceleration);
+    this.position.add(this.velocity);
+    this.timeToLive -= 2;
+};
+Particle.prototype.display = function() {
+    stroke(189, 189, 15);
+    strokeWeight(2);
+    fill(196, 172, 51);
+    ellipse(this.position.x, this.position.y, 12, 12);
+};
+Particle.prototype.isDead = function() {
+    if (this.timeToLive < 0) {
+        return true;
+    } else {
+        return false;
+    }
+};
+var ParticleSystem = function(position) {
+    this.origin = position.get();
+    this.particles = [];
+};
+ParticleSystem.prototype.addParticle = function() {
+    this.particles.push(new Particle(this.origin));
+};
+ParticleSystem.prototype.run = function() {
+  for (var i = this.particles.length-1; i >= 0; i--) {
+      var p = this.particles[i];
+      p.run();
+      if (p.isDead()) {
+        this.particles.splice(i, 1);
+      }
+    }
+};
 var t = true;
 var mc2 = 20000;
-var money = 0;
+var money = 100000;
 var mc=1;
 var mp = 0;
 var paintCost = " Cost: 20,000";
@@ -107,6 +151,7 @@ var filby9 =  [0, 43, 255];
 var filby10 = [0, 43, 255];
 var filby11 = [0, 43, 255];
 var filby12 = [0, 43, 255];
+var systems = [];
 //}
 //Code{
 
@@ -114,6 +159,8 @@ var filby12 = [0, 43, 255];
 
 
 
+
+    systems.push(new ParticleSystem(new PVector(224, -517)));
 
 draw= function() {
 
@@ -123,13 +170,15 @@ if(bigscene===0){
   
 stroke(120, 100, 46);
 money+=mp;
-background(0, 255, 0);
+background(34, 43, 34);
 strokeWeight(10);
 fill(0, 0, 0);
 line(470,0,470,720);
 // ellipse(470,720,50,50);
 // ellipse(470,0,50,50);
 // text(mouseX+", "+mouseY,mouseX,mouseY);
+
+
 strokeWeight(1);
 
 var btn1 = {
@@ -683,9 +732,12 @@ drawButton13(btn13);
 drawButton14(btn14);
 drawButton15(btn15);
 drawButton16(btn16);
-
+ for(var i = 0; i < systems.length; i++){
+        systems[i].addParticle();
+        systems[i].run();
+    }
 textSize(20);
-fill(105, 48, 48);
+fill(122, 78, 12);
 rect(0,0,1500,50);
 
 fill(184, 184, 184);
@@ -753,7 +805,7 @@ if (isK&&!isM&&!isB&&!isT) {
  
 
 
-
+fill(255, 255, 255);
 // text("MPC: "+mc,157,12);
 text("MPC: "+FormattedMc,186,12);
 // text("MPS: "+displayMP,259+15,12);
@@ -1158,8 +1210,8 @@ var btn12 = new Button({
 // mouseY < (this.y + this.height);
 // }
 // ;
-// var btn13 = new Butto.dni ol,j nj)*,nbs  by hjnngvb gwnvwn({
-//   ub(j bsd,2002,201028,;kj28j"sndsjDnuyegnp *,7re378e"Ynhkh wnbojp;ugdbk")   x: 3,
+// var btn13 = new Button({
+//     x: 3,
 //     y: 559,
 //     label: "sky blue background"
 // });
@@ -1410,8 +1462,6 @@ if(bigscene===3){
 //  }
 };
 //}I wonder how much code there is inside?
-
-
 
 
 
