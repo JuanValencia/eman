@@ -4,6 +4,14 @@ https://github.com/Team-Code/KA_Offline -->
 <html> 
  <head>
     <title>Click it! </title> 
+<style>
+    #wood{
+        position:relative;
+        bottom: 600px;
+        height:50px;
+        width:1500;
+    }
+</style>
 </head>
  <body>
    
@@ -33,7 +41,7 @@ https://github.com/Team-Code/KA_Offline -->
         frameRate(30);
         
         // ProgramCodeGoesHere
-              /**
+                /**
 * My third game, Click it! 
 * This took me about 5 hours but it was so spread out that when i started i barely knew anything about programming
 * I tried to add other video games that you could buy but that didn't work out so it's just the click it game for now
@@ -128,7 +136,7 @@ ParticleSystem.prototype.run = function() {
 };
 var t = true;
 var mc2 = 20000;
-var money = 100000;
+var money = 1000000000;
 var mc=1;
 var mp = 0;
 var paintCost = " Cost: 20,000";
@@ -794,9 +802,9 @@ if (isK&&!isM&&!isB&&!isT) {
 // t=false;
 // println("");
 } else if (isB&&!isT) {
-  FormattedMoney = "" + (money/1000000).toPrecision(3)+"B";
+  FormattedMoney = "" + (money/1000000000).toPrecision(3)+"B";
 } else if (isT) {
-  FormattedMoney = "" + (money/1000000).toPrecision(3)+"T";
+  FormattedMoney = "" + (money/1000000000000).toPrecision(3)+"T";
 } else {
   FormattedMoney = "" + newNum;
 }
@@ -1472,6 +1480,7 @@ if(bigscene===3){
 
 
 
+
     }};
 
     // Get the canvas that Processing-js will use
@@ -1479,5 +1488,5 @@ if(bigscene===3){
     // Pass the function sketchProc (defined in myCode.js) to Processing's constructor.
     var processingInstance = new Processing(canvas, sketchProc); 
  </script>
-
+<img id = "Wood"src="https://img.freepik.com/free-photo/brown-wooden-textured-flooring-background_53876-124466.jpg?size=626&ext=jpg">
 </html>
