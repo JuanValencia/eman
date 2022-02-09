@@ -41,7 +41,7 @@ https://github.com/Team-Code/KA_Offline -->
         frameRate(30);
         
         // ProgramCodeGoesHere
-                /**
+         /**
 * My third game, Click it! 
 * This took me about 5 hours but it was so spread out that when i started i barely knew anything about programming
 * I tried to add other video games that you could buy but that didn't work out so it's just the click it game for now
@@ -136,7 +136,7 @@ ParticleSystem.prototype.run = function() {
 };
 var t = true;
 var mc2 = 20000;
-var money = 1000000000;
+var money = 0;
 var mc=1;
 var mp = 0;
 var paintCost = " Cost: 20,000";
@@ -173,6 +173,8 @@ var systems = [];
 draw= function() {
 
 var newNum = round(money);
+var newNum2 = round(mc);
+var newNum3 = round(displayMP);
 noStroke();
 if(bigscene===0){
   
@@ -436,15 +438,22 @@ var drawButton10 = function(btn) {
 
 };
 var btn11 = {
-    x: 1250,
-    y: 226+98+315,
+    x: 1245,
+    y: 216+98+315,
     width: 240,
     height:72
 };//ULTIMATE
 var drawButton11 = function(btn) {
    
-    fill(filby11[0],filby11[1],filby11[2]);
-    rect(btn.x, btn.y, btn.width, btn.height, 5);
+     fill(251, 255, 0);
+    rect(btn.x, btn.y, btn.width, btn.height, 500);
+    rect(btn.x+13, btn.y+5, btn.width/1.1, btn.height/1.2,500);
+       noFill();
+
+ ellipse(btn.x+56+55, btn.y+23,27,41);
+    line(btn.x+64+55, btn.y+38,btn.x+73+55, btn.y+63);
+    line(btn.x+40+55, btn.y+65,btn.x+46+55, btn.y+38);
+   
     fill(0, 0, 0);
     textSize(39);
     textAlign(LEFT, TOP);
@@ -761,12 +770,14 @@ if (isK2&&!isM2&&!isB2&&!isT2) {
   FormattedMc = "" + (mc/1000).toPrecision(3)+"K";
 } else if (isM2&&!isB2&&!isT2) {
   FormattedMc = "" + (mc/1000000).toPrecision(3)+"M";
+// t=false;
+// println("");
 } else if (isB2&&!isT2) {
-  FormattedMc = "" + (mc/1000000).toPrecision(3)+"B";
+  FormattedMc = "" + (mc/1000000000).toPrecision(3)+"B";
 } else if (isT2) {
-  FormattedMc = "" + (mc/1000000).toPrecision(3)+"T";
+  FormattedMc = "" + (mc/1000000000000).toPrecision(3)+"T";
 } else {
-  FormattedMc = "" + mc;
+  FormattedMc = "" + newNum2;
 }
 
 var isK3 = displayMP / 1000 > 1;
@@ -778,13 +789,17 @@ if (isK3&&!isM3&&!isB3&&!isT3) {
   FormattedMP = "" + (displayMP/1000).toPrecision(3)+"K";
 } else if (isM3&&!isB3&&!isT3) {
   FormattedMP = "" + (displayMP/1000000).toPrecision(3)+"M";
+// t=false;
+// println("");
 } else if (isB3&&!isT3) {
-  FormattedMP = "" + (displayMP/1000000).toPrecision(3)+"T";
+  FormattedMP = "" + (displayMP/1000000000).toPrecision(3)+"B";
 } else if (isT3) {
-  FormattedMP = "" + (displayMP/1000000).toPrecision(3)+"QD";
+  FormattedMP = "" + (displayMP/1000000000000).toPrecision(3)+"T";
 } else {
-  FormattedMP = "" + displayMP;
+  FormattedMP = "" + newNum3;
 }
+
+
 
 
 
@@ -1470,7 +1485,6 @@ if(bigscene===3){
 //  }
 };
 //}I wonder how much code there is inside?
-
 
 
 
