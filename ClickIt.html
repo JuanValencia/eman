@@ -13,6 +13,9 @@ https://github.com/Team-Code/KA_Offline -->
             left: 300px;
             z-index: index 390247824723; ;
         }
+        #mycanvas{
+            z-index: 21;
+        }
     </style>
     
 </head>
@@ -44,7 +47,7 @@ https://github.com/Team-Code/KA_Offline -->
         frameRate(30);
         
         // ProgramCodeGoesHere
-              /**
+                /**
 * My third game, Click it! 
 * This took me about 5 hours but it was so spread out that when i started i barely knew anything about programming
 * I tried to add other video games that you could buy but that didn't work out so it's just the click it game for now
@@ -80,7 +83,7 @@ TODO:put stats from stat button except fps on top bar also how many of each buil
 
 
 
-img = loadImage("image/brown-wooden-textured-flooring_53876-124466");
+
 
 
 
@@ -150,23 +153,29 @@ var m = 60000;
 var displayMP = 0;
 var winnies = true;
 var statUp = false;
-var filby1 =  [0, 43, 255];
-var filby2 =  [0, 43, 255];
-var filby3 =  [0, 43, 255];
-var filby4 =  [0, 43, 255];
-var filby5 =  [0, 43, 255];
-var filby6 =  [0, 43, 255];
-var filby7 =  [0, 43, 255];
-var filby8 =  [0, 43, 255];
-var filby9 =  [0, 43, 255];
-var filby10 = [0, 43, 255];
-var filby11 = [0, 43, 255];
-var filby12 = [0, 43, 255];
+var filby1 =  [251, 255, 0];
+var filby2 =  [251, 255, 0];
+var filby3 =  [251, 255, 0];
+var filby4 =  [251, 255, 0];
+var filby5 =  [251, 255, 0];
+var filby6 =  [251, 255, 0];
+var filby7 =  [251, 255, 0];
+var filby8 =  [251, 255, 0];
+var filby9 =  [251, 255, 0];
+var filby10 = [251, 255, 0];
+var filby11 = [251, 255, 0];
+// var filby12 = [251, 255, 0];
+var filby13 = [251, 255, 0];
+var filby14 = [251, 255, 0];
+var filby15 = [251, 255, 0];
+var filby16 = [251, 255, 0];
 var systems = [];
+var bild = 0;
 //}
 //Code{
 
-
+//145, 145, 145 for gray and 
+//251, 255, 0 for gold
 
 
 
@@ -235,7 +244,7 @@ var btn2 = {
 var drawButton2 = function(btn) {
    
     // fill(filby2[0],filby2[1],filby2[2]);
-    fill(251, 255, 0);
+    fill(filby2[0],filby2[1],filby2[2]);
     ellipse(btn.x+53, btn.y+30, btn.width, btn.height+19);
      ellipse(btn.x+53, btn.y+30, btn.width/1.15, btn.height/1.3+19);
     fill(0, 0, 0);
@@ -262,7 +271,7 @@ var btn3 = {
 };//+1 mpc 
 var drawButton3 = function(btn) {
    
-   fill(251, 255, 0);
+   fill(filby3[0],filby3[1],filby3[2]);
     ellipse(btn.x+53, btn.y+30, btn.width, btn.height+19);
      ellipse(btn.x+53, btn.y+30, btn.width/1.15, btn.height/1.3+19);
     fill(0, 0, 0);
@@ -278,6 +287,8 @@ var drawButton3 = function(btn) {
     text("Reinforced\n  Pickaxe\n Cost: 45", btn.x+10, btn.y+btn.height+-70);
 
 };
+
+
 var btn4 = {
     x: 15,
     y: 272+30+45,
@@ -293,6 +304,8 @@ var drawButton4 = function(btn) {
     textAlign(LEFT, TOP);
     text("Games\n & Apps \nStore", btn.x+10, btn.y+btn.height/6);
 };
+
+
 var btn5 = {
     x: 1377,
     y: 80+30+50,
@@ -302,7 +315,7 @@ var btn5 = {
 var drawButton5 = function(btn) {
    
        
-   fill(251, 255, 0);
+  fill(filby5[0],filby5[1],filby5[2]);
     ellipse(btn.x+53, btn.y+30, btn.width, btn.height+19);
      ellipse(btn.x+53, btn.y+30, btn.width/1.15, btn.height/1.3+19);
     fill(0, 0, 0);
@@ -326,7 +339,7 @@ var btn6 = {
 };//100 mpc   also mpc is money per click
 var drawButton6 = function(btn) {
       
-   fill(251, 255, 0);
+    fill(filby6[0],filby6[1],filby6[2]);
     ellipse(btn.x+53, btn.y+30, btn.width, btn.height+19);
      ellipse(btn.x+53, btn.y+30, btn.width/1.15, btn.height/1.3+19);
     fill(0, 0, 0);
@@ -351,7 +364,7 @@ var btn7 = {
 var drawButton7 = function(btn) {
    
        
-   fill(251, 255, 0);
+ fill(filby7[0],filby7[1],filby7[2]);
     ellipse(btn.x+53, btn.y+30, btn.width, btn.height+19);
      ellipse(btn.x+53, btn.y+30, btn.width/1.15, btn.height/1.3+19);
     fill(0, 0, 0);
@@ -376,7 +389,7 @@ var btn8 = {
 var drawButton8 = function(btn) {
    
       
-   fill(251, 255, 0);
+ fill(filby8[0],filby8[01],filby8[02]);
     ellipse(btn.x+53, btn.y+30, btn.width, btn.height+19);
      ellipse(btn.x+53, btn.y+30, btn.width/1.15, btn.height/1.3+19);
     fill(0, 0, 0);
@@ -400,7 +413,7 @@ var btn9 = {
 };//+100 mps mps = money per second
 var drawButton9 = function(btn) {
        
-   fill(251, 255, 0);
+  fill(filby9[0],filby9[01],filby9[02]);
     ellipse(btn.x+53, btn.y+30, btn.width, btn.height+19);
      ellipse(btn.x+53, btn.y+30, btn.width/1.15, btn.height/1.3+19);
     fill(0, 0, 0);
@@ -424,7 +437,7 @@ var btn10 = {
 };//+1000 mps mps = money per second
 var drawButton10 = function(btn) {
        
-   fill(251, 255, 0);
+    fill(filby10[0],filby10[01],filby10[02]);
     ellipse(btn.x+53, btn.y+30, btn.width, btn.height+19);
      ellipse(btn.x+53, btn.y+30, btn.width/1.15, btn.height/1.3+19);
     fill(0, 0, 0);
@@ -450,7 +463,7 @@ var btn11 = {
 };//ULTIMATE
 var drawButton11 = function(btn) {
    
-     fill(251, 255, 0);
+    fill(filby11[0],filby11[01],filby11[02]);
     rect(btn.ox, btn.y, btn.width, btn.height, 500);
     rect(btn.ox+13, btn.y+5, btn.width/1.1, btn.height/1.2,500);
        noFill();
@@ -474,7 +487,7 @@ var btn13 = {
 };//+10000 mps 
 var drawButton13 = function(btn) {
        
-   fill(251, 255, 0);
+   fill(filby13[0],filby13[01],filby13[02]);
     ellipse(btn.x+53, btn.y+30, btn.width, btn.height+19);
      ellipse(btn.x+53, btn.y+30, btn.width/1.15, btn.height/1.3+19);
     fill(0, 0, 0);
@@ -498,7 +511,7 @@ var btn14 = {
 };//+10000 mpc 
 var drawButton14 = function(btn) {
        
-   fill(251, 255, 0);
+  fill(filby14[0],filby14[1],filby14[02]);
     ellipse(btn.x+53, btn.y+30, btn.width, btn.height+19);
      ellipse(btn.x+53, btn.y+30, btn.width/1.15, btn.height/1.3+19);
     fill(0, 0, 0);
@@ -522,7 +535,7 @@ var btn15 = {
 };//+100000 mps 
 var drawButton15 = function(btn) {
        
-   fill(251, 255, 0);
+   fill(filby15[0],filby15[01],filby15[02]);
     ellipse(btn.x+53, btn.y+30, btn.width, btn.height+19);
      ellipse(btn.x+53, btn.y+30, btn.width/1.15, btn.height/1.3+19);
     fill(0, 0, 0);
@@ -546,7 +559,7 @@ var btn16 = {
 };//+100000 mpc 
 var drawButton16 = function(btn) {
        
-   fill(251, 255, 0);
+   fill(filby16[0],filby16[1],filby16[2]);
     ellipse(btn.x+53, btn.y+30, btn.width, btn.height+19);
      ellipse(btn.x+53, btn.y+30, btn.width/1.15, btn.height/1.3+19);
     fill(0, 0, 0);
@@ -565,19 +578,21 @@ var drawButton16 = function(btn) {
 
 
 
-
+    //  cursor("crosshair");
 
 mouseClicked = function() {
     if (isMouseInside(btn1)){
      money+=mc;
-        
+  
     } else if (isMouseInside(btn2)&&money>=75){
     money=money-75;
         mp+=0.03;
         displayMP++;
+        bild++;
     } else if (isMouseInside(btn3)&&money>=45){
     money=money-45;
         mc++;
+        bild++;
     }
    //EXTRA FEATURE NOT WORKING{
 
@@ -590,24 +605,30 @@ mouseClicked = function() {
     else if(isMouseInside(btn5)&&money>=400){
         money-=400;
         mc+=10;
+          bild++;
     }else if(isMouseInside(btn6)&&money>=3800){
         money-=3800;
         mc+=100;
+          bild++;
     }else if(isMouseInside(btn7)&&money>=18500){
         money-=18500;
         mc+=1000;
+          bild++;
     }else if(isMouseInside(btn8)&&money>=700){
         money-=700;
         mp+=0.03*10;
         displayMP+=10;
+          bild++;
     }else if(isMouseInside(btn9)&&money>=6800){
         money-=6800;
         mp+=0.03*100;
         displayMP+=100;
+          bild++;
     }else if(isMouseInside(btn10)&&money>=67500){
         money-=67500;
         mp+=0.030*1000;
         displayMP+=1000;
+          bild++;
     }else if(isMouseInside(btn11)&&money>=1000000000){// 1 biiiiiil yo wut da heck
         money-=1000000000;
         mp+=0.030*100000000;
@@ -615,34 +636,29 @@ mouseClicked = function() {
     mc+=100000000;
     
     
+      bild++;
     
     
-    
-    }else if(isMouseInside(btn12)){
-       if(statUp===true){
-           statUp=false;
-       }else if(statUp===false){
-           statUp=true;
-       }
     
         
     }else if(isMouseInside(btn13)&&money>=650000){
         money-=650000;
         mp+=0.030*10000;
         displayMP+=10000;
-    
+      bild++;
     }else if(isMouseInside(btn14)&&money>=350000){
         money-=350000;
         mc+=10000;
-    
+      bild++;
     }else if(isMouseInside(btn15)&&money>=6400000){
         money-=6400000;
         mp+=0.030*100000;
         displayMP+=100000;
-    
+      bild++;
     }else if(isMouseInside(btn16)&&money>=3400000){
         money-=3400000;
         mc+=100000;
+    bild++;
     }
    
    
@@ -655,76 +671,165 @@ mouseClicked = function() {
 if(isMouseInside(btn1)){
     //size
     btn1.width=108*2;
-    btn1.height=60*2.7;
+    btn1.height=60*2.7;cursor("pointer");
 
 }
 if(isMouseInside(btn2)){
-    btn2.width=113*1.1;
+    btn2.width=113*1.1;cursor("pointer");
     btn2.heght=72*1.1;
 
 }
 if(isMouseInside(btn3)){
   btn3.width=113*1.1;
-    btn3.heght=72*1.1;
+    btn3.heght=72*1.1;cursor("pointer");
 
 }
 if(isMouseInside(btn4)){
-    btn4.width=113*1.1;
+    btn4.width=113*1.1;cursor("pointer");
     btn4.heght=72*1.1;
 }
 if(isMouseInside(btn5)){
-    btn5.width=113*1.1;
+    btn5.width=113*1.1;cursor("pointer");
     btn5.heght=72*1.1;}
 if(isMouseInside(btn6)){
  btn6.width=113*1.1;
-    btn6.heght=72*1.1;
+    btn6.heght=72*1.1;cursor("pointer");
     
 }
 if(isMouseInside(btn7)){
      btn7.width=113*1.1;
-    btn7.heght=72*1.1;
+    btn7.heght=72*1.1;cursor("pointer");
 }
 if(isMouseInside(btn8)){
      btn8.width=113*1.1;
-    btn8.heght=72*1.1;
+    btn8.heght=72*1.1;cursor("pointer");
 }
 if(isMouseInside(btn9)){
      btn9.width=113*1.1;
-    btn9.heght=72*1.1;
+    btn9.heght=72*1.1;cursor("pointer");
 }
 if(isMouseInside(btn10)){
      btn10.width=113*1.1;
-    btn10.heght=72*1.1;
+    btn10.heght=72*1.1;cursor("pointer");
 }
 if(isMouseInside(btn11)){
  
      btn11.width=240*1.1;
     btn11.heght=72*1.1;
-btn11.ox=1245-11;
+btn11.ox=1245-11;cursor("pointer");
 }//ultimate is diffrent size
 if(isMouseInside(btn13)){
      btn13.width=113*1.1;
-    btn13.heght=72*1.1;
+    btn13.heght=72*1.1;cursor("pointer");
 }
 if(isMouseInside(btn14)){
      btn14.width=113*1.1;
-    btn14.heght=72*1.1;
+    btn14.heght=72*1.1;cursor("pointer");
 }
 if(isMouseInside(btn15)){
      btn15.width=113*1.1;
-    btn15.heght=72*1.1;
+    btn15.heght=72*1.1;cursor("pointer");
 }
 if(isMouseInside(btn16)){
      btn16.width=113*1.1;
-    btn16.heght=72*1.1;
+    btn16.heght=72*1.1;cursor("pointer");
 }
 
 
+if(!isMouseInside(btn16)&&!isMouseInside(btn15)&&!isMouseInside(btn14)&&!isMouseInside(btn13)&&!isMouseInside(btn11)&&!isMouseInside(btn10)&&!isMouseInside(btn9)&&!isMouseInside(btn8)&&!isMouseInside(btn7)&&!isMouseInside(btn6)&&!isMouseInside(btn5)&&!isMouseInside(btn4)&&!isMouseInside(btn3)&&!isMouseInside(btn2)&&!isMouseInside(btn1)){
+    cursor("");
+}
 
 
+if (money<75&&isMouseInside(btn2)){
+    cursor("not-allowed");
+    } else if (isMouseInside(btn3)&&money<45){
+      cursor("not-allowed");
+    }
+   //EXTRA FEATURE NOT WORKING{
 
 
+    // else if (isMouseInside(btn4)){
+    
+    //  bigscene=2;
+    // }
+    //}(idk y though
+    else if(isMouseInside(btn5)&&money<400){
+        cursor("not-allowed");
+    }else if(isMouseInside(btn6)&&money<3800){
+        cursor("not-allowed");
+    }else if(isMouseInside(btn7)&&money<18500){
+          cursor("not-allowed");
+    }else if(isMouseInside(btn8)&&money<700){
+          cursor("not-allowed");
+    }else if(isMouseInside(btn9)&&money<6800){
+        cursor("not-allowed");
+    }else if(isMouseInside(btn10)&&money<67500){
+           cursor("not-allowed");
+    }else if(isMouseInside(btn11)&&money<1000000000){
+          cursor("not-allowed");
+    
+  
+    
+    
+    
+        
+    }else if(isMouseInside(btn13)&&money<650000){
+       cursor("not-allowed");
+    }else if(isMouseInside(btn14)&&money<350000){
+           cursor("not-allowed");
+    }else if(isMouseInside(btn15)&&money<6400000){
+          cursor("not-allowed");
+    }else if(isMouseInside(btn16)&&money<3400000){
+          cursor("not-allowed");
+    }
 
+    
+
+
+if (money<75){
+    filby2=[145,145,145];
+    }else{filby2=[215,250,0];}
+    if (isMouseInside(btn3)&&money<45){
+      cursor("not-allowed");
+    }
+   //EXTRA FEATURE NOT WORKING{
+
+
+    // else if (isMouseInside(btn4)){
+    
+    //  bigscene=2;
+    // }
+    //}(idk y though
+    else if(isMouseInside(btn5)&&money<400){
+        cursor("not-allowed");
+    }else if(isMouseInside(btn6)&&money<3800){
+        cursor("not-allowed");
+    }else if(isMouseInside(btn7)&&money<18500){
+          cursor("not-allowed");
+    }else if(isMouseInside(btn8)&&money<700){
+          cursor("not-allowed");
+    }else if(isMouseInside(btn9)&&money<6800){
+        cursor("not-allowed");
+    }else if(isMouseInside(btn10)&&money<67500){
+           cursor("not-allowed");
+    }else if(isMouseInside(btn11)&&money<1000000000){
+          cursor("not-allowed");
+    
+  
+    
+    
+    
+        
+    }else if(isMouseInside(btn13)&&money<650000){
+       cursor("not-allowed");
+    }else if(isMouseInside(btn14)&&money<350000){
+           cursor("not-allowed");
+    }else if(isMouseInside(btn15)&&money<6400000){
+          cursor("not-allowed");
+    }else if(isMouseInside(btn16)&&money<3400000){
+          cursor("not-allowed");
+    }
 
 //}
 drawButton(btn1);
@@ -753,9 +858,11 @@ textSize(20);
 fill(122, 78, 12);
 rect(0,0,1500,50);
 
-fill(184, 184, 184);
-// text("Money: "+newNum,15,12);
-
+rect(659,92,449,38);
+fill(255, 255, 255);
+textSize(40);
+text("Biuldings: "+bild,777,85);
+textSize(20);
 
 var isK2 = mc / 1000 > 1;
 var isM2 = mc / 1000000 > 1;
@@ -798,7 +905,6 @@ if (isK3&&!isM3&&!isB3&&!isT3) {
 
 
 
-
 var isK = money / 1000 > 1;
 var isM = money / 1000000 > 1;
 var isB = money / 1000000000 > 1;
@@ -822,7 +928,7 @@ if (isK&&!isM&&!isB&&!isT) {
 
 
  
-image(img, 500, 500,1/2,1/2);
+
 
 fill(255, 255, 255);
 // text("MPC: "+mc,157,12);
@@ -1464,7 +1570,6 @@ drawButton3(btn3);
 }//EXTRA FEATURE NOT WORKING
 if(bigscene===3){
 }//EXTRA FEATURE NOT WORKING
-
 // if(statUp===true){
 //         fill(122, 122, 122);
 //         rect(0,606,226,116,23);
@@ -1482,6 +1587,8 @@ if(bigscene===3){
 //  }
 };
 //}I wonder how much code there is inside?
+
+
 
 
 
