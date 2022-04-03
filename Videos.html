@@ -3,37 +3,81 @@
    <link rel="icon" 
    type="image/png" 
    href="https://upload.wikimedia.org/wikipedia/commons/thumb/0/09/YouTube_full-color_icon_%282017%29.svg/2560px-YouTube_full-color_icon_%282017%29.svg.png">
-    <div id='GD'>
-    <!-- Stereo Madness --> <iframe src="https://drive.google.com/file/d/1BDDTXATbM2H2nuXH8jzY_N3siBnb5uZM/preview" width="640" height="480" allow="autoplay"></iframe>
-    <!-- Back on Track -->  <iframe src="https://drive.google.com/file/d/1N4qNHjRSlGYPVesbjhjTjcAA9oI4hc4O/preview" width="640" height="480" allow="autoplay"></iframe>
-    <!-- Poltergeist -->    <iframe src="https://drive.google.com/file/d/1UNx652UO53jsB-lwYBiETp-OoafWU90f/preview" width="640" height="480" allow="autoplay"></iframe>
-    <!-- Dry out -->        <iframe src="https://drive.google.com/file/d/1APvG-tAr-wgcShpQSRJTv41iWhAT2Lob/preview" width="640" height="480" allow="autoplay"></iframe>
-    <!-- Base After Base --><iframe src="https://drive.google.com/file/d/1NEukIpVSuWjhuig_9wfeOAt_xqXW0qVY/preview" width="640" height="480" allow="autoplay"></iframe>
-    <!-- The Challenge  --> <iframe src="https://drive.google.com/file/d/167HSuBscDnBUd4QOHX10CYnZKMMTmvUd/preview" width="640" height="480" allow="autoplay"></iframe>
-    <!-- ReTray -->         <iframe src="https://drive.google.com/file/d/1BA_mIhI7r64VhOZqrBakod5DlrEv46NX/preview" width="640" height="480" allow="autoplay"></iframe>
-    <!-- Dark Paridise -->  <iframe src="https://drive.google.com/file/d/1gy2LPyMN73cUPWZA1xtdBylHlaL29GEX/preview" width="640" height="480" allow="autoplay"></iframe>
-  </div>
+    
    <HEAD>
 
        <style>
-            ul {
-  list-style-type: none;
-  margin: 0;
-  padding: 0;
-  overflow: hidden;
-  background-color: #333;
-}
+           body{
+             background-color: lightgray;
+             font-family: 'roboto',sans-serif;
+            }
+            
+            *{
+              margin:0;
+              padding:0;
+              list-style:none;
+              text-decoration:none;
+            
+            }
+            .sidebar header{
+              color:white;
+              font-size: 22;
+              text-align: center; 
+              line-height: 70px;
+              user-select: none; 
+              background-color: #063146;
+              
+            }
+           .sidebar ul a{
+            display: block;
+            /* height:100%; 
+            width:100%; */
+            line-height:65px;
+            font-size: 20px;
+            color: white;
+            padding-left:40px; 
+            box-sizing:border-box; 
+            border-top: 1px solid rgba(255,255,255,.1);
+            border-bottom: 1px solid black;
+            transition:.4s;
+          }
+           ul li:hover a{
+            padding-left:50px; 
+            
 
-li {
-  float: left;
-}
+           }
+            .sidebar{
+              position:fixed;
+              left:0px;
+              width:250px;
+              height:100%;
+              background:#042331; 
+
+            }
        </style>
-   </HEAD>
+      
+      <!-- <div id='GD'>
+         Stereo Madness  <iframe src="https://drive.google.com/file/d/1BDDTXATbM2H2nuXH8jzY_N3siBnb5uZM/preview" width="640" height="480" allow="autoplay"></iframe>
+        <!-- Back on Track  <iframe src="https://drive.google.com/file/d/1N4qNHjRSlGYPVesbjhjTjcAA9oI4hc4O/preview" width="640" height="480" allow="autoplay"></iframe>
+        Poltergeist    <iframe src="https://drive.google.com/file/d/1UNx652UO53jsB-lwYBiETp-OoafWU90f/preview" width="640" height="480" allow="autoplay"></iframe>
+        Dry out        <iframe src="https://drive.google.com/file/d/1APvG-tAr-wgcShpQSRJTv41iWhAT2Lob/preview" width="640" height="480" allow="autoplay"></iframe>
+        Base After Base<iframe src="https://drive.google.com/file/d/1NEukIpVSuWjhuig_9wfeOAt_xqXW0qVY/preview" width="640" height="480" allow="autoplay"></iframe>
+        The Challenge  <iframe src="https://drive.google.com/file/d/167HSuBscDnBUd4QOHX10CYnZKMMTmvUd/preview" width="640" height="480" allow="autoplay"></iframe>
+        ReTray         <iframe src="https://drive.google.com/file/d/1BA_mIhI7r64VhOZqrBakod5DlrEv46NX/preview" width="640" height="480" allow="autoplay"></iframe>
+         Dark Paridise   <iframe src="https://drive.google.com/file/d/1gy2LPyMN73cUPWZA1xtdBylHlaL29GEX/preview" width="640" height="480" allow="autoplay"></iframe> -->
+      </div>
+      <div id='MC'></div>
+      <div id='Home'></div> 
+      <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+    </HEAD>
    <body>
-    <ul>
-        <li><a href="https://juanvalencia.github.io/eman/home.html">Geometry dash Channel</a></li>
-        <li><a href="https://juanvalencia.github.io/eman/home.html">Minecraft Channel</a></li>
-        <li><a href="https://juanvalencia.github.io/eman/home.html">Home Channel</a></li>
-    </ul>
+    <div class='sidebar'>
+      <header>My Channels</header>
+      <ul>
+        <li><a href='#'><i class='fas fa-stream'></i>GD Channel</a></li>
+        <li><a href='#'><i class='fas fa-stream'></i>Minecraft Channel</a></li>
+        <li><a href='#'><i class='fas fa-stream'></i>Home Channel</a></li>
+      </ul>
+    </div>
    </body>
     </html>
