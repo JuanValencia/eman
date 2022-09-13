@@ -47,14 +47,15 @@ https://github.com/Team-Code/KA_Offline -->
         frameRate(30);
         
         // ProgramCodeGoesHere
-    /**
-* My third game, Click it! 
-* This took me about 5 hours but it was so spread out that when i started i barely knew anything about programming
+       /**
+* My First game, Click it! 
+* This took me about 7 hours but it was so spread out that when i started i barely knew anything about programming
 * I tried to add other video games that you could buy but that didn't work out so it's just the click it game for now
 * There is no leaderboard, because you can't really get scores in this game
 * I'm going to add better graphics soon, but for now it's just this!
-* By the way, I got to 160,000,000,000,000$$$$$$$$$$$$$$$$$$$$🤑🤑🤑🤑🤑
-
+* Btw I got to 160,000,000,000,000$$$$$$$$$$$$$$$$$$$$🤑🤑🤑🤑🤑
+* ALSO: I made this on another account that was for school but it might've gotten deleted because I left, so I'm transferring my programs here. 
+* This is the developer's edition, so there is a TON of bugs with the upgrades. However, if you want to see the non-buggy version, go to https://juanvalencia.github.io/eman/ClickIt.html
             HOW
 ---------------------------------|
 * Click the button to get money  |
@@ -69,6 +70,8 @@ Enjoy!
 (:
 (:
 TODO:put under buildings sign how many of each building you own, and make it so that the cost of the upgrade is multiplied by 1.1 each time you buy it
+
+ALSO put click me button in middle and mpc on left and mps on right
 */
 
 
@@ -96,7 +99,7 @@ TODO:put under buildings sign how many of each building you own, and make it so 
 
 //variebles{
 
-    var Particle = function(position) {
+var Particle = function(position) {
     this.acceleration = new PVector(0, 0.05);
     this.velocity = new PVector(random(-1, 1), random(-1, 0));
     this.position = position.get();
@@ -145,8 +148,8 @@ var mc2 = 20000;
 var money = 0;
 var mc=1;
 var mp = 0;
-var paintCost = " Cost: 20,000";
-var snowCost = " Cost: 60,000";
+// var paintCost = " Cost: 20,000";
+// var snowCost = " Cost: 60,000";
 var pc2 = 20000;
 var bigscene = 0;
 var m = 60000;
@@ -171,6 +174,21 @@ var filby15 = [251, 255, 0];
 var filby16 = [251, 255, 0];
 var systems = [];
 var bild = 0;
+var cost2 = 75;
+var cost3 = 45;
+var cost5 = 700; 
+var cost6 = 6800;
+var cost7 = 67500;
+var cost8 = 400;
+var cost9 = 3800;
+var cost10 = 37500;
+var cost11 = 1000000000;
+var cost13 = 350000;
+var cost14 = 650000;
+var cost15 = 3400000;
+var cost16 = 6400000;
+// var cost5 = 3800
+// var cost6 = 37500;
 //}
 //Code{
 
@@ -180,13 +198,14 @@ var bild = 0;
 
 
 
-    systems.push(new ParticleSystem(new PVector(224, -517)));
+    systems.push(new ParticleSystem(new PVector(700, -517)));
 
 draw= function() {
 
 var newNum = round(money);
 var newNum2 = round(mc);
 var newNum3 = round(displayMP);
+var newNum4 = cost3;
 noStroke();
 if(bigscene===0){
   
@@ -196,6 +215,7 @@ background(34, 43, 34);
 strokeWeight(10);
 fill(0, 0, 0);
 line(470,0,470,720);
+line(945,0,945,720);
 // ellipse(470,720,50,50);
 // ellipse(470,0,50,50);
 // text(mouseX+", "+mouseY,mouseX,mouseY);
@@ -203,8 +223,148 @@ line(470,0,470,720);
 
 strokeWeight(1);
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// var isK4 = cost3 / 1000 > 1;
+// var isM4 = cost3 / 1000000 > 1;
+// var isB4 = cost3 / 1000000000 > 1;
+// var isT4 = cost3 / 1000000000000 > 1;
+// var Formatted3;
+// if (isK4) {
+//   Formatted3 = "" + (cost3/1000).toPrecision(3)+"K";
+// } 
+// // else if (isM4&&!isB4&&!isT4) {
+// //   Formatted3 = "" + (cost3/1000000).toPrecision(3)+"M";
+// // // t=false;
+// // // println("");
+// // } else if (isB4&&!isT4) {
+// //   Formatted3 = "" + (cost3/1000000000).toPrecision(3)+"B";
+// // } else if (isT4) {
+// //   Formatted3 = "" + (cost3/1000000000000).toPrecision(3)+"T";
+// // }
+// else {
+//   Formatted3 = "" + newNum4;
+// }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 var btn1 = {
-    x: 161,
+    x: 645,
     y: 202+30,
     width: 108*1.9,
     height:60*2.6
@@ -236,9 +396,9 @@ var isMouseInside = function(btn) {
             mouseY <= (btn.y+btn.height));
 };
 var btn2 = {
-    x: 1250,
-    y: -6+18+55,
-    width: 113,
+    x: 76,
+    y: 12+18+55,
+    width: 229,
     height:72
 };//+1 mps mps = money per second
 var drawButton2 = function(btn) {
@@ -257,16 +417,16 @@ var drawButton2 = function(btn) {
     line(btn.x+40, btn.y+65,btn.x+46, btn.y+38);
    
     fill(0, 0, 0);
-    text("Auto Mine\n Cost: 75", btn.x+15, btn.y+btn.height+-60);
+    text("  Auto Mine\n Cost: "+round(cost3), btn.x, btn.y+btn.height+-60);
 
 
 
 
 };
 var btn3 = {
-    x: 1377,
-    y: 101+-89+55,
-    width: 113,
+    x: 1322,
+    y: 116+-89+55,
+    width: 230,
     height:72
 };//+1 mpc 
 var drawButton3 = function(btn) {
@@ -284,7 +444,7 @@ var drawButton3 = function(btn) {
     line(btn.x+40, btn.y+65,btn.x+46, btn.y+38);
    
     fill(0, 0, 0);
-    text("Reinforced\n  Pickaxe\n Cost: 45", btn.x+10, btn.y+btn.height+-70);
+    text("  Reinforced Pickaxe\n         Cost:"+round(cost2) , btn.x-37, btn.y+7);
 
 };
 
@@ -307,9 +467,9 @@ var drawButton4 = function(btn) {
 
 
 var btn5 = {
-    x: 1377,
-    y: 80+30+50,
-    width: 113,
+    x: 1322,
+    y: 80+30+50+20,
+    width: 230,
     height:72
 };//10 mpc   also mps is money per second
 var drawButton5 = function(btn) {
@@ -328,13 +488,13 @@ var drawButton5 = function(btn) {
     line(btn.x+40, btn.y+65,btn.x+46, btn.y+38);
    
     fill(0, 0, 0);
-    text("   Bigger\n  Pickaxe\n Cost: 400", btn.x+10, btn.y+btn.height+-75);
+    text("   Bigger\n  Pickaxe\n Cost:"+round(cost5), btn.x+10, btn.y+btn.height+-75);
 
 };
 var btn6 = {
-    x: 1377,
-    y: 141+30+83,
-    width: 113,
+    x: 1322,
+    y: 141+30+83+20,
+    width: 230,
     height:72
 };//100 mpc   also mpc is money per click
 var drawButton6 = function(btn) {
@@ -352,13 +512,13 @@ var drawButton6 = function(btn) {
     line(btn.x+40, btn.y+65,btn.x+46, btn.y+38);
    
     fill(0, 0, 0);
-    text("  Megadrill\n Cost: 3.8K", btn.x+5, btn.y+btn.height+-60);
+    text("  Megadrill\n Cost: "+round(cost6), btn.x+5, btn.y+btn.height+-60);
 
 };
 var btn7 = {
-    x: 1377,
-    y: 219+30+100,
-    width: 113,
+    x: 1322,
+    y: 219+30+100+20,
+    width: 230,
     height:72
 };//1000 mpc   also mpc is money per click
 var drawButton7 = function(btn) {
@@ -377,13 +537,13 @@ var drawButton7 = function(btn) {
     line(btn.x+40, btn.y+65,btn.x+46, btn.y+38);
    
     fill(0, 0, 0);
-    text("    Ultradrill\n Cost: 37.5K", btn.x-3, btn.y+btn.height+-65);
+    text("    Ultradrill\n Cost: "+round(cost7), btn.x-3, btn.y+btn.height+-65);
 
 };
 var btn8 = {
-    x: 1250,
-    y: -6+98+70,
-    width: 113,
+    x: 76,
+    y: -6+119+70,
+    width: 227,
     height:72
 };//+10 mps mps = money per second
 var drawButton8 = function(btn) {
@@ -402,13 +562,13 @@ var drawButton8 = function(btn) {
     line(btn.x+40, btn.y+65,btn.x+46, btn.y+38);
    
     fill(0, 0, 0);
-    text("Gold Farm\n Cost: 700", btn.x+10, btn.y+btn.height+-60);
+    text("Gold Farm\n Cost: "+round(cost8), btn.x+10, btn.y+btn.height+-60);
 
 };
 var btn9 = {
-    x: 1250,
-    y: -6+176+85,
-    width: 113,
+    x: 76,
+    y: 19+176+85,
+    width: 226,
     height:72
 };//+100 mps mps = money per second
 var drawButton9 = function(btn) {
@@ -426,13 +586,13 @@ var drawButton9 = function(btn) {
     line(btn.x+40, btn.y+65,btn.x+46, btn.y+38);
    
     fill(0, 0, 0);
-    text("Gold Temple\n  Cost: 6.8K", btn.x+3, btn.y+btn.height+-60);
+    text("Gold Temple\n  Cost: "+round(cost9), btn.x+3, btn.y+btn.height+-60);
 
 };
 var btn10 = {
-    x: 1250,
-    y: 150+98+102,
-    width: 113,
+    x: 76,
+    y: 176+98+102,
+    width: 229,
     height:72
 };//+1000 mps mps = money per second
 var drawButton10 = function(btn) {
@@ -450,39 +610,39 @@ var drawButton10 = function(btn) {
     line(btn.x+40, btn.y+65,btn.x+46, btn.y+38);
    
     fill(0, 0, 0);
-    text("   Alchemist\n Cost: 67.5K", btn.x-3, btn.y+btn.height+-65);
+    text("   Alchemist\n Cost: "+ round(cost10), btn.x-3, btn.y+btn.height+-65);
 
 };
-var btn11 = {
-    x: 1245,
-    y: 216+98+315,
-    width: 240,
-    height:72,
-    ox:1245,
+// var btn11 = {
+//     x: 1245,
+//     y: 216+98+315,
+//     width: 240,
+//     height:72,
+//     ox:1245,
   
-};//ULTIMATE
-var drawButton11 = function(btn) {
+// };//ULTIMATE
+// var drawButton11 = function(btn) {
    
-    fill(filby11[0],filby11[01],filby11[02]);
-    rect(btn.ox, btn.y, btn.width, btn.height, 500);
-    rect(btn.ox+13, btn.y+5, btn.width/1.1, btn.height/1.2,500);
-       noFill();
+//     fill(filby11[0],filby11[01],filby11[02]);
+//     rect(btn.ox, btn.y, btn.width, btn.height, 500);
+//     rect(btn.ox+13, btn.y+5, btn.width/1.1, btn.height/1.2,500);
+//       noFill();
 
- ellipse(btn.x+56+55, btn.y+23,27,41);
-    line(btn.x+64+55, btn.y+38,btn.x+73+55, btn.y+63);
-    line(btn.x+40+55, btn.y+65,btn.x+46+55, btn.y+38);
+//  ellipse(btn.x+56+55, btn.y+23,27,41);
+//     line(btn.x+64+55, btn.y+38,btn.x+73+55, btn.y+63);
+//     line(btn.x+40+55, btn.y+65,btn.x+46+55, btn.y+38);
    
-    fill(0, 0, 0);
-    textSize(39);
-    textAlign(LEFT, TOP);
-    text("ULTIMATE", btn.x+21, btn.y+btn.height/11);
-    textSize(20);
-     text("Cost: 1,000,000,000", btn.x+21, btn.y+btn.height/1.5);
-};
+//     fill(0, 0, 0);
+//     textSize(39);
+//     textAlign(LEFT, TOP);
+//     text("ULTIMATE", btn.x+21, btn.y+btn.height/11);
+//     textSize(20);
+//      text("Cost: "+cost11, btn.x+21, btn.y+btn.height/1.5);
+// };
 var btn13 = {
-    x: 1250,
-    y: -6+176+85+80+80+30,
-    width: 113,
+    x: 76,
+    y: -6+205+85+80+80+30,
+    width: 231,
     height:72
 };//+10000 mps 
 var drawButton13 = function(btn) {
@@ -500,13 +660,13 @@ var drawButton13 = function(btn) {
     line(btn.x+40, btn.y+65,btn.x+46, btn.y+38);
    
     fill(0, 0, 0);
-    text("  Gold Bank\n  Cost: 650K", btn.x, btn.y+btn.height+-65);
+    text("  Gold Bank\n  Cost: "+cost13, btn.x, btn.y+btn.height+-65);
 
 };
 var btn14 = {
-    x: 1377,
-    y: 150+98+102+80+15,
-    width: 113,
+    x: 1322,
+    y: 150+98+102+80+15+20,
+    width: 230,
     height:72
 };//+10000 mpc 
 var drawButton14 = function(btn) {
@@ -524,13 +684,13 @@ var drawButton14 = function(btn) {
     line(btn.x+40, btn.y+65,btn.x+46, btn.y+38);
    
     fill(0, 0, 0);
-    text("  Plasma Drill\n   Cost: 350K", btn.x-10, btn.y+btn.height+-60);
+    text("  Plasma Drill\n   Cost: "+round(cost14), btn.x-10, btn.y+btn.height+-60);
 
 };
 var btn15 = {
-    x: 1250,
-    y: -6+176+85+80+80+30+95,
-    width: 113,
+    x: 76,
+    y: -6+209+85+80+80+30+95,
+    width: 226,
     height:72
 };//+100000 mps 
 var drawButton15 = function(btn) {
@@ -548,13 +708,13 @@ var drawButton15 = function(btn) {
     line(btn.x+40, btn.y+65,btn.x+46, btn.y+38);
    
     fill(0, 0, 0);
-    text("Gold Wizard\n  Cost: 6.4M", btn.x, btn.y+btn.height+-60);
+    text("   Gold Wizard\n  Cost: "+round(cost15), btn.x-20, btn.y+btn.height+-66);
 
 };
 var btn16 = {
-    x: 1377,
-    y: 150+98+102+80+15+95,
-    width: 113,
+   x: 1322,
+    y: 150+98+102+80+15+95+20,
+    width: 230,
     height:72
 };//+100000 mpc 
 var drawButton16 = function(btn) {
@@ -572,27 +732,32 @@ var drawButton16 = function(btn) {
     line(btn.x+40, btn.y+65,btn.x+46, btn.y+38);
    
     fill(0, 0, 0);
-    text("   Mysterious\n   Goldfinder\n   Cost: 3.4M", btn.x-10, btn.y+btn.height+-75);
+    text("   Mysterious Goldfinder\n       Cost: "+round(cost16), btn.x-47, btn.y+btn.height+-64);
 
 };
 
-
-
+// fill(255, 255, 255);
+// textSize(50);
+// text(cost8,259,200);
     //  cursor("crosshair");
 
 mouseClicked = function() {
     if (isMouseInside(btn1)){
      money+=mc;
   
-    } else if (isMouseInside(btn2)&&money>=75){
-    money=money-75;
-        mp+=0.03;
+    } else if (isMouseInside(btn2)&&money>=cost3){
+    money=money-cost3;
+        mp+=0.017;
         displayMP++;
         bild++;
-    } else if (isMouseInside(btn3)&&money>=45){
-    money=money-45;
+        cost3*=1.2;
+        // println(cost3);
+        // println(mp);
+    } else if (isMouseInside(btn3)&&money>=cost2){
+    money=money-cost2;
         mc++;
         bild++;
+        cost2*=1.1;
     }
    //EXTRA FEATURE NOT WORKING{
 
@@ -602,63 +767,73 @@ mouseClicked = function() {
     //  bigscene=2;
     // }
     //}(idk y though
-    else if(isMouseInside(btn5)&&money>=400){
-        money-=400;
+    else if(isMouseInside(btn5)&&money>=cost5){
+        money-=cost5;
         mc+=10;
           bild++;
-    }else if(isMouseInside(btn6)&&money>=3800){
-        money-=3800;
+          cost5*=1.2;
+    }else if(isMouseInside(btn6)&&money>=cost6){
+        money-=cost6;
         mc+=100;
           bild++;
-    }else if(isMouseInside(btn7)&&money>=18500){
-        money-=18500;
+          cost6*=1.2;
+    }else if(isMouseInside(btn7)&&money>=cost7){
+        money-=cost7;
         mc+=1000;
           bild++;
-    }else if(isMouseInside(btn8)&&money>=700){
-        money-=700;
-        mp+=0.03*10;
+            cost7*=1.2;
+    }else if(isMouseInside(btn8)&&money>=cost8){
+        money-=cost8;
+        mp+=0.017*10;
         displayMP+=10;
           bild++;
-    }else if(isMouseInside(btn9)&&money>=6800){
-        money-=6800;
-        mp+=0.03*100;
+          cost8*=1.2;
+    }else if(isMouseInside(btn9)&&money>=cost9){
+        money-=cost9;
+        mp+=0.017*100;
         displayMP+=100;
           bild++;
-    }else if(isMouseInside(btn10)&&money>=67500){
-        money-=67500;
-        mp+=0.030*1000;
+            cost9*=1.2;
+    }else if(isMouseInside(btn10)&&money>=cost10){
+        money-=cost10;
+        mp+=0.0170*1000;
         displayMP+=1000;
           bild++;
-    }else if(isMouseInside(btn11)&&money>=1000000000){// 1 biiiiiil yo wut da heck
-        money-=1000000000;
-        mp+=0.030*100000000;
-        displayMP+=100000000;
-    mc+=100000000;
+            cost10*=1.2;
+    // }else if(isMouseInside(btn11)&&money>=cost11){// 
+    //     money-=cost11;
+    //     mp+=0.0170*100000000;
+    //     displayMP+=100000000;
+    // mc+=100000000;
     
     
-      bild++;
+    //   bild++;
     
-    
+    //   cost11*=5;
     
         
-    }else if(isMouseInside(btn13)&&money>=650000){
-        money-=650000;
-        mp+=0.030*10000;
+    }else if(isMouseInside(btn13)&&money>=cost13){
+        money-=cost13;
+        mp+=0.0170*10000;
         displayMP+=10000;
       bild++;
-    }else if(isMouseInside(btn14)&&money>=350000){
-        money-=350000;
+        cost13*=1.2;
+    }else if(isMouseInside(btn14)&&money>=cost14){
+        money-=cost14;
         mc+=10000;
       bild++;
-    }else if(isMouseInside(btn15)&&money>=6400000){
-        money-=6400000;
-        mp+=0.030*100000;
+        cost14*=1.2;
+    }else if(isMouseInside(btn15)&&money>=cost15){
+        money-=cost15;
+        mp+=0.0170*100000;
         displayMP+=100000;
       bild++;
-    }else if(isMouseInside(btn16)&&money>=3400000){
-        money-=3400000;
+        cost15*=1.2;
+    }else if(isMouseInside(btn16)&&money>=cost16){
+        money-=cost16;
         mc+=100000;
     bild++;
+      cost16*=1.2;
     }
    
    
@@ -675,75 +850,75 @@ if(isMouseInside(btn1)){
 
 }
 if(isMouseInside(btn2)){
-    btn2.width=113*1.1;cursor("pointer");
+    btn2.width=170*1.1;cursor("pointer");
     btn2.heght=72*1.1;
 
 }
 if(isMouseInside(btn3)){
-  btn3.width=113*1.1;
+  btn3.width=170*1.1;
     btn3.heght=72*1.1;cursor("pointer");
 
 }
 if(isMouseInside(btn4)){
-    btn4.width=113*1.1;cursor("pointer");
+    btn4.width=170*1.1;cursor("pointer");
     btn4.heght=72*1.1;
 }
 if(isMouseInside(btn5)){
-    btn5.width=113*1.1;cursor("pointer");
+    btn5.width=170*1.1;cursor("pointer");
     btn5.heght=72*1.1;}
 if(isMouseInside(btn6)){
- btn6.width=113*1.1;
+ btn6.width=170*1.1;
     btn6.heght=72*1.1;cursor("pointer");
     
 }
 if(isMouseInside(btn7)){
-     btn7.width=113*1.1;
+     btn7.width=170*1.1;
     btn7.heght=72*1.1;cursor("pointer");
 }
 if(isMouseInside(btn8)){
-     btn8.width=113*1.1;
+     btn8.width=170*1.1;
     btn8.heght=72*1.1;cursor("pointer");
 }
 if(isMouseInside(btn9)){
-     btn9.width=113*1.1;
+     btn9.width=170*1.1;
     btn9.heght=72*1.1;cursor("pointer");
 }
 if(isMouseInside(btn10)){
-     btn10.width=113*1.1;
+     btn10.width=170*1.1;
     btn10.heght=72*1.1;cursor("pointer");
 }
-if(isMouseInside(btn11)){
+// if(isMouseInside(btn11)){
  
-     btn11.width=240*1.1;
-    btn11.heght=72*1.1;
-btn11.ox=1245-11;cursor("pointer");
-}//ultimate is diffrent size
+//      btn11.width=240*1.1;
+//     btn11.heght=72*1.1;
+// btn11.ox=1245-11;cursor("pointer");
+// }//ultimate is diffrent size
 if(isMouseInside(btn13)){
-     btn13.width=113*1.1;
+     btn13.width=170*1.1;
     btn13.heght=72*1.1;cursor("pointer");
 }
 if(isMouseInside(btn14)){
-     btn14.width=113*1.1;
+     btn14.width=170*1.1;
     btn14.heght=72*1.1;cursor("pointer");
 }
 if(isMouseInside(btn15)){
-     btn15.width=113*1.1;
+    btn15.width=170*1.1;
     btn15.heght=72*1.1;cursor("pointer");
 }
 if(isMouseInside(btn16)){
-     btn16.width=113*1.1;
+     btn16.width=170*1.1;
     btn16.heght=72*1.1;cursor("pointer");
 }
 
 
-if(!isMouseInside(btn16)&&!isMouseInside(btn15)&&!isMouseInside(btn14)&&!isMouseInside(btn13)&&!isMouseInside(btn11)&&!isMouseInside(btn10)&&!isMouseInside(btn9)&&!isMouseInside(btn8)&&!isMouseInside(btn7)&&!isMouseInside(btn6)&&!isMouseInside(btn5)&&!isMouseInside(btn4)&&!isMouseInside(btn3)&&!isMouseInside(btn2)&&!isMouseInside(btn1)){
-    cursor("");
-}
+// if(!isMouseInside(btn16)&&!isMouseInside(btn15)&&!isMouseInside(btn14)&&!isMouseInside(btn13)&&!isMouseInside(btn10)&&!isMouseInside(btn9)&&!isMouseInside(btn8)&&!isMouseInside(btn7)&&!isMouseInside(btn6)&&!isMouseInside(btn5)&&!isMouseInside(btn4)&&!isMouseInside(btn3)&&!isMouseInside(btn2)&&!isMouseInside(btn1)){
+//     cursor("");
+// }
 
 
-if (money<75&&isMouseInside(btn2)){
+if (money<cost3&&isMouseInside(btn2)){
     cursor("not-allowed");
-    } else if (isMouseInside(btn3)&&money<45){
+    } else if (isMouseInside(btn3)&&money<cost2){
       cursor("not-allowed");
     }
    //EXTRA FEATURE NOT WORKING{
@@ -754,86 +929,88 @@ if (money<75&&isMouseInside(btn2)){
     //  bigscene=2;
     // }
     //}(idk y though
-    else if(isMouseInside(btn5)&&money<400){
+    else if(isMouseInside(btn5)&&money<cost5){
         cursor("not-allowed");
-    }else if(isMouseInside(btn6)&&money<3800){
+    }else if(isMouseInside(btn6)&&money<cost6){
         cursor("not-allowed");
-    }else if(isMouseInside(btn7)&&money<18500){
+    }else if(isMouseInside(btn7)&&money<cost7){
           cursor("not-allowed");
-    }else if(isMouseInside(btn8)&&money<700){
+    }else if(isMouseInside(btn8)&&money<cost8){
           cursor("not-allowed");
-    }else if(isMouseInside(btn9)&&money<6800){
+    }else if(isMouseInside(btn9)&&money<cost9){
         cursor("not-allowed");
-    }else if(isMouseInside(btn10)&&money<67500){
+    }else if(isMouseInside(btn10)&&money<cost10){
            cursor("not-allowed");
-    }else if(isMouseInside(btn11)&&money<1000000000){
-          cursor("not-allowed");
+    }
+    // else if(isMouseInside(btn11)&&money<cost11){
+    //       cursor("not-allowed");
     
   
     
     
     
         
-    }else if(isMouseInside(btn13)&&money<650000){
+    // }
+    else if(isMouseInside(btn13)&&money<cost13){
        cursor("not-allowed");
-    }else if(isMouseInside(btn14)&&money<350000){
+    }else if(isMouseInside(btn14)&&money<cost14){
            cursor("not-allowed");
-    }else if(isMouseInside(btn15)&&money<6400000){
+    }else if(isMouseInside(btn15)&&money<cost15){
           cursor("not-allowed");
-    }else if(isMouseInside(btn16)&&money<3400000){
+    }else if(isMouseInside(btn16)&&money<cost16){
           cursor("not-allowed");
-    }
+    }else{cursor("");}
 
     
 
 
-if (money<75){
+if (money<cost3){
     filby2=[145,145,145];
     }else{filby2=[215,250,0];}
    
-   if (money<45){
+   if (money<cost2){
     filby3=[145,145,145];
     }else{filby3=[215,250,0];}
-     if (money<400){
+     if (money<cost5){
     filby5=[145,145,145];
     }else{filby5=[215,250,0];}
    
    
-     if (money<3800){
+     if (money<cost6){
     filby6=[145,145,145];
     }else{filby6=[215,250,0];}
    
-    if (money<37500){
+    if (money<cost7){
     filby7=[145,145,145];
     }else{filby7=[215,250,0];}
    
-    if (money<700){
+    if (money<cost8){
     filby8=[145,145,145];
     }else{filby8=[215,250,0];}
    
-    if (money<6800){
+    if (money<cost9){
     filby9=[145,145,145];
     }else{filby9=[215,250,0];}
    
-    if (money<67500){
+    if (money<cost10){
     filby10=[145,145,145];
     }else{filby10=[215,250,0];}
-     if (money<1000000000){
+     if (money<cost11){
     filby11=[145,145,145];
     }else{filby11=[215,250,0];}
    
-    if (money<650000){
+    if (money<cost13){
     filby13=[145,145,145];
     }else{filby13=[215,250,0];}
    
-    if (money<350000){
+    if (money<cost14){
     filby14=[145,145,145];
     }else{filby14=[215,250,0];}
    
-     if (money<6400000){
+     if (money<cost15){
     filby15=[145,145,145];
     }else{filby15=[215,250,0];}
-      if (money<3400000){
+      if (money<cost16){
     filby16=[145,145,145];
     }else{filby16=[215,250,0];}
 
@@ -856,50 +1033,50 @@ if (money<75){
    
    
    
-   
-   
-   
-   
-    if (isMouseInside(btn3)&&money<45){
-      cursor("not-allowed");
-    }
-   //EXTRA FEATURE NOT WORKING{
+//   if (isMouseInside(btn2)&&money<cost3){
+//       cursor("not-allowed");
+//     } else if (isMouseInside(btn3)&&money<cost2){
+//       cursor("not-allowed");
+//     }
+//   //EXTRA FEATURE NOT WORKING{
 
 
-    // else if (isMouseInside(btn4)){
+//     // else if (isMouseInside(btn4)){
     
-    //  bigscene=2;
-    // }
-    //}(idk y though
-    else if(isMouseInside(btn5)&&money<400){
-        cursor("not-allowed");
-    }else if(isMouseInside(btn6)&&money<3800){
-        cursor("not-allowed");
-    }else if(isMouseInside(btn7)&&money<18500){
-          cursor("not-allowed");
-    }else if(isMouseInside(btn8)&&money<700){
-          cursor("not-allowed");
-    }else if(isMouseInside(btn9)&&money<6800){
-        cursor("not-allowed");
-    }else if(isMouseInside(btn10)&&money<67500){
-           cursor("not-allowed");
-    }else if(isMouseInside(btn11)&&money<1000000000){
-          cursor("not-allowed");
+//     //  bigscene=2;
+//     // }
+//     //}(idk y though
+//     else if(isMouseInside(btn5)&&money<cost5){
+//         cursor("not-allowed");
+//     }else if(isMouseInside(btn6)&&money<cost6){
+//         cursor("not-allowed");
+//     }else if(isMouseInside(btn7)&&money<cost7){
+//           cursor("not-allowed");
+//     }else if(isMouseInside(btn8)&&money<cost8){
+//           cursor("not-allowed");
+//     }else if(isMouseInside(btn9)&&money<cost9){
+//         cursor("not-allowed");
+//     }else if(isMouseInside(btn10)&&money<cost10){
+//           cursor("not-allowed");
+//     }
+//     // else if(isMouseInside(btn11)&&money<1000000000){
+//     //       cursor("not-allowed");
     
   
     
     
     
         
-    }else if(isMouseInside(btn13)&&money<650000){
-       cursor("not-allowed");
-    }else if(isMouseInside(btn14)&&money<350000){
-           cursor("not-allowed");
-    }else if(isMouseInside(btn15)&&money<6400000){
-          cursor("not-allowed");
-    }else if(isMouseInside(btn16)&&money<3400000){
-          cursor("not-allowed");
-    }
+//     else if(isMouseInside(btn13)&&money<cost13){
+//       cursor("not-allowed");
+//     }else if(isMouseInside(btn14)&&money<cost14){
+//           cursor("not-allowed");
+//     }else if(isMouseInside(btn15)&&money<cost15){
+//           cursor("not-allowed");
+//     }else if(isMouseInside(btn16)&&money<cost16){
+//           cursor("not-allowed");
+//     } else{
+//     cursor("");}
 
 //}
 drawButton(btn1);
@@ -914,7 +1091,7 @@ drawButton7(btn7);
 drawButton8(btn8);
 drawButton9(btn9);
 drawButton10(btn10);
-drawButton11(btn11);
+// drawButton11(btn11);
 // drawButton12(btn12);
 drawButton13(btn13);
 drawButton14(btn14);
@@ -928,11 +1105,187 @@ textSize(20);
 fill(122, 78, 12);
 rect(0,0,1500,50);
 
-rect(659,92,449,38);
+rect(483,92,449,43);
+rect(-18,660,10000,78);
 fill(255, 255, 255);
 textSize(40);
-text("Buildings: "+bild,777,85);
+text("Money: "+round(money),626,88);
 textSize(20);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 var isK2 = mc / 1000 > 1;
 var isM2 = mc / 1000000 > 1;
@@ -1002,13 +1355,13 @@ if (isK&&!isM&&!isB&&!isT) {
 
 fill(255, 255, 255);
 // text("MPC: "+mc,157,12);
-text("MPC: "+FormattedMc,186,12);
+text("MPC: "+FormattedMc,517,12);
 // text("MPS: "+displayMP,259+15,12);
-text("MPS: "+FormattedMP,319+15,12);
+text("MPS: "+FormattedMP,816+15,12);
 // text("FPS: "+60,326,12);
 
 
-text("Money: "+FormattedMoney,15,12);
+text("Upgrades: "+bild,645,12);
 
 
 
@@ -1021,8 +1374,12 @@ text("Money: "+FormattedMoney,15,12);
 
 
 
-
-if(money>=100000000000000&&winnies===true){
+if(money>=1000){
+    
+    // money/=1000;
+    // money+="K";
+}
+if(money>=1000000000&&winnies===true){//a million! lol im only at 100,000 ONLY 1 MORE DIGIT TO GOOOOOOOO ok my number is increasing so ima change this to 1 bil
     background(71, 255, 61);
 fill(30, 0, 255);
 textSize(288);
@@ -1059,58 +1416,57 @@ drawButton(btn1);
 
 }//1 bil yea boi or keeeeep on playin
 }//clickgame
-/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// if(bigscene===1){
-///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////   noLoop();
-///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////     // code{
-/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// background(255, 255, 255);
-/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// var r = 0;var g = 0;var b = 0;//TO DO:add background changing buttons
-/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// var Button = function(config) {
-///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////     this.x = config.x || 0;
-///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////     this.y = config.y || 0;
-///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////     this.width = config.width || 65;
-///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////     this.height = config.height || 40;
-///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////     this.label = config.label || "Click";
-/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// };
-/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// Button.prototype.draw = function() {
-///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////     fill(0, 0, 0);
-///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////     rect(this.x, this.y, this.width, this.height, 5);
-///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////     fill(255, 255, 255);
-///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////     textSize(19);
-///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////     textAlign(LEFT, TOP);
-///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////     text(this.label, this.x+10, this.y+this.height/4);
-/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// };
-/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// Button.prototype.isMouseInside = function() {
-///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////     return mouseX > this.x &&
-///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////           mouseX < (this.x + this.width) &&
-///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////           mouseY > this.y &&
-///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////           mouseY < (this.y + this.height);
-/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// };
-/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// var btn1 = new Button({
-///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////     x: 8,
-///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////     y: 12,
-///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////     label: "Black"
-/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// });
-/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// var Button = function(config) {
-///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////     this.x = config.x || 0;
-////////////////////////////////////////////////////// Loading . . . /////////////////////////////////////////////////////////////////////////////////////     this.y = config.y || 0;
-////////////////////////////////////// Logging into command hacker terminal. . .////////////////////////////////////////////////////////////////     this.width = config.width || 65;
-////////////////////////////////////////////////Please choose a password: ///////////////////////////////////////////////////////////////////////////////////////     this.height = config.height || 40;
-/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-//////////////////////////////////////DuCkDuCkGoGo////GoodmooSe12_1////walpane_1_4_2////////////////////////////////////////////////////////////////     this.label = config.label || "Click";
-/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// };
-/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// Button.prototype.draw = function() {
-///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////     fill(255, 0, 0);
-///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////     rect(this.x, this.y, this.width, this.height, 5);
-///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////     fill(0, 0, 0);
-///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////     textSize(19);
-///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////     textAlign(LEFT, TOP);
-///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////     text(this.label, this.x+10, this.y+this.height/4);
-/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// };
-/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// Button.prototype.isMouseInside = function() {
-///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////     return mouseX > this.x &&
-///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////           mouseX < (this.x + this.width) &&
-///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////           mouseY > this.y &&
-///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////           mouseY < (this.y + this.height);
+// if(bigscene===1){
+//   noLoop();
+//     // code{
+// background(255, 255, 255);
+// var r = 0;var g = 0;var b = 0;//TO DO:add background changing buttons
+// var Button = function(config) {
+//     this.x = config.x || 0;
+//     this.y = config.y || 0;
+//     this.width = config.width || 65;
+//     this.height = config.height || 40;
+//     this.label = config.label || "Click";
+// };
+// Button.prototype.draw = function() {
+//     fill(0, 0, 0);
+//     rect(this.x, this.y, this.width, this.height, 5);
+//     fill(255, 255, 255);
+//     textSize(19);
+//     textAlign(LEFT, TOP);
+//     text(this.label, this.x+10, this.y+this.height/4);
+// };
+// Button.prototype.isMouseInside = function() {
+//     return mouseX > this.x &&
+//           mouseX < (this.x + this.width) &&
+//           mouseY > this.y &&
+//           mouseY < (this.y + this.height);
+// };
+// var btn1 = new Button({
+//     x: 8,
+//     y: 12,
+//     label: "Black"
+// });
+// var Button = function(config) {
+//     this.x = config.x || 0;
+//     this.y = config.y || 0;
+//     this.width = config.width || 65;
+//     this.height = config.height || 40;
+//     this.label = config.label || "Click";
+// };
+// Button.prototype.draw = function() {
+//     fill(255, 0, 0);
+//     rect(this.x, this.y, this.width, this.height, 5);
+//     fill(0, 0, 0);
+//     textSize(19);
+//     textAlign(LEFT, TOP);
+//     text(this.label, this.x+10, this.y+this.height/4);
+// };
+// Button.prototype.isMouseInside = function() {
+//     return mouseX > this.x &&
+//           mouseX < (this.x + this.width) &&
+//           mouseY > this.y &&
+//           mouseY < (this.y + this.height);
 // };
 // var btn2 = new Button({
 //     x: 80,
@@ -1652,17 +2008,15 @@ drawButton(btn1);
          
         
 //  }
+if(width<1500){
+    background(255, 0, 0);
+fill(0, 0, 0);
+textSize(30);
+text(" Error: Your canvas is the wrong size.\n Please add: \n?width=1500&height=720&editor=no to your url\nBut read the blue comments first",58,230);
+}
+
 };
 //}I wonder how much code there is inside?
-
-
-
-
-
-
-
-
-
     }};
 
     // Get the canvas that Processing-js will use
