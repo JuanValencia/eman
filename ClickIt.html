@@ -47,7 +47,7 @@ https://github.com/Team-Code/KA_Offline -->
         frameRate(30);
         
         // ProgramCodeGoesHere
-       /**
+          /**
 * My First game, Click it! 
 * This took me about 7 hours but it was so spread out that when i started i barely knew anything about programming
 * I tried to add other video games that you could buy but that didn't work out so it's just the click it game for now
@@ -69,9 +69,28 @@ Enjoy!
 (:
 (:
 (:
-TODO:put under buildings sign how many of each building you own, and make it so that the cost of the upgrade is multiplied by 1.1 each time you buy it
+TODO:Make two more rows of upgrades and ultimate
+       MPS:
+Super Miner,   Cost:32000000
+UltraMiner,   Cost:300000000
+Bitcoin Man, Cost:2800000000
+Coin Stand, Cost:27500000000
+Coin Man!  Cost:250000000000
+The Boss, Cost:2200000000000  
 
-ALSO put click me button in middle and mpc on left and mps on right
+    MPC:
+Gold Compass,    Cost:620000000
+Mining Site,    Cost:6000000000
+Treasure Map,  Cost:58000000000
+Rocket ship,  Cost:575000000000
+Portal,      Cost:5500000000000
+Magic staff,Cost:52000000000000
+
+also make one-time little upgrades on bottem
+Bigger Coins: Multiplies Your Mpc by 2
+Cost: Your MPC*100
+Better Salory: Multiplies your MPS by 2
+Cost: Your Mps*100
 */
 
 
@@ -172,21 +191,67 @@ var filby13 = [251, 255, 0];
 var filby14 = [251, 255, 0];
 var filby15 = [251, 255, 0];
 var filby16 = [251, 255, 0];
+
+
+var filby17 =  [251, 255, 0];
+var filby18 =  [251, 255, 0];
+var filby19 =  [251, 255, 0];
+var filby20 =  [251, 255, 0];
+var filby21 =  [251, 255, 0];
+var filby22 =  [251, 255, 0];
+var filby23 =  [251, 255, 0];
+var filby24 =  [251, 255, 0];
+var filby25 =  [251, 255, 0];
+var filby26 =  [251, 255, 0];
+var filby27 =  [251, 255, 0];
+var filby28 =  [251, 255, 0];
 var systems = [];
 var bild = 0;
-var cost2 = 75;
+var cost2 = 750;
 var cost3 = 45;
-var cost5 = 700; 
-var cost6 = 6800;
-var cost7 = 67500;
+var cost5 = 7000; 
+var cost6 = 68000;
+var cost7 = 675000;
 var cost8 = 400;
 var cost9 = 3800;
 var cost10 = 37500;
 var cost11 = 1000000000;
 var cost13 = 350000;
-var cost14 = 650000;
+var cost14 = 6500000;
 var cost15 = 3400000;
-var cost16 = 6400000;
+var cost16 = 64000000;
+/**
+MPS:
+Super Miner,   Cost:32000000
+UltraMiner,   Cost:300000000
+Bitcoin Man, Cost:2800000000
+Coin Stand, Cost:27500000000
+CoinWizard Cost:250000000000
+The Boss, Cost:2200000000000  
+
+       MPC:
+Gold Compass,    Cost:620000000
+Mining Site,    Cost:6000000000
+Treasure Map,  Cost:58000000000
+Rocket ship,  Cost:575000000000
+Portal,      Cost:5500000000000
+Magic staff,Cost:52000000000000
+*/
+
+//Mps
+var cost17 = 32000000;
+var cost18 = 300000000;
+var cost19 = 2800000000;
+var cost20 = 27500000000;
+var cost21 = 250000000000;
+var cost22 = 2200000000000;
+//Mpc
+var cost23 = 62000000;
+var cost24 = 600000000;
+var cost25 = 5800000000;
+var cost26 = 57500000000;
+var cost27 = 550000000000;
+var cost28 = 5200000000000;
 // var cost5 = 3800
 // var cost6 = 37500;
 //}
@@ -396,7 +461,7 @@ var isMouseInside = function(btn) {
             mouseY <= (btn.y+btn.height));
 };
 var btn2 = {
-    x: 76,
+    x: 65,
     y: 12+18+55,
     width: 229,
     height:72
@@ -541,7 +606,7 @@ var drawButton7 = function(btn) {
 
 };
 var btn8 = {
-    x: 76,
+    x: 65,
     y: -6+119+70,
     width: 227,
     height:72
@@ -566,7 +631,7 @@ var drawButton8 = function(btn) {
 
 };
 var btn9 = {
-    x: 76,
+    x: 65,
     y: 19+176+85,
     width: 226,
     height:72
@@ -590,7 +655,7 @@ var drawButton9 = function(btn) {
 
 };
 var btn10 = {
-    x: 76,
+    x: 65,
     y: 176+98+102,
     width: 229,
     height:72
@@ -640,7 +705,7 @@ var drawButton10 = function(btn) {
 //      text("Cost: "+cost11, btn.x+21, btn.y+btn.height/1.5);
 // };
 var btn13 = {
-    x: 76,
+    x: 65,
     y: -6+205+85+80+80+30,
     width: 231,
     height:72
@@ -688,7 +753,7 @@ var drawButton14 = function(btn) {
 
 };
 var btn15 = {
-    x: 76,
+    x: 65,
     y: -6+209+85+80+80+30+95,
     width: 226,
     height:72
@@ -735,6 +800,86 @@ var drawButton16 = function(btn) {
     text("   Mysterious Goldfinder\n       Cost: "+round(cost16), btn.x-47, btn.y+btn.height+-64);
 
 };
+
+var btn17 = {
+   x: 295,
+    y: 150+98+102+-397+15+95+20,
+    width: 230,
+    height:72
+};//+1000000 mps 
+var drawButton17 = function(btn) {
+       
+   fill(filby16[0],filby16[1],filby16[2]);
+    ellipse(btn.x+53, btn.y+30, btn.width, btn.height+19);
+     ellipse(btn.x+53, btn.y+30, btn.width/1.15, btn.height/1.3+19);
+    fill(0, 0, 0);
+    textSize(19);
+    textAlign(LEFT, TOP);
+    noFill();
+
+ ellipse(btn.x+56, btn.y+23,27,41);
+    line(btn.x+64, btn.y+38,btn.x+73, btn.y+63);
+    line(btn.x+40, btn.y+65,btn.x+46, btn.y+38);
+   
+    fill(0, 0, 0);
+    text("         Super Miner\n       Cost: "+round(cost17), btn.x-47, btn.y+btn.height+-64);
+
+};
+var btn18 = {
+   x: 295,
+    y: 150+200+102+-397+15+95+20,
+    width: 230,
+    height:71
+};//+10000000 mps 
+var drawButton18 = function(btn) {
+       
+   fill(filby16[0],filby16[1],filby16[2]);
+    ellipse(btn.x+53, btn.y+30, btn.width, btn.height+19);
+     ellipse(btn.x+53, btn.y+30, btn.width/1.15, btn.height/1.3+19);
+    fill(0, 0, 0);
+    textSize(19);
+    textAlign(LEFT, TOP);
+    noFill();
+
+ ellipse(btn.x+56, btn.y+23,27,41);
+    line(btn.x+64, btn.y+38,btn.x+73, btn.y+63);
+    line(btn.x+40, btn.y+65,btn.x+46, btn.y+38);
+   
+    fill(0, 0, 0);
+    text("           Ultra Miner\n       Cost: "+round(cost18), btn.x-54, btn.y+btn.height+-64);
+
+};
+var btn19 = {
+   x: 295,
+    y: 247+200+102+-397+15+95+20,
+    width: 230,
+    height:71
+};//+10000000 mps 
+var drawButton19 = function(btn) {
+       
+   fill(filby16[0],filby16[1],filby16[2]);
+    ellipse(btn.x+53, btn.y+30, btn.width, btn.height+19);
+     ellipse(btn.x+53, btn.y+30, btn.width/1.15, btn.height/1.3+19);
+    fill(0, 0, 0);
+    textSize(19);
+    textAlign(LEFT, TOP);
+    noFill();
+
+ ellipse(btn.x+56, btn.y+23,27,41);
+    line(btn.x+64, btn.y+38,btn.x+73, btn.y+63);
+    line(btn.x+40, btn.y+65,btn.x+46, btn.y+38);
+   
+    fill(0, 0, 0);
+    text("             Bitcoin Man\n       Cost: "+round(cost19), btn.x-61, btn.y+btn.height+-64);
+
+};
+
+
+
+
+
+
+
 
 // fill(255, 255, 255);
 // textSize(50);
@@ -834,6 +979,27 @@ mouseClicked = function() {
         mc+=100000;
     bild++;
       cost16*=1.2;
+    
+    }else if(isMouseInside(btn17)&&money>=cost17){
+        money-=cost17;
+        mp+=0.017*1000000;
+    bild++;
+      cost17*=1.2;
+    
+    }else if(isMouseInside(btn18)&&money>=cost18){
+        money-=cost18;
+        mp+=0.017*10000000;
+    bild++;
+      cost18*=1.2;
+    
+    
+    }else if(isMouseInside(btn19)&&money>=cost19){
+        money-=cost19;
+        mp+=0.017*10000000;
+    bild++;
+      cost19*=1.2;
+    
+    
     }
    
    
@@ -909,8 +1075,18 @@ if(isMouseInside(btn16)){
      btn16.width=170*1.1;
     btn16.heght=72*1.1;cursor("pointer");
 }
-
-
+if(isMouseInside(btn17)){
+     btn17.width=170*1.1;
+    btn17.heght=72*1.1;cursor("pointer");
+}
+if(isMouseInside(btn18)){
+     btn18.width=170*1.1;
+    btn18.heght=72*1.1;cursor("pointer");
+}
+if(isMouseInside(btn19)){
+     btn19.width=170*1.1;
+    btn19.heght=72*1.1;cursor("pointer");
+}
 // if(!isMouseInside(btn16)&&!isMouseInside(btn15)&&!isMouseInside(btn14)&&!isMouseInside(btn13)&&!isMouseInside(btn10)&&!isMouseInside(btn9)&&!isMouseInside(btn8)&&!isMouseInside(btn7)&&!isMouseInside(btn6)&&!isMouseInside(btn5)&&!isMouseInside(btn4)&&!isMouseInside(btn3)&&!isMouseInside(btn2)&&!isMouseInside(btn1)){
 //     cursor("");
 // }
@@ -959,7 +1135,17 @@ if (money<cost3&&isMouseInside(btn2)){
           cursor("not-allowed");
     }else if(isMouseInside(btn16)&&money<cost16){
           cursor("not-allowed");
+    
+    }else if(isMouseInside(btn17)&&money<cost17){
+          cursor("not-allowed");
+    }else if(isMouseInside(btn18)&&money<cost18){
+          cursor("not-allowed");
+    
+    }else if(isMouseInside(btn19)&&money<cost19){
+          cursor("not-allowed");
+    
     }else{cursor("");}
+
 
     
 
@@ -1013,9 +1199,15 @@ if (money<cost3){
       if (money<cost16){
     filby16=[145,145,145];
     }else{filby16=[215,250,0];}
-
-   
-   
+      if (money<cost17){
+    filby17=[145,145,145];
+    }else{filby17=[215,250,0];}
+      if (money<cost18){
+    filby18=[145,145,145];
+    }else{filby18=[215,250,0];}
+   if (money<cost19){
+    filby19=[145,145,145];
+    }else{filby19=[215,250,0];}
    
    
    
@@ -1097,6 +1289,9 @@ drawButton13(btn13);
 drawButton14(btn14);
 drawButton15(btn15);
 drawButton16(btn16);
+drawButton17(btn17);
+drawButton18(btn18);
+drawButton19(btn19);
  for(var i = 0; i < systems.length; i++){
         systems[i].addParticle();
         systems[i].run();
@@ -1109,7 +1304,7 @@ rect(483,92,449,43);
 rect(-18,660,10000,78);
 fill(255, 255, 255);
 textSize(40);
-text("Money: "+round(money),626,88);
+
 textSize(20);
 
 
@@ -1361,9 +1556,10 @@ text("MPS: "+FormattedMP,816+15,12);
 // text("FPS: "+60,326,12);
 
 
+
 text("Upgrades: "+bild,645,12);
-
-
+textSize(38);
+text("Money: "+FormattedMoney,589,88);
 
 
 
@@ -2017,7 +2213,7 @@ text(" Error: Your canvas is the wrong size.\n Please add: \n?width=1500&height=
 
 };
 //}I wonder how much code there is inside?
-    }};
+   }};
 
     // Get the canvas that Processing-js will use
     var canvas = document.getElementById("mycanvas"); 
