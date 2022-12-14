@@ -220,6 +220,7 @@ var cost13 = 350000;
 var cost14 = 6500000;
 var cost15 = 3400000;
 var cost16 = 64000000;
+var UPmps = 1/60; 
 /**
 MPS:
 Super Miner,   Cost:32000000
@@ -892,7 +893,7 @@ mouseClicked = function() {
   
     } else if (isMouseInside(btn2)&&money>=cost3){
     money=money-cost3;
-        mp+=0.017;
+        mp+=UPmps;
         displayMP++;
         bild++;
         cost3*=1.2;
@@ -929,19 +930,19 @@ mouseClicked = function() {
             cost7*=1.2;
     }else if(isMouseInside(btn8)&&money>=cost8){
         money-=cost8;
-        mp+=0.017*10;
+        mp+=UPmps*10;
         displayMP+=10;
           bild++;
           cost8*=1.2;
     }else if(isMouseInside(btn9)&&money>=cost9){
         money-=cost9;
-        mp+=0.017*100;
+        mp+=UPmps*100;
         displayMP+=100;
           bild++;
             cost9*=1.2;
     }else if(isMouseInside(btn10)&&money>=cost10){
         money-=cost10;
-        mp+=0.0170*1000;
+        mp+=UPmps*1000;
         displayMP+=1000;
           bild++;
             cost10*=1.2;
@@ -959,7 +960,7 @@ mouseClicked = function() {
         
     }else if(isMouseInside(btn13)&&money>=cost13){
         money-=cost13;
-        mp+=0.0170*10000;
+        mp+=UPmps*10000;
         displayMP+=10000;
       bild++;
         cost13*=1.2;
@@ -970,7 +971,7 @@ mouseClicked = function() {
         cost14*=1.2;
     }else if(isMouseInside(btn15)&&money>=cost15){
         money-=cost15;
-        mp+=0.0170*100000;
+        mp+=UPmps*100000;
         displayMP+=100000;
       bild++;
         cost15*=1.2;
@@ -982,20 +983,20 @@ mouseClicked = function() {
     
     }else if(isMouseInside(btn17)&&money>=cost17){
         money-=cost17;
-        mp+=0.017*1000000;
+        mp+=UPmps*1000000;
     bild++;
       cost17*=1.2;
     
     }else if(isMouseInside(btn18)&&money>=cost18){
         money-=cost18;
-        mp+=0.017*10000000;
+        mp+=UPmps*10000000;
     bild++;
       cost18*=1.2;
     
     
     }else if(isMouseInside(btn19)&&money>=cost19){
         money-=cost19;
-        mp+=0.017*10000000;
+        mp+=UPmps*10000000;
     bild++;
       cost19*=1.2;
     
